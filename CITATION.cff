@@ -1,0 +1,11 @@
+cff-version: 1.2.0
+message: "If you use TxID, cite the archived software release and Technical Note."
+title: "TxID: deterministic transcript identity and interoperability"
+type: software
+version: 0.1.0
+date-released: 2026-07-30
+authors:
+  - name: "TxID contributors"
+license: BSD-3-Clause
+repository-code: "https://github.com/dawangran/TxID"
+url: "https://github.com/dawangran/TxID"

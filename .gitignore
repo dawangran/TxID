@@ -1,0 +1,32 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.coverage
+build/
+dist/
+.venv/
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal
+benchmarks/results/run-*/
+benchmark-work/
+.snakemake/
+
+# Local data and generated benchmark results are not source code.
+benchmark-inputs/
+benchmarks/results/
+
+# Authoring, presentation, and local-agent material are maintained separately.
+manuscript/
+website/
+docs/website-plan.md
+tests/test_site.py
+.agents/
+.codex/
+AGENTS.md
+
+# Local packaging/deployment experiments are outside this source-only export.
+Dockerfile
+environment.yml
+conda-recipe/

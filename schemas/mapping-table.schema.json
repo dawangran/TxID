@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://txid.example/schemas/mapping-row-v1.json",
+  "title": "TxID mapping table row v1",
+  "type": "object",
+  "required": [
+    "sample", "tool", "original_transcript_id", "original_gene_id",
+    "txid_transcript_id", "txid_gene_id", "txid_form", "classification",
+    "annotation_name"
+  ],
+  "properties": {
+    "sample": { "type": "string" },
+    "tool": { "type": "string" },
+    "original_transcript_id": { "type": "string" },
+    "original_gene_id": { "type": ["string", "null"] },
+    "txid_transcript_id": { "type": "string" },
+    "txid_gene_id": { "type": "string" },
+    "txid_sc": { "type": ["string", "null"] },
+    "txid_form": { "type": "string" },
+    "classification": {
+      "enum": ["known", "novel_in_known_gene", "ambiguous_gene", "new_locus"]
+    },
+    "annotation_name": { "type": "string" },
+    "gene_candidates": { "type": "array", "items": { "type": "string" } },
+    "fuzzy_cluster": { "type": ["string", "null"] },
+    "fuzzy_bridge_status": {
+      "type": ["string", "null"],
+      "enum": ["unambiguous", "ambiguous_bridge", null]
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,8 @@
+dataset_id	sample_id	replicate	cohort	platform	read_type	input_kind	input_path	reference_id	annotation_id	truth_set	public_accession	source_url	sha256	enabled
+wtc11-captrap-pacbio-r1	WTC11	1	LRGASP-WTC11	pacbio	pacbio_ccs	local_required	benchmark-inputs/lrgasp/ENCFF105WIJ.fastq.gz	grch38-sirv	gencode-v38	sirv-set4	ENCFF105WIJ	https://www.encodeproject.org/files/ENCFF105WIJ/	NA	false
+wtc11-captrap-pacbio-r2	WTC11	2	LRGASP-WTC11	pacbio	pacbio_ccs	local_required	benchmark-inputs/lrgasp/ENCFF212HLP.fastq.gz	grch38-sirv	gencode-v38	sirv-set4	ENCFF212HLP	https://www.encodeproject.org/files/ENCFF212HLP/	NA	false
+wtc11-captrap-pacbio-r3	WTC11	3	LRGASP-WTC11	pacbio	pacbio_ccs	local_required	benchmark-inputs/lrgasp/ENCFF003QZT.fastq.gz	grch38-sirv	gencode-v38	sirv-set4	ENCFF003QZT	https://www.encodeproject.org/files/ENCFF003QZT/	NA	false
+wtc11-captrap-ont-r1	WTC11	1	LRGASP-WTC11	ont	ont_cdna	local_required	benchmark-inputs/lrgasp/ENCFF654SNK.fastq.gz	grch38-sirv	gencode-v38	sirv-set4	ENCFF654SNK	https://www.encodeproject.org/files/ENCFF654SNK/	NA	false
+wtc11-captrap-ont-r2	WTC11	2	LRGASP-WTC11	ont	ont_cdna	local_required	benchmark-inputs/lrgasp/ENCFF934KDM.fastq.gz	grch38-sirv	gencode-v38	sirv-set4	ENCFF934KDM	https://www.encodeproject.org/files/ENCFF934KDM/	NA	false
+wtc11-captrap-ont-r3	WTC11	3	LRGASP-WTC11	ont	ont_cdna	local_required	benchmark-inputs/lrgasp/ENCFF104BNW.fastq.gz	grch38-sirv	gencode-v38	sirv-set4	ENCFF104BNW	https://www.encodeproject.org/files/ENCFF104BNW/	NA	false
+k562-pacbio-r1	K562	1	ENCODE-K562	pacbio	pacbio_ccs	local_required	benchmark-inputs/k562/SRX10976116.fastq.gz	grch38-sirv	gencode-v38	none	SRX10976116	https://www.ncbi.nlm.nih.gov/sra/SRX10976116	NA	false

@@ -1,0 +1,3 @@
+dataset_id	sample_id	replicate	cohort	platform	read_type	input_kind	input_path	reference_id	annotation_id	truth_set	public_accession	source_url	sha256	enabled
+smoke-pb-r1	smoke-pb	1	smoke	pacbio	pacbio_ccs	generated	{outdir}/data/smoke-pb-r1.fastq.gz	smoke-ref	smoke-v1	smoke-truth	NA	NA	generated	true
+smoke-pb-r2	smoke-pb	2	smoke	pacbio	pacbio_ccs	generated	{outdir}/data/smoke-pb-r2.fastq.gz	smoke-ref	smoke-v1	smoke-truth	NA	NA	generated	true

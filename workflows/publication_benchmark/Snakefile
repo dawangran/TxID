@@ -1,0 +1,737 @@
+"""Publication-grade TxID benchmark: real callers, identity tools, and truth checks."""
+
+import csv
+import shlex
+from pathlib import Path
+
+
+configfile: "config/config.smoke.yaml"
+
+
+WORKFLOW_DIR = Path(workflow.basedir).resolve()
+REPO = WORKFLOW_DIR.parents[1]
+
+
+def repo_path(value):
+    path = Path(str(value).replace("{repo}", str(REPO)))
+    return path if path.is_absolute() else REPO / path
+
+
+OUT = repo_path(config["outdir"]).resolve()
+RUN_CONFIGURATION = repo_path(config["run_configuration"]).resolve()
+DATASET_MANIFEST = repo_path(config["dataset_manifest"]).resolve()
+REFERENCE_MANIFEST = repo_path(config["reference_manifest"]).resolve()
+SCRIPTS = WORKFLOW_DIR / "scripts"
+ENVS = WORKFLOW_DIR / "envs"
+
+
+def read_tsv(path):
+    with path.open(newline="", encoding="utf-8") as handle:
+        return list(csv.DictReader(handle, delimiter="\t"))
+
+
+def enabled(row):
+    return row["enabled"].strip().lower() in {"1", "true", "yes"}
+
+
+def expand_path(value):
+    return str(
+        Path(
+            value.replace("{repo}", str(REPO)).replace("{outdir}", str(OUT))
+        ).resolve()
+    )
+
+
+DATASETS = {
+    row["dataset_id"]: row
+    for row in read_tsv(DATASET_MANIFEST)
+    if enabled(row)
+}
+REFERENCES = {
+    (row["reference_id"], row["annotation_id"]): row
+    for row in read_tsv(REFERENCE_MANIFEST)
+    if enabled(row)
+}
+if not DATASETS:
+    raise ValueError("dataset manifest has no enabled rows")
+DATASET_IDS = sorted(DATASETS)
+CALLERS = list(config["callers"])
+CALLER_LABELS = [
+    f"{caller}__{dataset}" for caller in CALLERS for dataset in DATASET_IDS
+]
+ALL_MODEL_LABELS = CALLER_LABELS + (["talon__shared"] if config.get("run_talon") else [])
+TALON_ORDERS = {
+    "sorted": "sorted",
+    "shuffled": config["txid_orders"][1],
+}
+
+
+def context(dataset):
+    row = DATASETS[dataset]
+    return REFERENCES[(row["reference_id"], row["annotation_id"])]
+
+
+def first_reference(annotation_id=None):
+    rows = list(REFERENCES.values())
+    if annotation_id is not None:
+        rows = [row for row in rows if row["annotation_id"] == annotation_id]
+    if not rows:
+        raise ValueError(f"no enabled reference for annotation {annotation_id!r}")
+    return sorted(rows, key=lambda row: (row["reference_id"], row["annotation_id"]))[0]
+
+
+PRIMARY = first_reference(config["annotation_contexts"][0])
+RELEASE2 = first_reference(config["annotation_contexts"][1])
+REFERENCE_FASTA = expand_path(PRIMARY["fasta"])
+TRUTH_GTF = expand_path(PRIMARY["truth_gtf"])
+TALON_READ_TRUTH = expand_path(config["talon_read_truth"])
+TALON_TRANSCRIPT_TRUTH = expand_path(config["talon_transcript_truth"])
+ANNOTATION_V1 = expand_path(PRIMARY["annotation"])
+ANNOTATION_V2 = expand_path(RELEASE2["annotation"])
+
+
+def fastq(dataset):
+    return expand_path(DATASETS[dataset]["input_path"])
+
+
+def bam(dataset):
+    return str(OUT / "alignments" / dataset / "reads.bam")
+
+
+def caller_gtf(caller, dataset):
+    return str(OUT / "callers" / caller / f"{dataset}.gtf")
+
+
+def model_gtf(label):
+    caller, dataset = label.split("__", 1)
+    if caller == "talon":
+        return str(OUT / "callers" / "talon" / "sorted" / "shared.gtf")
+    return caller_gtf(caller, dataset)
+
+
+TXID_RUNS = {
+    "v1-sorted": {
+        "annotation": ANNOTATION_V1,
+        "annotation_name": PRIMARY["annotation_name"],
+        "order": "sorted",
+    },
+    "v1-shuffled": {
+        "annotation": ANNOTATION_V1,
+        "annotation_name": PRIMARY["annotation_name"],
+        "order": config["txid_orders"][1],
+    },
+    "v2-sorted": {
+        "annotation": ANNOTATION_V2,
+        "annotation_name": RELEASE2["annotation_name"],
+        "order": "sorted",
+    },
+}
+
+
+def txid_inputs():
+    values = [
+        f"{caller}={dataset}={caller_gtf(caller, dataset)}"
+        for caller in CALLERS
+        for dataset in DATASET_IDS
+    ]
+    if config.get("run_talon"):
+        values.append(f"talon=talon-shared={model_gtf('talon__shared')}")
+    return values
+
+
+def quoted_flags(flag, values):
+    return " ".join(f"{flag} {shlex.quote(str(value))}" for value in values)
+
+
+def source_cache_flag(source_name):
+    cache = config["sources"][source_name].get("cache")
+    return f"--cache {shlex.quote(expand_path(cache))}" if cache else ""
+
+
+ALIGN_RUNS = [str(OUT / "alignments" / dataset / "run.json") for dataset in DATASET_IDS]
+CALLER_RUNS = [
+    str(OUT / "callers" / caller / f"{dataset}.run.json")
+    for caller in CALLERS
+    for dataset in DATASET_IDS
+]
+TALON_RUNS = [
+    str(OUT / "callers" / "talon" / order / "run.json")
+    for order in TALON_ORDERS
+]
+TXID_RUN_JSONS = [
+    str(OUT / "identity" / "txid" / run / "run.json") for run in TXID_RUNS
+]
+SOURCE_RECORDS = [
+    str(OUT / "sources" / "SQANTI3.fetch.json"),
+    str(OUT / "sources" / "isoSeQL.fetch.json"),
+]
+
+
+rule all:
+    input:
+        str(OUT / "reports" / "discovery-summary.tsv"),
+        str(OUT / "reports" / "identity-partition-summary.json"),
+        str(OUT / "reports" / "talon-partition-summary.json"),
+        str(OUT / "reports" / "txid-invariance.json"),
+        str(OUT / "reports" / "provenance.json"),
+
+
+rule publication_smoke:
+    input:
+        rules.all.input
+
+
+rule validate_manifests:
+    input:
+        datasets=str(DATASET_MANIFEST),
+        references=str(REFERENCE_MANIFEST),
+    output:
+        str(OUT / "metadata" / "manifest-validation.json"),
+    shell:
+        """
+        python {SCRIPTS}/validate_manifests.py \
+          --datasets {input.datasets} --references {input.references} \
+          --repo {REPO} --outdir {OUT} --allow-deferred-generated \
+          --output {output}
+        """
+
+
+rule generate_smoke_data:
+    input:
+        rules.validate_manifests.output
+    output:
+        fasta=REFERENCE_FASTA,
+        annotation_v1=ANNOTATION_V1,
+        annotation_v2=ANNOTATION_V2,
+        truth_gtf=TRUTH_GTF,
+        truth_tsv=str(OUT / "data" / "truth.tsv"),
+        read_truth=str(OUT / "data" / "read-truth.tsv"),
+        truth_counts=str(OUT / "data" / "truth-counts.tsv"),
+        fastqs=[fastq(dataset) for dataset in DATASET_IDS],
+        checksums=str(OUT / "data" / "SHA256SUMS"),
+        metadata=str(OUT / "data" / "generation.json"),
+    params:
+        seed=config["smoke_seed"],
+        reads=config["smoke_reads_per_transcript"],
+        error=config["smoke_substitution_rate"],
+    shell:
+        """
+        python {SCRIPTS}/generate_smoke_data.py --output-dir {OUT}/data \
+          --seed {params.seed} --reads-per-transcript {params.reads} \
+          --substitution-rate {params.error}
+        """
+
+
+if config.get("build_sirv_truth_from_reads", False):
+    rule build_public_sirv_truth:
+        input:
+            reference=REFERENCE_FASTA,
+            truth_gtf=TRUTH_GTF,
+            reads=[fastq(dataset) for dataset in DATASET_IDS],
+        output:
+            transcript_fasta=str(OUT / "truth" / "sirv-transcripts.fa"),
+            transcript_truth=TALON_TRANSCRIPT_TRUTH,
+            read_truth=TALON_READ_TRUTH,
+            run=str(OUT / "truth" / "sirv-read-truth.run.json"),
+        params:
+            inputs=quoted_flags(
+                "--input",
+                [
+                    f"{dataset}={DATASETS[dataset]['read_type']}={fastq(dataset)}"
+                    for dataset in DATASET_IDS
+                ],
+            ),
+            work=str(OUT / "truth" / "work"),
+            pacbio_identity=config.get("sirv_pacbio_min_identity", 0.97),
+            ont_identity=config.get("sirv_ont_min_identity", 0.85),
+            query_coverage=config.get("sirv_min_query_coverage", 0.90),
+            target_coverage=config.get("sirv_min_target_coverage", 0.90),
+            score_margin=config.get("sirv_min_score_margin", 50),
+        threads:
+            config["threads_per_caller"]
+        conda:
+            "envs/alignment.yaml"
+        shell:
+            """
+            python {SCRIPTS}/build_sirv_truth.py \
+              --reference {input.reference} --truth-gtf {input.truth_gtf} \
+              {params.inputs} --transcript-fasta {output.transcript_fasta} \
+              --transcript-truth {output.transcript_truth} \
+              --read-truth {output.read_truth} --run-json {output.run} \
+              --work-dir {params.work} --threads {threads} \
+              --pacbio-min-identity {params.pacbio_identity} \
+              --ont-min-identity {params.ont_identity} \
+              --min-query-coverage {params.query_coverage} \
+              --min-target-coverage {params.target_coverage} \
+              --min-score-margin {params.score_margin}
+            """
+
+
+rule index_reference:
+    input:
+        reference=REFERENCE_FASTA,
+    output:
+        fai=REFERENCE_FASTA + ".fai",
+    conda:
+        "envs/alignment.yaml"
+    shell:
+        """
+        samtools faidx {input.reference}
+        """
+
+
+rule align_reads:
+    input:
+        reference=REFERENCE_FASTA,
+        reads=lambda wildcards: fastq(wildcards.dataset),
+    output:
+        bam=str(OUT / "alignments" / "{dataset}" / "reads.bam"),
+        bai=str(OUT / "alignments" / "{dataset}" / "reads.bam.bai"),
+        flagstat=str(OUT / "alignments" / "{dataset}" / "flagstat.txt"),
+        run=str(OUT / "alignments" / "{dataset}" / "run.json"),
+    params:
+        read_type=lambda wildcards: DATASETS[wildcards.dataset]["read_type"],
+        sirv=lambda wildcards: "--sirv" if DATASETS[wildcards.dataset]["truth_set"] != "none" else "",
+    threads:
+        config["threads_per_caller"]
+    conda:
+        "envs/alignment.yaml"
+    shell:
+        """
+        python {SCRIPTS}/align_reads.py --reference {input.reference} \
+          --reads {input.reads} --read-type {params.read_type} \
+          --bam {output.bam} --bai {output.bai} --flagstat {output.flagstat} \
+          --run-json {output.run} --threads {threads} {params.sirv}
+        """
+
+
+rule run_caller:
+    input:
+        reference=REFERENCE_FASTA,
+        reference_fai=REFERENCE_FASTA + ".fai",
+        annotation=lambda wildcards: expand_path(context(wildcards.dataset)["annotation"]),
+        bam=lambda wildcards: bam(wildcards.dataset),
+        bai=lambda wildcards: bam(wildcards.dataset) + ".bai",
+    output:
+        gtf=str(OUT / "callers" / "{caller}" / "{dataset}.gtf"),
+        run=str(OUT / "callers" / "{caller}" / "{dataset}.run.json"),
+    params:
+        read_type=lambda wildcards: DATASETS[wildcards.dataset]["read_type"],
+        work=lambda wildcards: str(OUT / "callers" / wildcards.caller / "work" / wildcards.dataset),
+    threads:
+        config["threads_per_caller"]
+    wildcard_constraints:
+        caller="|".join(CALLERS),
+        dataset="|".join(DATASET_IDS),
+    conda:
+        lambda wildcards: f"envs/{wildcards.caller}.yaml"
+    shell:
+        """
+        python {SCRIPTS}/run_caller.py --caller {wildcards.caller} \
+          --dataset {wildcards.dataset} --reference {input.reference} \
+          --annotation {input.annotation} --bam {input.bam} \
+          --read-type {params.read_type} --output-gtf {output.gtf} \
+          --work-dir {params.work} --run-json {output.run} --threads {threads}
+        """
+
+
+rule run_talon_shared:
+    input:
+        reference_gtf=ANNOTATION_V1,
+        bams=[bam(dataset) for dataset in DATASET_IDS],
+    output:
+        gtf=str(OUT / "callers" / "talon" / "{order}" / "shared.gtf"),
+        abundance=str(OUT / "callers" / "talon" / "{order}" / "abundance.tsv"),
+        database=str(OUT / "callers" / "talon" / "{order}" / "shared.sqlite"),
+        run=str(OUT / "callers" / "talon" / "{order}" / "run.json"),
+    params:
+        inputs=quoted_flags(
+            "--input",
+            [f"{dataset}={bam(dataset)}" for dataset in DATASET_IDS],
+        ),
+        work=lambda wildcards: str(
+            OUT / "callers" / "talon" / wildcards.order / "work"
+        ),
+        assembly=PRIMARY["assembly"],
+        annotation_name=PRIMARY["annotation_name"],
+        order=lambda wildcards: TALON_ORDERS[wildcards.order],
+    threads:
+        config["threads_per_caller"]
+    wildcard_constraints:
+        order="sorted|shuffled",
+    conda:
+        "envs/talon.yaml"
+    shell:
+        """
+        python {SCRIPTS}/run_talon_shared.py --reference-gtf {input.reference_gtf} \
+          --assembly {params.assembly} --annotation-name {params.annotation_name} \
+          {params.inputs} --output-gtf {output.gtf} --abundance {output.abundance} \
+          --database {output.database} --run-json {output.run} \
+          --work-dir {params.work} --threads {threads} --order {params.order}
+        """
+
+
+rule txid_registry:
+    input:
+        reference=REFERENCE_FASTA,
+        annotation=lambda wildcards: TXID_RUNS[wildcards.run]["annotation"],
+        gtfs=[model_gtf(label) for label in ALL_MODEL_LABELS],
+    output:
+        database=str(OUT / "identity" / "txid" / "{run}" / "registry.sqlite"),
+        catalog=str(OUT / "identity" / "txid" / "{run}" / "catalog.tsv"),
+        observations=str(OUT / "identity" / "txid" / "{run}" / "observations.tsv"),
+        snapshots=directory(
+            str(OUT / "identity" / "txid" / "{run}" / "snapshots")
+        ),
+        record=str(OUT / "identity" / "txid" / "{run}" / "run.json"),
+    params:
+        annotation_name=lambda wildcards: TXID_RUNS[wildcards.run]["annotation_name"],
+        order=lambda wildcards: TXID_RUNS[wildcards.run]["order"],
+        inputs=quoted_flags("--input", txid_inputs()),
+        artifacts=lambda wildcards: str(OUT / "identity" / "txid" / wildcards.run / "artifacts"),
+        assembly=PRIMARY["assembly"],
+    wildcard_constraints:
+        run="|".join(TXID_RUNS),
+    shell:
+        """
+        python {SCRIPTS}/run_txid_registry.py --reference {input.reference} \
+          --annotation {input.annotation} --annotation-name {params.annotation_name} \
+          --assembly {params.assembly} {params.inputs} --order {params.order} \
+          --database {output.database} --catalog {output.catalog} \
+          --observations {output.observations} --snapshot-dir {output.snapshots} \
+          --artifact-dir {params.artifacts} --run-json {output.record} --repo {REPO}
+        """
+
+
+rule evaluate_discovery:
+    input:
+        truth=TRUTH_GTF,
+        gtfs=[model_gtf(label) for label in ALL_MODEL_LABELS],
+    output:
+        tsv=str(OUT / "reports" / "discovery-summary.tsv"),
+        json=str(OUT / "reports" / "discovery-summary.json"),
+    params:
+        truth_scope=config.get("discovery_truth_scope", "all_predictions"),
+        bootstrap_replicates=config.get("bootstrap_replicates", 2000),
+        bootstrap_seed=config.get("bootstrap_seed", 20260731),
+        inputs=quoted_flags(
+            "--input",
+            [
+                f"{label.split('__', 1)[0]}={label.split('__', 1)[1]}={model_gtf(label)}"
+                for label in ALL_MODEL_LABELS
+            ],
+        ),
+    shell:
+        """
+        python {SCRIPTS}/evaluate_discovery.py --truth {input.truth} {params.inputs} \
+          --truth-scope {params.truth_scope} \
+          --bootstrap-replicates {params.bootstrap_replicates} \
+          --bootstrap-seed {params.bootstrap_seed} \
+          --output-tsv {output.tsv} --output-json {output.json} --repo {REPO}
+        """
+
+
+rule evaluate_talon_partitions:
+    input:
+        read_truth=TALON_READ_TRUTH,
+        transcript_truth=TALON_TRANSCRIPT_TRUTH,
+        sorted_db=str(
+            OUT / "callers" / "talon" / "sorted" / "shared.sqlite"
+        ),
+        shuffled_db=str(
+            OUT / "callers" / "talon" / "shuffled" / "shared.sqlite"
+        ),
+    output:
+        tsv=str(OUT / "reports" / "talon-partition-summary.tsv"),
+        json=str(OUT / "reports" / "talon-partition-summary.json"),
+    params:
+        truth_subset=(
+            "--truth-subset" if config.get("talon_truth_subset", False) else ""
+        ),
+        allow_missing=(
+            "--allow-missing-truth-reads"
+            if config.get("talon_allow_missing_truth_reads", False)
+            else ""
+        ),
+        bootstrap_replicates=config.get("bootstrap_replicates", 2000),
+        bootstrap_seed=config.get("bootstrap_seed", 20260731),
+    shell:
+        """
+        python {SCRIPTS}/evaluate_talon_partitions.py \
+          --read-truth {input.read_truth} \
+          --transcript-truth {input.transcript_truth} \
+          --sorted-db {input.sorted_db} --shuffled-db {input.shuffled_db} \
+          --output-tsv {output.tsv} --output-json {output.json} \
+          --bootstrap-replicates {params.bootstrap_replicates} \
+          --bootstrap-seed {params.bootstrap_seed} \
+          {params.truth_subset} {params.allow_missing}
+        """
+
+
+rule evaluate_txid_invariance:
+    input:
+        sorted_obs=str(OUT / "identity" / "txid" / "v1-sorted" / "observations.tsv"),
+        shuffled_obs=str(OUT / "identity" / "txid" / "v1-shuffled" / "observations.tsv"),
+        release2_obs=str(OUT / "identity" / "txid" / "v2-sorted" / "observations.tsv"),
+        sorted_catalog=str(OUT / "identity" / "txid" / "v1-sorted" / "catalog.tsv"),
+        shuffled_catalog=str(OUT / "identity" / "txid" / "v1-shuffled" / "catalog.tsv"),
+        sorted_snapshots=str(
+            OUT / "identity" / "txid" / "v1-sorted" / "snapshots"
+        ),
+    output:
+        matrix=str(OUT / "reports" / "sample-by-txid.tsv"),
+        tsv=str(OUT / "reports" / "txid-invariance.tsv"),
+        json=str(OUT / "reports" / "txid-invariance.json"),
+    shell:
+        """
+        python {SCRIPTS}/evaluate_txid_invariance.py \
+          --sorted-observations {input.sorted_obs} \
+          --shuffled-observations {input.shuffled_obs} \
+          --release2-observations {input.release2_obs} \
+          --sorted-catalog {input.sorted_catalog} \
+          --shuffled-catalog {input.shuffled_catalog} \
+          --sorted-snapshot-dir {input.sorted_snapshots} \
+          --exclude-matrix-tool talon \
+          --matrix {output.matrix} --summary-tsv {output.tsv} \
+          --summary-json {output.json}
+        """
+
+
+rule gffcompare_fixed:
+    input:
+        reference=ANNOTATION_V1,
+        gtfs=[model_gtf(label) for label in ALL_MODEL_LABELS],
+    output:
+        tracking=str(OUT / "identity" / "gffcompare" / "{order}" / "combined.tracking"),
+        combined=str(OUT / "identity" / "gffcompare" / "{order}" / "combined.gtf"),
+        record=str(OUT / "identity" / "gffcompare" / "{order}" / "run.json"),
+    params:
+        inputs=quoted_flags("--input", [model_gtf(label) for label in ALL_MODEL_LABELS]),
+        order=lambda wildcards: "sorted" if wildcards.order == "sorted" else config["txid_orders"][1],
+        work=lambda wildcards: str(OUT / "identity" / "gffcompare" / wildcards.order / "work"),
+    wildcard_constraints:
+        order="sorted|shuffled",
+    conda:
+        "envs/gffcompare.yaml"
+    shell:
+        """
+        python {SCRIPTS}/run_gffcompare_fixed.py --reference {input.reference} \
+          {params.inputs} --order {params.order} --tracking {output.tracking} \
+          --combined-gtf {output.combined} --run-json {output.record} \
+          --work-dir {params.work}
+        """
+
+
+rule evaluate_identity_partitions:
+    input:
+        txid=str(OUT / "identity" / "txid" / "v1-sorted" / "observations.tsv"),
+        sorted_tracking=str(OUT / "identity" / "gffcompare" / "sorted" / "combined.tracking"),
+        sorted_run=str(OUT / "identity" / "gffcompare" / "sorted" / "run.json"),
+        shuffled_tracking=str(OUT / "identity" / "gffcompare" / "shuffled" / "combined.tracking"),
+        shuffled_run=str(OUT / "identity" / "gffcompare" / "shuffled" / "run.json"),
+        isoseql_sorted=str(OUT / "identity" / "isoseql" / "sorted" / "isoseql.sqlite"),
+        isoseql_shuffled=str(OUT / "identity" / "isoseql" / "shuffled" / "isoseql.sqlite"),
+        gtfs=[model_gtf(label) for label in ALL_MODEL_LABELS],
+    output:
+        tsv=str(OUT / "reports" / "identity-partition-summary.tsv"),
+        json=str(OUT / "reports" / "identity-partition-summary.json"),
+    params:
+        models=quoted_flags(
+            "--model",
+            [
+                f"{label.split('__', 1)[0]}="
+                f"{'talon-shared' if label == 'talon__shared' else label.split('__', 1)[1]}="
+                f"{model_gtf(label)}"
+                for label in ALL_MODEL_LABELS
+            ],
+        ),
+        bootstrap_replicates=config.get("bootstrap_replicates", 2000),
+        bootstrap_seed=config.get("bootstrap_seed", 20260731),
+    shell:
+        """
+        python {SCRIPTS}/evaluate_identity_partitions.py {params.models} \
+          --txid-observations {input.txid} \
+          --gffcompare-sorted-tracking {input.sorted_tracking} \
+          --gffcompare-sorted-run {input.sorted_run} \
+          --gffcompare-shuffled-tracking {input.shuffled_tracking} \
+          --gffcompare-shuffled-run {input.shuffled_run} \
+          --isoseql-sorted-db {input.isoseql_sorted} \
+          --isoseql-shuffled-db {input.isoseql_shuffled} \
+          --bootstrap-replicates {params.bootstrap_replicates} \
+          --bootstrap-seed {params.bootstrap_seed} \
+          --output-tsv {output.tsv} --output-json {output.json} --repo {REPO}
+        """
+
+
+rule fetch_sqanti3:
+    output:
+        source=str(OUT / "sources" / "SQANTI3" / "sqanti3_qc.py"),
+        record=str(OUT / "sources" / "SQANTI3.fetch.json"),
+    params:
+        repository=config["sources"]["sqanti3"]["repository"],
+        revision=config["sources"]["sqanti3"]["revision"],
+        cache=source_cache_flag("sqanti3"),
+        target=str(OUT / "sources" / "SQANTI3"),
+    shell:
+        """
+        python {SCRIPTS}/fetch_git_source.py --repository {params.repository} \
+          {params.cache} --revision {params.revision} --target {params.target} \
+          --record {output.record}
+        """
+
+
+rule fetch_isoseql:
+    output:
+        source=str(OUT / "sources" / "isoSeQL" / "isoSeQL_run.py"),
+        record=str(OUT / "sources" / "isoSeQL.fetch.json"),
+    params:
+        repository=config["sources"]["isoseql"]["repository"],
+        revision=config["sources"]["isoseql"]["revision"],
+        cache=source_cache_flag("isoseql"),
+        target=str(OUT / "sources" / "isoSeQL"),
+    shell:
+        """
+        python {SCRIPTS}/fetch_git_source.py --repository {params.repository} \
+          {params.cache} --revision {params.revision} --target {params.target} \
+          --record {output.record}
+        """
+
+
+rule sqanti3:
+    input:
+        source=rules.fetch_sqanti3.output.source,
+        isoforms=lambda wildcards: model_gtf(wildcards.label),
+        annotation=ANNOTATION_V1,
+        reference=REFERENCE_FASTA,
+        reference_fai=REFERENCE_FASTA + ".fai",
+    output:
+        classification=str(OUT / "identity" / "sqanti3" / "{label}" / "classification.tsv"),
+        genepred=str(OUT / "identity" / "sqanti3" / "{label}" / "corrected.genePred"),
+        gtf=str(OUT / "identity" / "sqanti3" / "{label}" / "corrected.gtf"),
+        record=str(OUT / "identity" / "sqanti3" / "{label}" / "run.json"),
+    params:
+        work=lambda wildcards: str(OUT / "identity" / "sqanti3" / wildcards.label / "work"),
+    wildcard_constraints:
+        label="|".join(ALL_MODEL_LABELS),
+    threads:
+        config["threads_per_caller"]
+    conda:
+        "envs/sqanti3.yaml"
+    shell:
+        """
+        python {SCRIPTS}/run_sqanti.py --source {OUT}/sources/SQANTI3 \
+          --isoforms {input.isoforms} --annotation {input.annotation} \
+          --reference {input.reference} --prefix {wildcards.label} \
+          --classification {output.classification} --genepred {output.genepred} \
+          --corrected-gtf {output.gtf} --run-json {output.record} \
+          --work-dir {params.work} --threads {threads}
+        """
+
+
+rule isoseql_fixed:
+    input:
+        source=rules.fetch_isoseql.output.source,
+        classifications=[
+            str(OUT / "identity" / "sqanti3" / label / "classification.tsv")
+            for label in ALL_MODEL_LABELS
+        ],
+        genepreds=[
+            str(OUT / "identity" / "sqanti3" / label / "corrected.genePred")
+            for label in ALL_MODEL_LABELS
+        ],
+    output:
+        database=str(OUT / "identity" / "isoseql" / "{order}" / "isoseql.sqlite"),
+        record=str(OUT / "identity" / "isoseql" / "{order}" / "run.json"),
+    params:
+        inputs=quoted_flags(
+            "--input",
+            [
+                f"{label.split('__', 1)[0]}={label.split('__', 1)[1]}="
+                f"{OUT}/identity/sqanti3/{label}/classification.tsv="
+                f"{OUT}/identity/sqanti3/{label}/corrected.genePred"
+                for label in ALL_MODEL_LABELS
+            ],
+        ),
+        order=lambda wildcards: "sorted" if wildcards.order == "sorted" else config["txid_orders"][1],
+        work=lambda wildcards: str(OUT / "identity" / "isoseql" / wildcards.order / "work"),
+    wildcard_constraints:
+        order="sorted|shuffled",
+    conda:
+        "envs/isoseql.yaml"
+    shell:
+        """
+        python {SCRIPTS}/run_isoseql_fixed.py --source {OUT}/sources/isoSeQL \
+          {params.inputs} --order {params.order} --database {output.database} \
+          --run-json {output.record} --work-dir {params.work}
+        """
+
+
+SIRV_TRUTH_RECORDS = (
+    [str(OUT / "truth" / "sirv-read-truth.run.json")]
+    if config.get("build_sirv_truth_from_reads", False)
+    else []
+)
+
+
+FINAL_RECORDS = (
+    ALIGN_RUNS
+    + CALLER_RUNS
+    + (TALON_RUNS if config.get("run_talon") else [])
+    + SIRV_TRUTH_RECORDS
+    + SOURCE_RECORDS
+    + TXID_RUN_JSONS
+    + [
+        str(OUT / "identity" / "gffcompare" / order / "run.json")
+        for order in ("sorted", "shuffled")
+    ]
+    + [
+        str(OUT / "identity" / "sqanti3" / label / "run.json")
+        for label in ALL_MODEL_LABELS
+    ]
+    + [
+        str(OUT / "identity" / "isoseql" / order / "run.json")
+        for order in ("sorted", "shuffled")
+    ]
+)
+
+
+rule collect_provenance:
+    input:
+        records=FINAL_RECORDS,
+        manifests=[
+            str(RUN_CONFIGURATION),
+            str(DATASET_MANIFEST),
+            str(REFERENCE_MANIFEST),
+        ],
+        discovery=str(OUT / "reports" / "discovery-summary.json"),
+        identity=str(OUT / "reports" / "identity-partition-summary.json"),
+        talon=str(OUT / "reports" / "talon-partition-summary.json"),
+        invariance=str(OUT / "reports" / "txid-invariance.json"),
+    output:
+        json=str(OUT / "reports" / "provenance.json"),
+        tsv=str(OUT / "reports" / "runtime-memory.tsv"),
+    params:
+        records=quoted_flags("--record", FINAL_RECORDS),
+        manifests=quoted_flags(
+            "--manifest",
+            [
+                str(RUN_CONFIGURATION),
+                str(DATASET_MANIFEST),
+                str(REFERENCE_MANIFEST),
+            ],
+        ),
+        artifacts=quoted_flags(
+            "--artifact",
+            [
+                str(OUT / "reports" / "discovery-summary.json"),
+                str(OUT / "reports" / "identity-partition-summary.json"),
+                str(OUT / "reports" / "talon-partition-summary.json"),
+                str(OUT / "reports" / "txid-invariance.json"),
+            ],
+        ),
+    shell:
+        """
+        python {SCRIPTS}/collect_provenance.py {params.records} {params.manifests} \
+          {params.artifacts} \
+          --output-json {output.json} --output-tsv {output.tsv}
+        """

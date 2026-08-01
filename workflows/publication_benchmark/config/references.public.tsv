@@ -1,0 +1,3 @@
+reference_id	assembly	annotation_id	annotation_name	fasta	annotation	truth_gtf	source_url	license	fasta_sha256	annotation_sha256	enabled
+grch38-sirv	GRCh38-SIRV4	gencode-v38	GENCODE-v38-plus-LRGASP-SIRV4	benchmark-inputs/lrgasp/reference/grch38-sirv4.fa.gz	benchmark-inputs/lrgasp/reference/gencode-v38-plus-sirv4.gtf.gz	benchmark-inputs/lrgasp/reference/lrgasp_sirvs4.gtf.gz	https://zenodo.org/records/10884185	CC-BY-4.0; GENCODE terms	NA	NA	false
+grch38-sirv	GRCh38-SIRV4	gencode-v49	GENCODE-v49-plus-LRGASP-SIRV4	benchmark-inputs/lrgasp/reference/grch38-sirv4.fa.gz	benchmark-inputs/lrgasp/reference/gencode-v49-plus-sirv4.gtf.gz	benchmark-inputs/lrgasp/reference/lrgasp_sirvs4.gtf.gz	https://www.gencodegenes.org/human/release_49.html	CC-BY-4.0; GENCODE terms	NA	NA	false

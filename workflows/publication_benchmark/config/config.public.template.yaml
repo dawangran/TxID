@@ -1,0 +1,44 @@
+profile_name: public-template
+run_configuration: workflows/publication_benchmark/config/config.public.template.yaml
+outdir: benchmark-work/public
+dataset_manifest: workflows/publication_benchmark/config/datasets.public.tsv
+reference_manifest: workflows/publication_benchmark/config/references.public.tsv
+callers:
+  - isoquant
+  - flair
+  - stringtie
+run_talon: true
+run_gffcompare: true
+run_isoseql: true
+threads_per_caller: 8
+bootstrap_replicates: 2000
+bootstrap_seed: 20260731
+txid_orders:
+  - sorted
+  - shuffled-20260731
+annotation_contexts:
+  - gencode-v38
+  - gencode-v49
+discovery_truth_scope: truth_contigs
+# These tables are generated from the checked SIRV GTF and unique, high-
+# confidence full-length mappings to its derived transcript sequences.
+build_sirv_truth_from_reads: true
+talon_read_truth: "{outdir}/truth/sirv-read-truth.tsv"
+talon_transcript_truth: "{outdir}/truth/sirv-transcript-truth.tsv"
+sirv_pacbio_min_identity: 0.97
+sirv_ont_min_identity: 0.85
+sirv_min_query_coverage: 0.90
+sirv_min_target_coverage: 0.90
+sirv_min_score_margin: 50
+# Public FASTQs also contain human reads. Partition metrics are restricted to
+# confidently truth-assigned SIRV reads, while ignored and TALON-omitted counts
+# remain explicit in the report.
+talon_truth_subset: true
+talon_allow_missing_truth_reads: true
+sources:
+  sqanti3:
+    repository: https://github.com/ConesaLab/SQANTI3.git
+    revision: v6.0.1
+  isoseql:
+    repository: https://github.com/christine-liu/isoSeQL.git
+    revision: 25d9366d8b236d3b912e62dcd2c267fe6df31a4c

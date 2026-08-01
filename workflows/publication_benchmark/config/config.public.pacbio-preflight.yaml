@@ -1,0 +1,41 @@
+profile_name: public-wtc11-pacbio-two-replicate-preflight
+run_configuration: workflows/publication_benchmark/config/config.public.pacbio-preflight.yaml
+outdir: benchmark-work/public-pacbio-two-replicate
+dataset_manifest: benchmark-work/public/config/datasets.pacbio.two-replicate.tsv
+reference_manifest: benchmark-work/public/config/references.checked.tsv
+callers:
+  - isoquant
+  - flair
+  - stringtie
+run_talon: true
+run_gffcompare: true
+run_isoseql: true
+threads_per_caller: 8
+bootstrap_replicates: 2000
+bootstrap_seed: 20260731
+txid_orders:
+  - sorted
+  - shuffled-20260731
+annotation_contexts:
+  - gencode-v38
+  - gencode-v49
+discovery_truth_scope: truth_contigs
+build_sirv_truth_from_reads: true
+talon_read_truth: "{outdir}/truth/sirv-read-truth.tsv"
+talon_transcript_truth: "{outdir}/truth/sirv-transcript-truth.tsv"
+sirv_pacbio_min_identity: 0.97
+sirv_ont_min_identity: 0.85
+sirv_min_query_coverage: 0.90
+sirv_min_target_coverage: 0.90
+sirv_min_score_margin: 50
+talon_truth_subset: true
+talon_allow_missing_truth_reads: true
+sources:
+  sqanti3:
+    repository: https://github.com/ConesaLab/SQANTI3.git
+    revision: v6.0.1
+    cache: "{repo}/benchmark-work/cache/sources/SQANTI3.git"
+  isoseql:
+    repository: https://github.com/christine-liu/isoSeQL.git
+    revision: 25d9366d8b236d3b912e62dcd2c267fe6df31a4c
+    cache: "{repo}/benchmark-work/cache/sources/isoSeQL.git"

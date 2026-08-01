@@ -1,0 +1,77 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://txid.example/schemas/canonical-object-v1.json",
+  "title": "TxID exact canonical object v1",
+  "oneOf": [
+    { "$ref": "#/$defs/sc1" },
+    { "$ref": "#/$defs/tf1" },
+    { "$ref": "#/$defs/se1" }
+  ],
+  "$defs": {
+    "common": {
+      "type": "object",
+      "properties": {
+        "assembly": { "type": "string", "pattern": "^sha256:[0-9a-f]{64}$" },
+        "contig": { "type": "string", "minLength": 1 },
+        "strand": { "enum": ["+", "-"] }
+      },
+      "required": ["assembly", "contig", "strand"]
+    },
+    "intron": {
+      "type": "array",
+      "prefixItems": [
+        { "type": "integer", "minimum": 1 },
+        { "type": "integer", "minimum": 1 }
+      ],
+      "items": false,
+      "minItems": 2,
+      "maxItems": 2
+    },
+    "sc1": {
+      "allOf": [
+        { "$ref": "#/$defs/common" },
+        {
+          "type": "object",
+          "properties": {
+            "algorithm": { "const": "SC1" },
+            "introns": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/intron" } }
+          },
+          "required": ["algorithm", "introns"],
+          "unevaluatedProperties": false
+        }
+      ]
+    },
+    "tf1": {
+      "allOf": [
+        { "$ref": "#/$defs/common" },
+        {
+          "type": "object",
+          "properties": {
+            "algorithm": { "const": "TF1" },
+            "introns": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/intron" } },
+            "tss": { "type": "integer", "minimum": 1 },
+            "tes": { "type": "integer", "minimum": 1 }
+          },
+          "required": ["algorithm", "introns", "tss", "tes"],
+          "unevaluatedProperties": false
+        }
+      ]
+    },
+    "se1": {
+      "allOf": [
+        { "$ref": "#/$defs/common" },
+        {
+          "type": "object",
+          "properties": {
+            "algorithm": { "const": "SE1" },
+            "start": { "type": "integer", "minimum": 1 },
+            "end": { "type": "integer", "minimum": 1 }
+          },
+          "required": ["algorithm", "start", "end"],
+          "unevaluatedProperties": false
+        }
+      ]
+    }
+  }
+}
+

@@ -1,0 +1,5 @@
+source_id	filename	target_path	source_url	bytes	md5	license
+lrgasp-grch38-sirv4	lrgasp_grch38_sirvs.fasta.gz	benchmark-inputs/lrgasp/reference/grch38-sirv4.fa.gz	https://zenodo.org/api/records/10884185/files/lrgasp_grch38_sirvs.fasta.gz/content	886476097	10a8f38fff29a866389ed8ace4caeeb8	CC-BY-4.0
+lrgasp-gencode-v38-sirv4	lrgasp_gencode_v38_sirvs.gtf.gz	benchmark-inputs/lrgasp/reference/gencode-v38-plus-sirv4.gtf.gz	https://zenodo.org/api/records/10884185/files/lrgasp_gencode_v38_sirvs.gtf.gz/content	50164004	0c91a6c6fe7453093d2a2ddc5bfb29c3	CC-BY-4.0
+lrgasp-sirv4-truth	lrgasp_sirvs4.gtf.gz	benchmark-inputs/lrgasp/reference/lrgasp_sirvs4.gtf.gz	https://zenodo.org/api/records/10884185/files/lrgasp_sirvs4.gtf.gz/content	4666	deed7087a7c71b6e8d8f2db3fa7399bd	CC-BY-4.0
+gencode-v49	gencode.v49.annotation.gtf.gz	benchmark-inputs/lrgasp/reference/sources/gencode.v49.annotation.gtf.gz	https://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_49/gencode.v49.annotation.gtf.gz	93374019	0ef4a024ea2d35b1b88c12447b0b70b9	GENCODE data-access terms

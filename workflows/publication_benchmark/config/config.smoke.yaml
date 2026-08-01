@@ -1,0 +1,37 @@
+profile_name: smoke
+run_configuration: workflows/publication_benchmark/config/config.smoke.yaml
+outdir: benchmark-work/smoke
+dataset_manifest: workflows/publication_benchmark/config/datasets.smoke.tsv
+reference_manifest: workflows/publication_benchmark/config/references.smoke.tsv
+callers:
+  - isoquant
+  - flair
+  - stringtie
+run_talon: true
+run_gffcompare: true
+run_isoseql: true
+threads_per_caller: 4
+bootstrap_replicates: 2000
+bootstrap_seed: 20260731
+txid_orders:
+  - sorted
+  - shuffled-20260731
+annotation_contexts:
+  - smoke-v1
+  - smoke-v2
+smoke_seed: 20260730
+smoke_reads_per_transcript: 12
+smoke_substitution_rate: 0.003
+discovery_truth_scope: truth_contigs
+talon_read_truth: "{outdir}/data/read-truth.tsv"
+talon_transcript_truth: "{outdir}/data/truth.tsv"
+build_sirv_truth_from_reads: false
+talon_truth_subset: false
+talon_allow_missing_truth_reads: false
+sources:
+  sqanti3:
+    repository: https://github.com/ConesaLab/SQANTI3.git
+    revision: v6.0.1
+  isoseql:
+    repository: https://github.com/christine-liu/isoSeQL.git
+    revision: 25d9366d8b236d3b912e62dcd2c267fe6df31a4c

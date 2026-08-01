@@ -1,0 +1,51 @@
+{
+  "specification": "TxID exact identity v1",
+  "assembly_fingerprint": "sha256:0000000000000000000000000000000000000000000000000000000000000000",
+  "vectors": [
+    {
+      "name": "plus_two_exon",
+      "contig": "chr1",
+      "strand": "+",
+      "exons": [[100, 199], [300, 399]],
+      "splice_chain": {
+        "canonical_json": "{\"algorithm\":\"SC1\",\"assembly\":\"sha256:0000000000000000000000000000000000000000000000000000000000000000\",\"contig\":\"chr1\",\"introns\":[[200,299]],\"strand\":\"+\"}",
+        "full_digest": "c22e5152d56c9e5117702d125e2caf2227e90e263cf7bf92cb44def97d3606aa",
+        "public_id": "txid:SC1.c22e5152d56c9e5117702d12"
+      },
+      "form": {
+        "canonical_json": "{\"algorithm\":\"TF1\",\"assembly\":\"sha256:0000000000000000000000000000000000000000000000000000000000000000\",\"contig\":\"chr1\",\"introns\":[[200,299]],\"strand\":\"+\",\"tes\":399,\"tss\":100}",
+        "full_digest": "6bab4e6908c70e6e92edc1fc1e9ee118a3b7af831d8068358378050d973cf083",
+        "public_id": "txid:TF1.6bab4e6908c70e6e92edc1fc"
+      }
+    },
+    {
+      "name": "minus_three_exon",
+      "contig": "chr1",
+      "strand": "-",
+      "exons": [[100, 150], [250, 300], [400, 450]],
+      "splice_chain": {
+        "canonical_json": "{\"algorithm\":\"SC1\",\"assembly\":\"sha256:0000000000000000000000000000000000000000000000000000000000000000\",\"contig\":\"chr1\",\"introns\":[[301,399],[151,249]],\"strand\":\"-\"}",
+        "full_digest": "0afaa06952b45d79bc9002a2d87fbcdba545372fbcbacbf8fb1c80fba4dc0da7",
+        "public_id": "txid:SC1.0afaa06952b45d79bc9002a2"
+      },
+      "form": {
+        "canonical_json": "{\"algorithm\":\"TF1\",\"assembly\":\"sha256:0000000000000000000000000000000000000000000000000000000000000000\",\"contig\":\"chr1\",\"introns\":[[301,399],[151,249]],\"strand\":\"-\",\"tes\":100,\"tss\":450}",
+        "full_digest": "32bfcf9cc6da2d994dd48abc978afef0d70141484860cf9924db75c98283aad7",
+        "public_id": "txid:TF1.32bfcf9cc6da2d994dd48abc"
+      }
+    },
+    {
+      "name": "single_exon",
+      "contig": "chr2",
+      "strand": "+",
+      "exons": [[10, 99]],
+      "splice_chain": null,
+      "form": {
+        "canonical_json": "{\"algorithm\":\"SE1\",\"assembly\":\"sha256:0000000000000000000000000000000000000000000000000000000000000000\",\"contig\":\"chr2\",\"end\":99,\"start\":10,\"strand\":\"+\"}",
+        "full_digest": "4c15a0eedce98677b78855995379435d44cfcf14c4d40777af32b41e03dad584",
+        "public_id": "txid:SE1.4c15a0eedce98677b7885599"
+      }
+    }
+  ]
+}
+

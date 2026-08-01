@@ -1,0 +1,3 @@
+reference_id	assembly	annotation_id	annotation_name	fasta	annotation	truth_gtf	source_url	license	fasta_sha256	annotation_sha256	enabled
+smoke-ref	TxID-smoke-v1	smoke-v1	TxID-smoke-annotation-v1	{outdir}/data/reference.fa	{outdir}/data/annotation-v1.gtf	{outdir}/data/truth.gtf	generated	CC0-1.0	generated	generated	true
+smoke-ref	TxID-smoke-v1	smoke-v2	TxID-smoke-annotation-v2	{outdir}/data/reference.fa	{outdir}/data/annotation-v2.gtf	{outdir}/data/truth.gtf	generated	CC0-1.0	generated	generated	true
