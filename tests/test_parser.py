@@ -37,7 +37,44 @@ class ParserTests(unittest.TestCase):
         self.assertEqual(len(by_id["ghost"].exons), 2)
         self.assertIsNone(by_id["ghost"].original_gene_id)
 
-    def test_malformed_and_duplicate_attributes_are_rejected(self):
+    def test_repeated_nonidentity_gtf_attributes_are_preserved(self):
+        models = parse_annotation_lines(
+            [
+                'chr1\tt\ttranscript\t1\t30\t.\t+\t.\tgene_id "g"; transcript_id "t"; tag "basic"; tag "MANE_Select";\n',
+                'chr1\tt\texon\t1\t10\t.\t+\t.\tgene_id "g"; transcript_id "t"; tag "basic"; tag "Ensembl_canonical";\n',
+                'chr1\tt\texon\t20\t30\t.\t+\t.\tgene_id "g"; transcript_id "t";\n',
+            ],
+            fmt="gtf",
+        )
+        transcript_tags = [
+            value for key, value in models[0].attributes if key == "tag"
+        ]
+        exon_tags = [
+            value for key, value in models[0].exons[0].attributes if key == "tag"
+        ]
+        self.assertEqual(transcript_tags, ["basic", "MANE_Select"])
+        self.assertEqual(exon_tags, ["basic", "Ensembl_canonical"])
+
+    def test_gtf_attribute_fast_path_matches_quoted_delimiter_semantics(self):
+        attributes = parse_gtf_attributes(
+            'gene_id "g"; transcript_id "t"; '
+            'description "alpha; beta"; note "escaped\\;semicolon"; '
+            'tag "basic"; tag "MANE_Select";',
+            7,
+        )
+        self.assertEqual(
+            attributes,
+            (
+                ("description", "alpha; beta"),
+                ("gene_id", "g"),
+                ("note", "escaped;semicolon"),
+                ("tag", "basic"),
+                ("tag", "MANE_Select"),
+                ("transcript_id", "t"),
+            ),
+        )
+
+    def test_malformed_and_duplicate_identity_attributes_are_rejected(self):
         with self.assertRaises(AnnotationParseError):
             parse_annotation_lines(["chr1\tt\texon\t1\t2\t.\t+\t.\tgene_id \"g\";\n"], fmt="gtf")
         with self.assertRaises(AnnotationParseError):
@@ -52,4 +89,3 @@ class ParserTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
-

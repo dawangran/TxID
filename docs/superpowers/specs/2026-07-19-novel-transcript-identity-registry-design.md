@@ -122,11 +122,15 @@ values as `txid_original_gene_id` and `txid_original_transcript_id`. It adds
 `txid_form`, and optional `txid_gene_candidates`/`txid_fuzzy_cluster`. Exact TxIDs
 are always present when a fuzzy cluster is emitted.
 
-Attribute keys duplicated on one feature are rejected rather than silently
-collapsed. `ID`, `Parent`, and output-reserved keys that cannot retain their
-original role are preserved with a `txid_upstream_` prefix. Exon score, phase,
-source, and attributes are retained in the registry so a retry reproduces the
-same rewritten bytes.
+Repeated non-identity GTF attributes are retained as ordered key/value
+occurrences rather than rejected or silently collapsed. This includes common
+GENCODE multi-valued attributes such as `tag` and `ont`. Repeated `gene_id` or
+`transcript_id` keys on one GTF feature remain an error because the feature's
+identity or parent would be ambiguous. GFF3 continues to express multiple values
+inside one attribute value and rejects duplicate keys. `ID`, `Parent`, and
+output-reserved keys that cannot retain their original role are preserved with a
+`txid_upstream_` prefix. Exon score, phase, source, and all attribute occurrences
+are retained in the registry so a retry reproduces the same rewritten bytes.
 
 ## Registry and transactions
 
@@ -135,6 +139,25 @@ aliases, loci, fuzzy clusters, and import manifests. Foreign keys are enabled.
 An import is completely parsed, normalized, and reference-validated before a
 write transaction. Manifest uniqueness makes an identical sample/tool/input
 retry idempotent. Failed imports leave no manifest or observations.
+
+The `batch` workflow accepts multiple GTF/GFF3 inputs through a manifest and
+processes rows in deterministic key order. Each row remains a separate atomic
+import, while immutable assembly metadata and annotation lookup indexes may be
+reused across rows and structural objects/observations may be written with
+bounded bulk SQL operations. These execution optimizations must not change
+canonical objects, exact identifiers, locus assignment, output ordering, or
+retry behavior. When optional fuzzy mode is requested for a batch, clustering is
+computed once after all rows have imported successfully, and every rewritten
+output is generated from that same final fuzzy run.
+
+The `multi-add` workflow is a manifest-free convenience interface for one or
+more GTF/GFF3 files that share an upstream tool, annotation context, and optional
+format override. Sample names are either supplied one-to-one with the input
+paths or derived deterministically from input basenames. It constructs the same
+per-input provenance rows and executes the same deterministic batch workflow as
+`batch`; therefore it must produce the same registry facts and rewritten bytes
+as an equivalent manifest. Heterogeneous tools or annotation contexts require
+the manifest interface so their provenance remains explicit.
 
 Input checksum, software version, command options, reference and annotation
 fingerprints, sample, upstream tool, path label, original IDs and attributes are

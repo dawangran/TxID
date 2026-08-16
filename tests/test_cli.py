@@ -9,7 +9,7 @@ from pathlib import Path
 
 from txid.cli import main
 
-from tests.helpers import write_inputs
+from tests.helpers import make_registry, write_inputs
 
 
 class CliTests(unittest.TestCase):
@@ -55,6 +55,40 @@ class CliTests(unittest.TestCase):
                 ["plot", "--db", str(database), "--output", str(root / "overview.svg")]
             )
             self.assertTrue(Path(plotted["plot"]).is_file())
+
+    def test_multi_add_accepts_multiple_inputs_without_manifest(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            database, first = make_registry(root)
+            second = root / "donor-02.gtf"
+            second.write_text(
+                first.read_text(encoding="utf-8").replace("caller", "second"),
+                encoding="utf-8",
+            )
+
+            _, result = self.invoke(
+                [
+                    "multi-add",
+                    "--db",
+                    str(database),
+                    "--input",
+                    str(first),
+                    str(second),
+                    "--tool",
+                    "IsoQuant",
+                    "--annotation-name",
+                    "ref-v1",
+                    "--output-dir",
+                    str(root / "multi-output"),
+                ]
+            )
+
+            imports = result["imports"]
+            self.assertEqual([item["sample"] for item in imports], ["caller", "donor-02"])
+            self.assertEqual(len(imports), 2)
+            for item in imports:
+                self.assertTrue(Path(item["output_gtf"]).is_file())
+                self.assertTrue(Path(item["mapping"]).is_file())
 
 
 if __name__ == "__main__":

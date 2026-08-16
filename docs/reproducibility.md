@@ -24,6 +24,7 @@ checksums.
 
 Before a publication release, replace manuscript placeholders with author,
 repository, RRID/bio.tools, archive DOI, GigaDB/Zenodo DOI, funding, and external
-comparator version information. Build and publish a digest-pinned container; the
-development Dockerfile currently pins the Python version but not an immutable
-base-image digest.
+comparator version information. Build and publish a digest-pinned container. The
+Dockerfile pins the Python base image by immutable digest and pins the JupyterLab
+version. The WDL image tag should be replaced by the published image digest for
+an archival run.

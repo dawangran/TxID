@@ -1,0 +1,16 @@
+{
+  "TxIDMultiAdd.reference_fasta": "/reference/GRCh38.primary_assembly.genome.fa",
+  "TxIDMultiAdd.reference_gtf": "/reference/gencode.v49.gtf",
+  "TxIDMultiAdd.gtfs": [
+    "/data/sample01.gtf",
+    "/data/sample02.gtf",
+    "/data/sample03.gtf"
+  ],
+  "TxIDMultiAdd.assembly": "GRCh38",
+  "TxIDMultiAdd.annotation_name": "GENCODE-v49",
+  "TxIDMultiAdd.tool": "IsoQuant",
+  "TxIDMultiAdd.docker_image": "dawang02/txid:0.1.2-jupyter",
+  "TxIDMultiAdd.cpu": 1,
+  "TxIDMultiAdd.memory_gb": 16,
+  "TxIDMultiAdd.disk_gb": 50
+}

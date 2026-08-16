@@ -45,6 +45,14 @@ class DeterminismTests(unittest.TestCase):
             a = read_fasta(first, assembly_name="a", alias_path=aliases)
             b = read_fasta(second, assembly_name="b")
             self.assertEqual(a.fingerprint, b.fingerprint)
+            self.assertEqual(
+                a.fingerprint,
+                "sha256:6dd937f58b7b2aaf135aa2ee50611d8a83a8c290089da09c9ec416a18d6d3114",
+            )
+            self.assertEqual(
+                a.contigs[0].sequence_digest,
+                "b28b7e7e6b70661dfee15d5290c4bca097ca145f721c4fbc4de73ad1d1660b8b",
+            )
             model = TranscriptModel("1", "+", (Exon(1, 4),), "t")
             self.assertEqual(resolve_and_validate(model, a).contig, "chr1")
 
@@ -74,8 +82,30 @@ class DeterminismTests(unittest.TestCase):
             ]
             manifest1.write_text(header + "".join(rows1), encoding="utf-8")
             manifest2.write_text(header + "".join(rows2), encoding="utf-8")
-            batch_import(db1, manifest=manifest1, output_dir=db1_root / "out")
-            batch_import(db2, manifest=manifest2, output_dir=db2_root / "out")
+            results1 = batch_import(
+                db1, manifest=manifest1, output_dir=db1_root / "out"
+            )
+            results2 = batch_import(
+                db2,
+                manifest=manifest2,
+                output_dir=db2_root / "out",
+            )
+
+            outputs1 = {
+                (row["sample"], row["tool"]): (
+                    Path(row["output_gtf"]).read_bytes(),
+                    Path(row["mapping"]).read_bytes(),
+                )
+                for row in results1
+            }
+            outputs2 = {
+                (row["sample"], row["tool"]): (
+                    Path(row["output_gtf"]).read_bytes(),
+                    Path(row["mapping"]).read_bytes(),
+                )
+                for row in results2
+            }
+            self.assertEqual(outputs1, outputs2)
 
             catalogs = []
             for database, directory in [(db1, db1_root), (db2, db2_root)]:

@@ -26,7 +26,7 @@ tests/test_site.py
 .codex/
 AGENTS.md
 
-# Local packaging/deployment experiments are outside this source-only export.
-Dockerfile
+# Local packaging experiments are outside this source-only export. The root
+# Dockerfile is a supported distribution artifact and is intentionally tracked.
 environment.yml
 conda-recipe/

@@ -6,7 +6,7 @@ same stable identifier across samples, runs, input order, and supported GTF/GFF3
 producers. It does **not** discover transcripts, align reads, or estimate
 abundance.
 
-Current release: `0.1.0` (research alpha). The normative identity definition is
+Current release: `0.1.2` (research alpha). The normative identity definition is
 the [TxID v1 specification](docs/superpowers/specs/2026-07-19-novel-transcript-identity-registry-design.md).
 
 ## Identity families
@@ -38,6 +38,26 @@ PYTHONPATH=src python -m txid --help
 PYTHONPATH=src python -m unittest discover -s tests -v
 ```
 
+## Docker and JupyterLab
+
+The published container includes both the `txid` command and JupyterLab:
+
+```bash
+docker pull dawang02/txid:0.1.2-jupyter
+docker run --rm dawang02/txid:0.1.2-jupyter txid --version
+docker run --rm -p 8888:8888 -v "$PWD:/workspace" \
+  dawang02/txid:0.1.2-jupyter
+```
+
+The second command starts JupyterLab on port 8888 and prints its generated access
+token. The mounted working directory is writable by container user UID 1000.
+
+Build the same image locally with:
+
+```bash
+docker build -t dawang02/txid:0.1.2-jupyter .
+```
+
 ## Minimal workflow
 
 ```bash
@@ -65,8 +85,52 @@ Inputs are never modified in place. `add` parses and reference-validates the
 entire annotation before opening a transaction. A failed import leaves no
 manifest or observations, and an identical retry is idempotent.
 
+For multiple caller GTF/GFF3 files from the same tool and annotation context,
+import paths directly without a manifest:
+
+```bash
+txid multi-add \
+  --db cohort.sqlite \
+  --input calls/*.gtf \
+  --tool IsoQuant \
+  --annotation-name GENCODE-v49 \
+  --output-dir results
+```
+
+Sample names default to input basenames; `--samples` can provide one explicit
+name per input. For heterogeneous tools or annotation contexts, use `txid batch`
+with the tab-delimited manifest described in the [CLI reference](docs/cli.md).
+Both paths reuse reference indexes and bulk registry writes while retaining one
+atomic, retry-safe transaction per input file.
+
 See the [tutorial](docs/tutorial.md), [CLI reference](docs/cli.md), and
 [benchmark guide](docs/benchmark.md).
+
+## WDL batch workflow
+
+For same-tool GTF files that should be passed directly without a manifest, use
+[`workflows/txid_multi_add.wdl`](workflows/txid_multi_add.wdl) with
+[`workflows/txid_multi_add.inputs.example.json`](workflows/txid_multi_add.inputs.example.json).
+It initializes the reference context and calls `txid multi-add` directly. See
+the [Chinese multi-add WDL guide](docs/txid-multi-add-wdl-guide.zh-CN.md).
+
+[`workflows/txid_batch.wdl`](workflows/txid_batch.wdl) initializes one registry
+from a reference FASTA and GTF, imports multiple caller GTFs, validates the
+registry, and emits the rewritten GTFs, mapping tables, and cohort catalog. Each
+input GTF needs a matching sample and tool entry. Start from
+[`workflows/txid_batch.inputs.example.json`](workflows/txid_batch.inputs.example.json):
+
+```bash
+miniwdl run workflows/txid_batch.wdl \
+  -i workflows/txid_batch.inputs.example.json
+```
+
+Imports run deterministically inside one task because a WDL scatter cannot safely
+mutate one shared SQLite registry across isolated task containers.
+
+See the [Chinese WDL user guide](docs/txid-batch-wdl-guide.zh-CN.md) for input
+requirements, parameter tables, platform submission, output interpretation, and
+troubleshooting.
 
 ## Reproduce the synthetic evaluation
 

@@ -63,8 +63,33 @@ def load_aliases(path: str | Path | None, primary_names: set[str]) -> tuple[tupl
 def read_fasta(
     path: str | Path, *, assembly_name: str, alias_path: str | Path | None = None
 ) -> SequenceCollection:
-    sequences: dict[str, list[str]] = {}
+    contigs_by_name: dict[str, ContigRecord] = {}
     current: str | None = None
+    current_length = 0
+    current_digest = hashlib.sha256()
+    digest_buffer: list[str] = []
+    digest_buffer_length = 0
+
+    def flush_digest_buffer() -> None:
+        nonlocal digest_buffer_length
+        if digest_buffer:
+            current_digest.update("".join(digest_buffer).encode("ascii"))
+            digest_buffer.clear()
+            digest_buffer_length = 0
+
+    def finish_contig() -> None:
+        nonlocal current_length, current_digest
+        if current is None:
+            return
+        flush_digest_buffer()
+        contigs_by_name[current] = ContigRecord(
+            current,
+            current_length,
+            current_digest.hexdigest(),
+        )
+        current_length = 0
+        current_digest = hashlib.sha256()
+
     with _open_text(path) as handle:
         for line_number, raw_line in enumerate(handle, 1):
             line = raw_line.strip()
@@ -74,9 +99,9 @@ def read_fasta(
                 name = line[1:].split(None, 1)[0]
                 if not name:
                     raise ReferenceError(f"FASTA line {line_number}: empty sequence name")
-                if name in sequences:
+                if name in contigs_by_name or name == current:
                     raise ReferenceError(f"FASTA line {line_number}: duplicate sequence name {name!r}")
-                sequences[name] = []
+                finish_contig()
                 current = name
             elif current is None:
                 raise ReferenceError(f"FASTA line {line_number}: sequence occurs before a header")
@@ -84,23 +109,27 @@ def read_fasta(
                 sequence = "".join(line.split()).upper()
                 if not sequence.isascii():
                     raise ReferenceError(f"FASTA line {line_number}: sequence must be ASCII")
-                sequences[current].append(sequence)
-    if not sequences:
+                current_length += len(sequence)
+                digest_buffer.append(sequence)
+                digest_buffer_length += len(sequence)
+                if digest_buffer_length >= 1024 * 1024:
+                    flush_digest_buffer()
+    finish_contig()
+    if not contigs_by_name:
         raise ReferenceError("reference FASTA contains no sequences")
 
-    contigs: list[ContigRecord] = []
-    fingerprint_rows: list[str] = []
-    for name in sorted(sequences):
-        sequence = "".join(sequences[name])
-        if not sequence:
-            raise ReferenceError(f"FASTA sequence {name!r} is empty")
-        sequence_digest = hashlib.sha256(sequence.encode("ascii")).hexdigest()
-        contigs.append(ContigRecord(name, len(sequence), sequence_digest))
-        fingerprint_rows.append(f"{name}\t{len(sequence)}\t{sequence_digest}\n")
+    contigs = [contigs_by_name[name] for name in sorted(contigs_by_name)]
+    for contig in contigs:
+        if contig.length == 0:
+            raise ReferenceError(f"FASTA sequence {contig.name!r} is empty")
+    fingerprint_rows = [
+        f"{contig.name}\t{contig.length}\t{contig.sequence_digest}\n"
+        for contig in contigs
+    ]
     fingerprint = "sha256:" + hashlib.sha256(
         "".join(fingerprint_rows).encode("utf-8")
     ).hexdigest()
-    aliases = load_aliases(alias_path, set(sequences))
+    aliases = load_aliases(alias_path, set(contigs_by_name))
     return SequenceCollection(
         name=assembly_name,
         fingerprint=fingerprint,
@@ -110,13 +139,25 @@ def read_fasta(
 
 
 def resolve_and_validate(
-    transcript: TranscriptModel, reference: SequenceCollection
+    transcript: TranscriptModel,
+    reference: SequenceCollection,
+    *,
+    contig_map: dict[str, ContigRecord] | None = None,
+    alias_map: dict[str, str] | None = None,
 ) -> TranscriptModel:
-    contig = reference.resolve(transcript.contig)
+    if contig_map is None or alias_map is None:
+        contig = reference.resolve(transcript.contig)
+    else:
+        primary = alias_map.get(transcript.contig)
+        if primary is None:
+            raise ReferenceError(
+                f"contig {transcript.contig!r} is absent from reference {reference.name!r}; "
+                "supply an explicit validated alias table at registry initialization"
+            )
+        contig = contig_map[primary]
     if transcript.end > contig.length:
         raise ReferenceError(
             f"transcript {transcript.original_transcript_id!r} ends at {transcript.end}, "
             f"beyond contig {contig.name!r} length {contig.length}"
         )
-    return transcript.with_contig(contig.name)
-
+    return transcript if transcript.contig == contig.name else transcript.with_contig(contig.name)

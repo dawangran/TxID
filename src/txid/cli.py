@@ -12,7 +12,13 @@ from . import __version__
 from .errors import TxIDError
 from .plotting import write_registry_svg
 from .registry import Registry
-from .workflow import add_annotation_context, batch_import, import_file, initialize_registry
+from .workflow import (
+    add_annotation_context,
+    batch_import,
+    import_file,
+    initialize_registry,
+    multi_import,
+)
 from .writers import write_catalog
 
 
@@ -66,6 +72,24 @@ def build_parser() -> argparse.ArgumentParser:
     batch.add_argument("--manifest", required=True, type=Path)
     batch.add_argument("--output-dir", required=True, type=Path)
     _fuzzy_options(batch)
+
+    multi_add = commands.add_parser(
+        "multi-add",
+        help="import multiple annotations with shared provenance without a manifest",
+    )
+    multi_add.add_argument("--db", required=True, type=Path)
+    multi_add.add_argument("--input", required=True, nargs="+", type=Path, metavar="PATH")
+    multi_add.add_argument(
+        "--samples",
+        nargs="+",
+        metavar="SAMPLE",
+        help="one sample name per input; defaults to input basenames",
+    )
+    multi_add.add_argument("--tool", required=True)
+    multi_add.add_argument("--annotation-name", required=True)
+    multi_add.add_argument("--output-dir", required=True, type=Path)
+    _format_option(multi_add)
+    _fuzzy_options(multi_add)
 
     export = commands.add_parser("export", help="write a deterministic cohort catalog")
     export.add_argument("--db", required=True, type=Path)
@@ -146,6 +170,22 @@ def run(args: argparse.Namespace) -> int:
                 )
             }
         )
+    elif args.command == "multi-add":
+        _json_stdout(
+            {
+                "imports": multi_import(
+                    args.db,
+                    inputs=args.input,
+                    samples=args.samples,
+                    tool=args.tool,
+                    annotation_name=args.annotation_name,
+                    output_dir=args.output_dir,
+                    annotation_format=args.format,
+                    fuzzy_splice_tolerance=args.fuzzy_splice_tolerance,
+                    fuzzy_end_tolerance=args.fuzzy_end_tolerance,
+                )
+            }
+        )
     elif args.command == "export":
         with Registry(args.db, read_only=True) as registry:
             rows = [
@@ -188,4 +228,3 @@ def main(argv: list[str] | None = None) -> int:
     except (TxIDError, OSError, sqlite3.Error, ValueError) as error:
         print(f"txid: error: {error}", file=sys.stderr)
         return 2
-

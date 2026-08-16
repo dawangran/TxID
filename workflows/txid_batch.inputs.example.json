@@ -1,0 +1,14 @@
+{
+  "TxIDBatch.gtfs": [
+    "/data/sample01.gtf",
+    "/data/sample02.gtf"
+  ],
+  "TxIDBatch.reference_gtf": "/reference/gencode.v49.gtf",
+  "TxIDBatch.reference_fasta": "/reference/GRCh38.primary_assembly.genome.fa",
+  "TxIDBatch.assembly": "GRCh38",
+  "TxIDBatch.annotation_name": "GENCODE-v49",
+  "TxIDBatch.docker_image": "dawang02/txid:0.1.2-jupyter",
+  "TxIDBatch.cpu": 1,
+  "TxIDBatch.memory_gb": 16,
+  "TxIDBatch.disk_gb": 50
+}

@@ -11,8 +11,10 @@ Attributes = tuple[tuple[str, str], ...]
 
 
 def freeze_attributes(values: Mapping[str, str] | Iterable[tuple[str, str]]) -> Attributes:
-    """Return attributes in stable key order while retaining the last duplicate."""
-    return tuple(sorted(dict(values).items()))
+    """Return attributes in stable key order without collapsing repeated keys."""
+    items = values.items() if isinstance(values, Mapping) else values
+    normalized = ((key, value) for key, value in items)
+    return tuple(sorted(normalized, key=lambda item: item[0]))
 
 
 @dataclass(frozen=True, slots=True)
