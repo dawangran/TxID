@@ -115,7 +115,7 @@ docker run --rm dawang02/txid:0.1.2-jupyter jupyter lab --version
 论文或归档分析建议把输入 JSON 中的镜像改为不可变 digest：
 
 ```text
-dawang02/txid@sha256:093abd1ec18c1ff23a987ae94c0d89dba09a3efa8f4f5d3116955e1b5bd54641
+dawang02/txid@sha256:889dd70c540fa2895820ec457e67b6a47676ceff6e9402a4cd395b8ecaaffd92
 ```
 
 ## 3. 多个 GTF 如何组织
