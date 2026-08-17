@@ -7,7 +7,7 @@
   "TxIDBatch.reference_fasta": "/reference/GRCh38.primary_assembly.genome.fa",
   "TxIDBatch.assembly": "GRCh38",
   "TxIDBatch.annotation_name": "GENCODE-v49",
-  "TxIDBatch.docker_image": "dawang02/txid:0.1.2-jupyter",
+  "TxIDBatch.docker_image": "dawang02/txid:0.1.3-jupyter",
   "TxIDBatch.cpu": 1,
   "TxIDBatch.memory_gb": 16,
   "TxIDBatch.disk_gb": 50

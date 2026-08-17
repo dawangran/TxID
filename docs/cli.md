@@ -108,4 +108,25 @@ fuzzy membership as applicable.
 
 ## `txid plot`
 
-Writes a dependency-free accessible SVG overview of annotation classifications.
+Without `--gene`, writes a dependency-free accessible SVG overview of annotation
+classifications.
+
+With `--gene`, writes a gene-level transcript structure view:
+
+```bash
+txid plot --db cohort.sqlite --gene ENSG00000123456 --output gene.svg
+```
+
+The selector accepts an exact output/reference `gene_id`, a `txid:GL1` locus, a
+unique reference `gene_name`, or (as a fallback) an upstream `gene_id`. Canonical
+gene IDs take precedence, and an ambiguous gene symbol is an error.
+
+Reference models and observed exact forms are drawn on one genomic scale. Each
+observed row shows its exact `TF1`/`SE1` TxID, optional `SC1` TxID, upstream
+sample/tool/transcript IDs, classification, observation counts, and a distinct
+output/reference transcript ID when applicable. If fuzzy clustering has been
+run, equal colors denote equal `FC1` membership and the algorithm plus splice/end
+tolerances are printed.
+Ambiguous bridges receive a dashed red outline. Exact forms always remain
+separate rows, so exon-boundary differences can be inspected for possible fuzzy
+over-grouping or under-grouping; the plot does not declare biological truth.

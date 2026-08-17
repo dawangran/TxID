@@ -46,7 +46,14 @@ reference gene, `gene_id` is retained and `transcript_id` is the exact `TF1` or
 txid export --db cohort.sqlite --catalog cohort.tsv
 txid validate --db cohort.sqlite
 txid plot --db cohort.sqlite --output cohort.svg
+txid plot --db cohort.sqlite --gene MY_GENE_ID --output MY_GENE_ID.svg
 ```
+
+The gene view labels each exact TxID beside its upstream transcript ID and colors
+tracks by fuzzy cluster when fuzzy grouping is available. Same-color structures
+that differ substantially can reveal possible over-grouping; near-identical
+structures with different colors can reveal possible under-grouping. These are
+diagnostic cues, not changes to exact identity.
 
 Use `txid_form` from the mapping files as the join key for a sample-by-transcript
 matrix. Do not substitute `FC1` for exact columns unless a tolerance-dependent
@@ -63,4 +70,3 @@ Reimporting a structure against release 2 can change `known` versus
 `novel_in_known_gene`, and can change preserved reference aliases, while its exact
 TxID remains unchanged because annotation version is not part of its canonical
 structural object.
-

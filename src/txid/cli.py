@@ -10,7 +10,7 @@ from pathlib import Path
 
 from . import __version__
 from .errors import TxIDError
-from .plotting import write_registry_svg
+from .plotting import write_gene_svg, write_registry_svg
 from .registry import Registry
 from .workflow import (
     add_annotation_context,
@@ -102,9 +102,15 @@ def build_parser() -> argparse.ArgumentParser:
     inspect.add_argument("--db", required=True, type=Path)
     inspect.add_argument("identifier")
 
-    plot = commands.add_parser("plot", help="render a dependency-free SVG registry overview")
+    plot = commands.add_parser(
+        "plot", help="render an SVG registry overview or one gene's transcript structures"
+    )
     plot.add_argument("--db", required=True, type=Path)
     plot.add_argument("--output", required=True, type=Path)
+    plot.add_argument(
+        "--gene",
+        help="gene/locus ID, unique reference gene_name, or upstream gene ID",
+    )
     return parser
 
 
@@ -216,8 +222,16 @@ def run(args: argparse.Namespace) -> int:
         _json_stdout(result)
     elif args.command == "plot":
         with Registry(args.db, read_only=True) as registry:
-            write_registry_svg(args.output, registry)
-        _json_stdout({"plot": str(args.output)})
+            if args.gene is None:
+                write_registry_svg(args.output, registry)
+                result = {"plot": str(args.output)}
+            else:
+                plot_summary = write_gene_svg(args.output, registry, args.gene)
+                result = {
+                    "plot": str(args.output),
+                    **plot_summary,
+                }
+        _json_stdout(result)
     return 0
 
 

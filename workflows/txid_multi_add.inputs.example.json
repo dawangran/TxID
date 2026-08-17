@@ -9,7 +9,7 @@
   "TxIDMultiAdd.assembly": "GRCh38",
   "TxIDMultiAdd.annotation_name": "GENCODE-v49",
   "TxIDMultiAdd.tool": "IsoQuant",
-  "TxIDMultiAdd.docker_image": "dawang02/txid:0.1.2-jupyter",
+  "TxIDMultiAdd.docker_image": "dawang02/txid:0.1.3-jupyter",
   "TxIDMultiAdd.cpu": 1,
   "TxIDMultiAdd.memory_gb": 16,
   "TxIDMultiAdd.disk_gb": 50

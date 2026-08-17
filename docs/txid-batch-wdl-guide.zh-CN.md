@@ -101,15 +101,15 @@ MT	chrM
 默认 Docker 镜像为：
 
 ```text
-dawang02/txid:0.1.2-jupyter
+dawang02/txid:0.1.3-jupyter
 ```
 
-它包含 TxID 0.1.2 和 JupyterLab 4.6.2。可先检查：
+它包含 TxID 0.1.3 和 JupyterLab 4.6.2。可先检查：
 
 ```bash
-docker pull dawang02/txid:0.1.2-jupyter
-docker run --rm dawang02/txid:0.1.2-jupyter txid --version
-docker run --rm dawang02/txid:0.1.2-jupyter jupyter lab --version
+docker pull dawang02/txid:0.1.3-jupyter
+docker run --rm dawang02/txid:0.1.3-jupyter txid --version
+docker run --rm dawang02/txid:0.1.3-jupyter jupyter lab --version
 ```
 
 论文或归档分析建议把输入 JSON 中的镜像改为不可变 digest：
@@ -212,7 +212,7 @@ GFF3，但若需要 GFF3，应使用 CLI 或另行扩展 WDL 的逐输入格式�
 
 | 参数 | WDL 类型 | 必填 | 默认值 | 说明 |
 |---|---|---:|---|---|
-| `docker_image` | `String` | 否 | `dawang02/txid:0.1.2-jupyter` | task 使用的运行镜像 |
+| `docker_image` | `String` | 否 | `dawang02/txid:0.1.3-jupyter` | task 使用的运行镜像 |
 | `cpu` | `Int` | 否 | `1` | WDL 后端为整个 task 申请的 CPU |
 | `memory_gb` | `Int` | 否 | `4` | WDL 后端为整个 task 申请的内存，GB |
 | `disk_gb` | `Int` | 否 | `20` | WDL 后端本地磁盘请求，GB |
@@ -246,7 +246,7 @@ MiniWDL/Docker 的运行目录或后端配置中保证实际磁盘空间。`disk
   "TxIDBatch.reference_fasta": "/reference/GRCh38.primary_assembly.genome.fa",
   "TxIDBatch.assembly": "GRCh38",
   "TxIDBatch.annotation_name": "GENCODE-v49",
-  "TxIDBatch.docker_image": "dawang02/txid:0.1.2-jupyter",
+  "TxIDBatch.docker_image": "dawang02/txid:0.1.3-jupyter",
   "TxIDBatch.cpu": 1,
   "TxIDBatch.memory_gb": 16,
   "TxIDBatch.disk_gb": 50
@@ -469,8 +469,8 @@ contig '1' is absent from reference 'GRCh38'
 ### 9.7 `duplicate GTF attribute key 'tag'`
 
 这是旧版 TxID 0.1.0 的限制。GENCODE 等注释会在同一 feature 上合法地重复 `tag` 或
-`ont`。TxID 0.1.2 会保留这些多值属性，不需要预处理或删除它们。确认 WDL 使用
-`dawang02/txid:0.1.2-jupyter` 或对应 digest。重复的 `gene_id`、`transcript_id` 仍会
+`ont`。TxID 0.1.3 会保留这些多值属性，不需要预处理或删除它们。确认 WDL 使用
+`dawang02/txid:0.1.3-jupyter` 或对应 digest。重复的 `gene_id`、`transcript_id` 仍会
 被拒绝，因为它们会使 feature 身份或父级关系产生歧义。
 
 ### 9.8 fuzzy 参数只设置了一个
@@ -489,7 +489,7 @@ fuzzy mode requires both fuzzy tolerances
 覆盖 `docker_image`。可在可访问 Docker 的节点先运行：
 
 ```bash
-docker run --rm dawang02/txid:0.1.2-jupyter txid --version
+docker run --rm dawang02/txid:0.1.3-jupyter txid --version
 ```
 
 ### 9.10 `database or disk is full`

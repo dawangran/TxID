@@ -35,7 +35,7 @@ reference_fasta + reference_gtf + gtfs[]
 | `contig_aliases` | `File?` | 可选的两列 contig alias 表 |
 | `fuzzy_splice_tolerance_bp` | `Int?` | 可选 splice 容差 |
 | `fuzzy_end_tolerance_bp` | `Int?` | 可选 ends 容差，必须与 splice 容差同时设置 |
-| `docker_image` | `String` | 运行镜像，默认 `dawang02/txid:0.1.2-jupyter` |
+| `docker_image` | `String` | 运行镜像，默认 `dawang02/txid:0.1.3-jupyter` |
 
 样本名由每个输入 GTF 的 basename 自动推导，例如 `donor01.gtf` 对应
 `donor01`。所有输入必须属于同一 assembly、同一参考注释上下文，并共享这里记录的
@@ -46,7 +46,7 @@ reference_fasta + reference_gtf + gtfs[]
 先从当前代码构建包含 `multi-add` 的镜像：
 
 ```bash
-docker build -t dawang02/txid:0.1.2-jupyter .
+docker build -t dawang02/txid:0.1.3-jupyter .
 ```
 
 修改示例输入文件

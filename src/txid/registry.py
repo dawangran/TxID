@@ -342,6 +342,22 @@ class Registry:
     def register_structural(self, identity: StructuralIdentity) -> None:
         self.register_structurals((identity,))
 
+    @staticmethod
+    def _reference_attributes_json(transcript: TranscriptModel) -> str:
+        attributes = transcript.attributes
+        if not any(key == "gene_name" for key, _ in attributes):
+            exon_gene_names = {
+                value
+                for exon in transcript.exons
+                for key, value in exon.attributes
+                if key == "gene_name"
+            }
+            if len(exon_gene_names) == 1:
+                attributes = freeze_attributes(
+                    (*attributes, ("gene_name", next(iter(exon_gene_names))))
+                )
+        return json.dumps(attributes, separators=(",", ":"))
+
     def add_annotation(
         self,
         *,
@@ -392,7 +408,7 @@ class Registry:
                     transcript.start,
                     transcript.end,
                     json.dumps([[e.start, e.end] for e in transcript.exons], separators=(",", ":")),
-                    json.dumps(transcript.attributes, separators=(",", ":")),
+                    self._reference_attributes_json(transcript),
                     identities.splice_chain.public_id if identities.splice_chain else None,
                     identities.form.public_id,
                 )
@@ -1081,6 +1097,139 @@ class Registry:
             "fuzzy_cluster": None
             if fuzzy is None
             else {**dict(fuzzy), "members": fuzzy_members},
+            "observations": [dict(row) for row in observations],
+        }
+
+    @staticmethod
+    def _attribute_values(attributes_json: str, key: str) -> tuple[str, ...]:
+        values = json.loads(attributes_json)
+        return tuple(str(value) for name, value in values if name == key)
+
+    def gene_plot_data(self, gene: str) -> dict[str, Any]:
+        """Return deterministic reference and observation rows for one gene plot.
+
+        Canonical output/reference gene identifiers take precedence over upstream
+        identifiers.  This prevents an upstream label that happens to equal a
+        reference gene ID from silently combining unrelated loci.
+        """
+
+        query = gene.strip()
+        if not query:
+            raise RegistryError("gene identifier must not be empty")
+
+        direct_reference = self.connection.execute(
+            "SELECT 1 FROM reference_transcript WHERE reference_gene_id = ? LIMIT 1",
+            (query,),
+        ).fetchone()
+        direct_output = self.connection.execute(
+            "SELECT 1 FROM observation WHERE output_gene_id = ? LIMIT 1",
+            (query,),
+        ).fetchone()
+        direct_locus = self.connection.execute(
+            "SELECT 1 FROM locus WHERE public_id = ? LIMIT 1", (query,)
+        ).fetchone()
+
+        resolved_by = "gene_id"
+        selected_gene_ids: tuple[str, ...]
+        observation_filter = "o.output_gene_id = ?"
+        observation_parameters: tuple[str, ...]
+        if direct_reference is not None or direct_output is not None or direct_locus is not None:
+            selected_gene_ids = (query,)
+            observation_parameters = (query,)
+        else:
+            symbol_gene_ids = sorted(
+                {
+                    str(row["reference_gene_id"])
+                    for row in self.connection.execute(
+                        "SELECT reference_gene_id, attributes_json FROM reference_transcript"
+                    )
+                    if query in self._attribute_values(row["attributes_json"], "gene_name")
+                }
+            )
+            if len(symbol_gene_ids) > 1:
+                raise RegistryError(
+                    f"gene symbol {query!r} is ambiguous; matching gene IDs: "
+                    + ", ".join(symbol_gene_ids)
+                )
+            if symbol_gene_ids:
+                resolved_by = "gene_name"
+                selected_gene_ids = (symbol_gene_ids[0],)
+                observation_parameters = selected_gene_ids
+            else:
+                upstream_rows = self.connection.execute(
+                    """
+                    SELECT DISTINCT output_gene_id
+                    FROM observation
+                    WHERE original_gene_id = ?
+                    ORDER BY output_gene_id
+                    """,
+                    (query,),
+                ).fetchall()
+                if not upstream_rows:
+                    raise RegistryError(f"gene not found in registry: {query}")
+                resolved_by = "original_gene_id"
+                selected_gene_ids = tuple(
+                    str(row["output_gene_id"]) for row in upstream_rows
+                )
+                observation_filter = "o.original_gene_id = ?"
+                observation_parameters = (query,)
+
+        placeholders = ",".join("?" for _ in selected_gene_ids)
+        references = self.connection.execute(
+            f"""
+            SELECT r.reference_gene_id, r.reference_transcript_id,
+                   r.contig, r.strand, r.start, r.end, r.exons_json,
+                   r.splice_chain_id, r.form_id, a.name AS annotation_name
+            FROM reference_transcript r
+            JOIN annotation_context a ON a.id = r.annotation_id
+            WHERE r.reference_gene_id IN ({placeholders})
+            ORDER BY r.contig, r.start, r.end, r.strand,
+                     r.form_id, r.reference_transcript_id, a.name
+            """,
+            selected_gene_ids,
+        ).fetchall()
+        observations = self.connection.execute(
+            f"""
+            SELECT o.original_gene_id, o.original_transcript_id,
+                   o.output_gene_id, o.output_transcript_id, o.classification,
+                   o.contig, o.strand, o.start, o.end, o.exons_json,
+                   o.splice_chain_id, o.form_id, o.fuzzy_cluster_id,
+                   i.sample, i.upstream_tool, a.name AS annotation_name,
+                   c.bridge_status, r.algorithm AS fuzzy_algorithm,
+                   r.splice_tolerance, r.end_tolerance
+            FROM observation o
+            JOIN import_manifest i ON i.id = o.import_id
+            JOIN annotation_context a ON a.id = i.annotation_id
+            LEFT JOIN fuzzy_cluster c ON c.public_id = o.fuzzy_cluster_id
+            LEFT JOIN fuzzy_run r ON r.id = c.fuzzy_run_id
+            WHERE {observation_filter}
+            ORDER BY o.contig, o.start, o.end, o.strand, o.form_id,
+                     i.sample, i.upstream_tool, o.original_transcript_id
+            """,
+            observation_parameters,
+        ).fetchall()
+
+        all_rows = [*references, *observations]
+        contexts = sorted({(str(row["contig"]), str(row["strand"])) for row in all_rows})
+        if len(contexts) > 1:
+            formatted = ", ".join(f"{contig}({strand})" for contig, strand in contexts)
+            raise RegistryError(
+                f"gene query {query!r} spans multiple contig/strand contexts: {formatted}; "
+                "query a canonical gene or locus identifier"
+            )
+        if not all_rows:
+            # A locus without observations indicates a corrupt or incomplete
+            # registry; present the same actionable behavior as an unknown gene.
+            raise RegistryError(f"gene has no transcript models in registry: {query}")
+
+        return {
+            "query": query,
+            "resolved_by": resolved_by,
+            "gene_ids": list(selected_gene_ids),
+            "assembly": self.reference().name,
+            "contig": contexts[0][0],
+            "strand": contexts[0][1],
+            "references": [dict(row) for row in references],
             "observations": [dict(row) for row in observations],
         }
 

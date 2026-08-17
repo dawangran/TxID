@@ -88,7 +88,7 @@ class WdlContractTests(unittest.TestCase):
 
     def test_published_runtime_image_is_the_default(self):
         self.assertIn(
-            'String docker_image = "dawang02/txid:0.1.2-jupyter"',
+            'String docker_image = "dawang02/txid:0.1.3-jupyter"',
             self.source,
         )
 

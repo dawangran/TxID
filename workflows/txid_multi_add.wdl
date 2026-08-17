@@ -12,7 +12,7 @@ workflow TxIDMultiAdd {
     Int? fuzzy_splice_tolerance_bp
     Int? fuzzy_end_tolerance_bp
 
-    String docker_image = "dawang02/txid:0.1.2-jupyter"
+    String docker_image = "dawang02/txid:0.1.3-jupyter"
     Int cpu = 1
     Int memory_gb = 4
     Int disk_gb = 20

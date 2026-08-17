@@ -178,6 +178,28 @@ Cluster accessions use `txid:FC1.<six-digit accession>` and record algorithm,
 tolerances, membership, and creation software. They never alias or replace exact
 IDs.
 
+## Gene-level visualization
+
+`txid plot --gene <identifier>` renders a deterministic, dependency-free SVG for
+one gene or registry-managed locus. Exact output/reference gene identifiers take
+precedence over upstream gene identifiers; a unique reference `gene_name` may
+also resolve to its reference `gene_id`. Ambiguous symbols are errors rather than
+silently combining loci.
+
+The plot contains reference transcript models when available and one structural
+track per distinct observed exact form. Every observed track labels the exact
+`TF1`/`SE1` identifier, its `SC1` identifier when applicable, and all associated
+upstream transcript identifiers; preserved output/reference transcript
+identifiers are shown separately when they differ. Exons use 1-based closed
+registry coordinates and intron lines use the same genomic scale for all tracks.
+
+When fuzzy results exist, color encodes `FC1` membership, the fuzzy algorithm and
+splice/end tolerances are printed, and ambiguous bridges are marked explicitly.
+Distinct exact forms remain separate tracks even when they share one fuzzy
+cluster. This view is diagnostic evidence for possible over- or under-grouping;
+it does not relabel exact identities or assert that a fuzzy grouping is
+biologically correct. Without `--gene`, `txid plot` retains the registry overview.
+
 ## Deterministic output and error behavior
 
 Transcript sort key is primary contig, minimum exon start, maximum exon end,

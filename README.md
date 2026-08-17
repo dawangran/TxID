@@ -6,7 +6,7 @@ same stable identifier across samples, runs, input order, and supported GTF/GFF3
 producers. It does **not** discover transcripts, align reads, or estimate
 abundance.
 
-Current release: `0.1.2` (research alpha). The normative identity definition is
+Current release: `0.1.3` (research alpha). The normative identity definition is
 the [TxID v1 specification](docs/superpowers/specs/2026-07-19-novel-transcript-identity-registry-design.md).
 
 ## Identity families
@@ -43,10 +43,10 @@ PYTHONPATH=src python -m unittest discover -s tests -v
 The published container includes both the `txid` command and JupyterLab:
 
 ```bash
-docker pull dawang02/txid:0.1.2-jupyter
-docker run --rm dawang02/txid:0.1.2-jupyter txid --version
+docker pull dawang02/txid:0.1.3-jupyter
+docker run --rm dawang02/txid:0.1.3-jupyter txid --version
 docker run --rm -p 8888:8888 -v "$PWD:/workspace" \
-  dawang02/txid:0.1.2-jupyter
+  dawang02/txid:0.1.3-jupyter
 ```
 
 The second command starts JupyterLab on port 8888 and prints its generated access
@@ -55,7 +55,7 @@ token. The mounted working directory is writable by container user UID 1000.
 Build the same image locally with:
 
 ```bash
-docker build -t dawang02/txid:0.1.2-jupyter .
+docker build -t dawang02/txid:0.1.3-jupyter .
 ```
 
 ## Minimal workflow
@@ -79,7 +79,11 @@ txid add \
 
 txid export --db cohort.sqlite --catalog cohort.catalog.tsv
 txid validate --db cohort.sqlite
+txid plot --db cohort.sqlite --gene ENSG00000123456 --output gene.svg
 ```
+
+The optional gene plot shows reference and observed exon structures, exact TxIDs,
+upstream transcript IDs, and fuzzy-cluster colors on a shared genomic scale.
 
 Inputs are never modified in place. `add` parses and reference-validates the
 entire annotation before opening a transaction. A failed import leaves no
