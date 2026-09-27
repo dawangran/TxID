@@ -1,0 +1,18 @@
+{
+  "annotation": "GENCODE-v49-primary-identity-view",
+  "classification_counts": {
+    "ambiguous_gene": 20468,
+    "known": 140,
+    "new_locus": 910,
+    "novel_in_known_gene": 56159
+  },
+  "database_persisted_imports_before_run": 5,
+  "input_accession": "ENCFF973ZQF",
+  "mode": "classification_only_no_observation_persistence",
+  "output_mapping_retained_in_git": false,
+  "reference_transcripts": 509650,
+  "sample": "wtc11-encode-pacbio-r3",
+  "tool": "talon",
+  "transcripts": 77677,
+  "wall_seconds": 763.675341360271
+}

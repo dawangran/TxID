@@ -15,7 +15,22 @@ benchmark-work/
 
 # Local data and generated benchmark results are not source code.
 benchmark-inputs/
-benchmarks/results/
+benchmarks/results/*
+!benchmarks/results/encode-gtf-full/
+benchmarks/results/encode-gtf-full/*
+!benchmarks/results/encode-gtf-full/annotation-release-v29-v49.json
+!benchmarks/results/encode-gtf-full/encode-files-checked.tsv
+!benchmarks/results/encode-gtf-full/gencode-v49-identity-view-audit.json
+!benchmarks/results/encode-gtf-full/identity-partitions.json
+!benchmarks/results/encode-gtf-full/identity-view-audit.json
+!benchmarks/results/encode-gtf-full/invariance-summary.json
+!benchmarks/results/encode-gtf-full/isoseql-compat-audit.json
+!benchmarks/results/encode-gtf-full/talon-model-extraction-audit.json
+!benchmarks/results/encode-gtf-full/txid-shuffled-recovery-audit.json
+!benchmarks/results/encode-gtf-full/txid-sorted-recovery-audit.json
+!benchmarks/results/encode-gtf-full/v49-pacbio-r3-classification-only-audit.json
+!benchmarks/results/independent-identity-2026-09-23.json
+!benchmarks/results/simulation-summary.json
 
 # Authoring, presentation, and local-agent material are maintained separately.
 manuscript/
@@ -26,7 +41,12 @@ tests/test_site.py
 .codex/
 AGENTS.md
 
-# Local packaging experiments are outside this source-only export. The root
-# Dockerfile is a supported distribution artifact and is intentionally tracked.
+# Keep local packaging artifacts ignored while tracking the supported recipe.
+# The root Dockerfile is also a supported distribution artifact.
 environment.yml
-conda-recipe/
+conda-recipe/*
+!conda-recipe/meta.yaml
+
+# Rebuilt manuscript bundles and superseded local draft backups.
+/deliverables/TxID_Bioinformatics_Application_Note_2026-09-20/submission/TxID-submission-materials-*
+/deliverables/TxID_Bioinformatics_Application_Note_2026-09-20/reproducibility/*before*.zip

@@ -1,0 +1,124 @@
+{
+  "annotation": {
+    "classification_changes": 29435,
+    "classification_only_samples": [
+      "wtc11-encode-pacbio-r3"
+    ],
+    "classification_transitions": {
+      "ambiguous_gene -> known": 140,
+      "ambiguous_gene -> novel_in_known_gene": 3137,
+      "new_locus -> ambiguous_gene": 509,
+      "new_locus -> known": 26,
+      "new_locus -> novel_in_known_gene": 10732,
+      "novel_in_known_gene -> ambiguous_gene": 14517,
+      "novel_in_known_gene -> known": 282,
+      "novel_in_known_gene -> new_locus": 92
+    },
+    "gene_candidate_changes": 527676,
+    "missing_in_v29": 0,
+    "missing_in_v49": 0,
+    "samples": 6,
+    "shared_observations": 538804,
+    "txid_form_changes": 0,
+    "txid_sc_changes": 0,
+    "v29_observations": 538804,
+    "v49_observations": 538804
+  },
+  "empirical_source": "retained fixed-model evaluation, TxID 0.1.0",
+  "matrix": [
+    {
+      "Columns": 467819,
+      "Layer": "TxID exact form",
+      "Occupied cells": 538804,
+      "Rows": 6,
+      "Sparsity (%)": "80.804"
+    },
+    {
+      "Columns": 379407,
+      "Layer": "gffcompare tracking",
+      "Occupied cells": 538802,
+      "Rows": 6,
+      "Sparsity (%)": "76.331"
+    },
+    {
+      "Columns": 467908,
+      "Layer": "isoSeQL exact ends",
+      "Occupied cells": 538804,
+      "Rows": 6,
+      "Sparsity (%)": "80.808"
+    },
+    {
+      "Columns": 364032,
+      "Layer": "isoSeQL common junction",
+      "Occupied cells": 530082,
+      "Rows": 6,
+      "Sparsity (%)": "75.731"
+    }
+  ],
+  "order": [
+    {
+      "Changed observation labels": 0,
+      "Changed pair relations": 0,
+      "Layer": "TxID exact form",
+      "Shared observations": 538804
+    },
+    {
+      "Changed observation labels": 137658,
+      "Changed pair relations": 418224,
+      "Layer": "TxID gene/locus",
+      "Shared observations": 538804
+    },
+    {
+      "Changed observation labels": 538768,
+      "Changed pair relations": 4438,
+      "Layer": "gffcompare tracking",
+      "Shared observations": 538802
+    },
+    {
+      "Changed observation labels": 538804,
+      "Changed pair relations": 0,
+      "Layer": "isoSeQL exact ends",
+      "Shared observations": 538804
+    },
+    {
+      "Changed observation labels": 538804,
+      "Changed pair relations": 0,
+      "Layer": "isoSeQL common junction",
+      "Shared observations": 538804
+    }
+  ],
+  "schematic": {
+    "A": [
+      [
+        100,
+        200
+      ],
+      [
+        300,
+        400
+      ]
+    ],
+    "B": [
+      [
+        90,
+        200
+      ],
+      [
+        300,
+        420
+      ]
+    ],
+    "C": [
+      [
+        100,
+        201
+      ],
+      [
+        300,
+        400
+      ]
+    ],
+    "context": "same reference collection, contig and positive strand",
+    "type": "illustrative, not empirical"
+  }
+}

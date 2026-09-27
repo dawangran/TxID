@@ -1,0 +1,14 @@
+[
+  {
+    "source": "## Figure 1",
+    "translation": "## 图 1"
+  },
+  {
+    "source": "Figure 1. Structural identity, annotation context and catalog integration. (a) GTF/GFF3 models receive exact identifiers within a selected FASTA context; annotation-dependent classifications and provenance are recorded separately. Schematic models share a reference, contig and positive strand: M1 and M2 share a splice chain (SC) but differ in transcript form (TF); M3 shifts the M1 donor boundary from 200 to 201. Coordinates are 1-based closed; labels denote equality classes. (b) Classifications changed for 29,435 of 538,804 paired observations between GENCODE v29 and v49 (5.463%), with no exact-form identifier changes. Ribbon widths encode transition counts and colours indicate the v29 class; unchanged classifications are omitted. Node counts include changed observations only. “Novel in gene” denotes a novel transcript in a known gene. The sixth v49 input was classified without database persistence. (c) Column counts for six-row binary occupancy matrices from sorted-input runs under TxID exact form, isoSeQL exact ends, gffcompare tracking and isoSeQL common junction. Occupancy records model presence; column counts reflect the grouping relation and do not measure abundance or biological accuracy. Panels b and c use fixed models; the isoSeQL count-insertion compatibility patch is described in Supplementary Section S4. Source values accompany the figure.",
+    "translation": "图 1. 结构身份、注释上下文与目录整合。（a）GTF/GFF3 模型在选定的 FASTA 上下文中获得精确标识符；依赖注释的分类与溯源信息单独记录。示意模型具有相同的参考序列、contig 和正链方向：M1 与 M2 共享剪接链（SC），但转录本形式（TF）不同；M3 将 M1 的剪接供体边界从 200 移至 201。坐标采用从 1 开始的闭区间；标签表示等价类。（b）在 GENCODE v29 与 v49 之间，538,804 条配对观测中有 29,435 条的分类发生变化（5.463%），精确形式标识符均未改变。流带宽度表示分类转移的观测数，颜色表示 v29 中的类别；分类未变化的观测不予展示。节点计数仅包含分类发生变化的观测。“Novel in gene”表示位于已知基因内的新转录本。第六份 v49 输入完成了分类，但未持久化至数据库。（c）排序输入运行后，TxID exact form、isoSeQL exact ends、gffcompare tracking 和 isoSeQL common junction 四种分组关系下六行二元占据矩阵的列数。占据状态记录模型是否存在；列数反映分组关系，不衡量丰度或生物学准确性。面板 b 和 c 使用固定模型；isoSeQL 的计数插入兼容性补丁见补充材料 S4 节。源数据随图提供。"
+  },
+  {
+    "source": "Alt text: Reference-aware transcript identity workflow with separate annotation classification. A flow diagram shows changed classifications between annotation releases, while exact IDs remain unchanged. Four bars compare structural matrix column counts.",
+    "translation": "替代文本：转录本身份生成流程将参考序列纳入身份定义，并单独处理注释分类。流图展示不同注释版本间发生变化的分类，而精确标识符保持不变。四个柱形比较按结构分组所得矩阵的列数。"
+  }
+]

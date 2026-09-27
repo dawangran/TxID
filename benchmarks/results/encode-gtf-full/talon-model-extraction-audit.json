@@ -1,0 +1,248 @@
+{
+  "datasets": [
+    {
+      "dataset": "wtc11-encode-ont-r1",
+      "input": {
+        "bytes": 50774676,
+        "path": "/tmp/txid-encode-gtf/inputs/ENCFF527AJC.gtf.gz",
+        "sha256": "446295ff1c911a41a98a5ebedd4bf77bc509ba68aee936de4a3f37b3b660a8b8"
+      },
+      "input_feature_counts": {
+        "exon": 1958901,
+        "gene": 61417,
+        "transcript": 300891
+      },
+      "input_source_counts": {
+        "ENSEMBL": 411940,
+        "HAVANA": 1718878,
+        "TALON": 190391
+      },
+      "output": {
+        "bytes": 12556843,
+        "compressed": true,
+        "gzip_header_policy": "RFC 1952 with mtime=0 and no original filename",
+        "path": "/tmp/txid-encode-gtf/models/wtc11-encode-ont-r1.talon.gtf.gz",
+        "payload_bytes": 355649342,
+        "payload_sha256": "d6484b9a9055ec981ab33da06a38bd13198d3cd31fcdb02fda9b980be74b7b3b",
+        "sha256": "1e48122c5cf0d10b86a354de2b30ebae3ae6f812bc78dce1c47f6343a0121231"
+      },
+      "selected_exon_lines": 695873,
+      "selected_genes": 16558,
+      "selected_lines": 790003,
+      "selected_transcript_lines": 94130,
+      "selected_transcripts": 94130,
+      "selector": {
+        "exon_rule": "transcript_id belongs to a selected transcript",
+        "features": [
+          "exon",
+          "transcript"
+        ],
+        "transcript_source_column": "TALON"
+      }
+    },
+    {
+      "dataset": "wtc11-encode-ont-r2",
+      "input": {
+        "bytes": 69001520,
+        "path": "/tmp/txid-encode-gtf/inputs/ENCFF615FZJ.gtf.gz",
+        "sha256": "9a8496858f4473b3168c084931c8361128d5a19fc45dcb034b8d67a5b4260ac0"
+      },
+      "input_feature_counts": {
+        "exon": 2962517,
+        "gene": 63912,
+        "transcript": 396041
+      },
+      "input_source_counts": {
+        "ENSEMBL": 608948,
+        "HAVANA": 2406207,
+        "TALON": 407315
+      },
+      "output": {
+        "bytes": 26978282,
+        "compressed": true,
+        "gzip_header_policy": "RFC 1952 with mtime=0 and no original filename",
+        "path": "/tmp/txid-encode-gtf/models/wtc11-encode-ont-r2.talon.gtf.gz",
+        "payload_bytes": 857134069,
+        "payload_sha256": "07efabd033d8049dce4b7cb687cd95f64cf8ea79c65bf9ccad701d64106b8209",
+        "sha256": "e731b308dae413082ec7bc4eca9bc1251abff3dbfe93120efc2cc87faa15f51b"
+      },
+      "selected_exon_lines": 1699489,
+      "selected_genes": 21011,
+      "selected_lines": 1888769,
+      "selected_transcript_lines": 189280,
+      "selected_transcripts": 189280,
+      "selector": {
+        "exon_rule": "transcript_id belongs to a selected transcript",
+        "features": [
+          "exon",
+          "transcript"
+        ],
+        "transcript_source_column": "TALON"
+      }
+    },
+    {
+      "dataset": "wtc11-encode-ont-r3",
+      "input": {
+        "bytes": 44602347,
+        "path": "/tmp/txid-encode-gtf/inputs/ENCFF798LYI.gtf.gz",
+        "sha256": "8bea22c31380df842c5ab452af0bbe7f66281816d6728d63fcf525924196af22"
+      },
+      "input_feature_counts": {
+        "exon": 1632180,
+        "gene": 60472,
+        "transcript": 265361
+      },
+      "input_source_counts": {
+        "ENSEMBL": 351890,
+        "HAVANA": 1494771,
+        "TALON": 111352
+      },
+      "output": {
+        "bytes": 7442376,
+        "compressed": true,
+        "gzip_header_policy": "RFC 1952 with mtime=0 and no original filename",
+        "path": "/tmp/txid-encode-gtf/models/wtc11-encode-ont-r3.talon.gtf.gz",
+        "payload_bytes": 191703113,
+        "payload_sha256": "ea69b08850038c186941633269c051b51bbad2f6f7a8b8a5596660bea9163e4b",
+        "sha256": "0e8a0921d2d585f3fe0a1b22d24aa8126b96f79af71f294025a936df7e54987e"
+      },
+      "selected_exon_lines": 369152,
+      "selected_genes": 13984,
+      "selected_lines": 427752,
+      "selected_transcript_lines": 58600,
+      "selected_transcripts": 58600,
+      "selector": {
+        "exon_rule": "transcript_id belongs to a selected transcript",
+        "features": [
+          "exon",
+          "transcript"
+        ],
+        "transcript_source_column": "TALON"
+      }
+    },
+    {
+      "dataset": "wtc11-encode-pacbio-r1",
+      "input": {
+        "bytes": 45926211,
+        "path": "/tmp/txid-encode-gtf/inputs/ENCFF694HZY.gtf.gz",
+        "sha256": "c34122b42d1b7c7b30fcc97edc545db99c42f01ad3cb6d2f2c4e32e144a66859"
+      },
+      "input_feature_counts": {
+        "exon": 1747221,
+        "gene": 60466,
+        "transcript": 269667
+      },
+      "input_source_counts": {
+        "ENSEMBL": 368120,
+        "HAVANA": 1579026,
+        "TALON": 130208
+      },
+      "output": {
+        "bytes": 8627477,
+        "compressed": true,
+        "gzip_header_policy": "RFC 1952 with mtime=0 and no original filename",
+        "path": "/tmp/txid-encode-gtf/models/wtc11-encode-pacbio-r1.talon.gtf.gz",
+        "payload_bytes": 244110068,
+        "payload_sha256": "e4f6747c0bff1fa4efe50a67f6d3f6f6f3e6c935731fdc5de6093a07a0e69f49",
+        "sha256": "ea666eb0c104cc7cc5353754c3d7065e58a5f643f0fda6731d593d986aae6b54"
+      },
+      "selected_exon_lines": 484193,
+      "selected_genes": 13111,
+      "selected_lines": 547099,
+      "selected_transcript_lines": 62906,
+      "selected_transcripts": 62906,
+      "selector": {
+        "exon_rule": "transcript_id belongs to a selected transcript",
+        "features": [
+          "exon",
+          "transcript"
+        ],
+        "transcript_source_column": "TALON"
+      }
+    },
+    {
+      "dataset": "wtc11-encode-pacbio-r2",
+      "input": {
+        "bytes": 44538435,
+        "path": "/tmp/txid-encode-gtf/inputs/ENCFF978SRK.gtf.gz",
+        "sha256": "2a4135b10364a7375c0e0584de884b01f9a5cc69cc371274288d79490c0af794"
+      },
+      "input_feature_counts": {
+        "exon": 1663710,
+        "gene": 60906,
+        "transcript": 262972
+      },
+      "input_source_counts": {
+        "ENSEMBL": 352524,
+        "HAVANA": 1520034,
+        "TALON": 115030
+      },
+      "output": {
+        "bytes": 7492812,
+        "compressed": true,
+        "gzip_header_policy": "RFC 1952 with mtime=0 and no original filename",
+        "path": "/tmp/txid-encode-gtf/models/wtc11-encode-pacbio-r2.talon.gtf.gz",
+        "payload_bytes": 203128574,
+        "payload_sha256": "95121f0c7a6608643a87deeb9d8d2ae9bf028b8e817e3b0dcd730bb9cea39b84",
+        "sha256": "320f2b7f61ff60eb18309b3875103680b78fb9351bb2b21f548396e0dfccc9eb"
+      },
+      "selected_exon_lines": 400682,
+      "selected_genes": 13372,
+      "selected_lines": 456893,
+      "selected_transcript_lines": 56211,
+      "selected_transcripts": 56211,
+      "selector": {
+        "exon_rule": "transcript_id belongs to a selected transcript",
+        "features": [
+          "exon",
+          "transcript"
+        ],
+        "transcript_source_column": "TALON"
+      }
+    },
+    {
+      "dataset": "wtc11-encode-pacbio-r3",
+      "input": {
+        "bytes": 48066325,
+        "path": "/tmp/txid-encode-gtf/inputs/ENCFF973ZQF.gtf.gz",
+        "sha256": "d359f0426d74f87d7b8204a0e5a894d3fafa388a6d373b3464e780fd50afbed8"
+      },
+      "input_feature_counts": {
+        "exon": 1862633,
+        "gene": 60514,
+        "transcript": 284438
+      },
+      "input_source_counts": {
+        "ENSEMBL": 387025,
+        "HAVANA": 1664479,
+        "TALON": 156081
+      },
+      "output": {
+        "bytes": 10339823,
+        "compressed": true,
+        "gzip_header_policy": "RFC 1952 with mtime=0 and no original filename",
+        "path": "/tmp/txid-encode-gtf/models/wtc11-encode-pacbio-r3.talon.gtf.gz",
+        "payload_bytes": 302972168,
+        "payload_sha256": "aa660c8fab67fdfb7ed9e4b01dafcc215586b64ad5d1dd74c0f0f655456cb930",
+        "sha256": "4dfd7d9e8ab54a61a6b0e28e3c44e6092bcc7c092d09906574249cb8b95a2ac3"
+      },
+      "selected_exon_lines": 599605,
+      "selected_genes": 13623,
+      "selected_lines": 677282,
+      "selected_transcript_lines": 77677,
+      "selected_transcripts": 77677,
+      "selector": {
+        "exon_rule": "transcript_id belongs to a selected transcript",
+        "features": [
+          "exon",
+          "transcript"
+        ],
+        "transcript_source_column": "TALON"
+      }
+    }
+  ],
+  "ended_unix": 1785476647.5045621,
+  "schema": "txid.encode-talon-extraction.v1",
+  "selection_contract": "Select transcript rows whose GTF source column is TALON, then retain every exon row carrying one of those selected transcript_id values, regardless of exon source.",
+  "started_unix": 1785476472.5412965
+}

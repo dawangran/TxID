@@ -1,6 +1,6 @@
 # TxID v1 identity and registry specification
 
-Status: normative draft 1.0.0  
+Status: normative draft 1.0.1 (clarified 2026-09-23)\
 Identity algorithm: SC1 / TF1 / SE1  
 Registry schema: 1
 
@@ -171,9 +171,18 @@ intron boundaries must each be within splice tolerance and TSS/TES (or SE
 start/end) within end tolerance.
 
 Clusters use deterministic complete linkage: every pair in a cluster must satisfy
-the tolerances. A candidate compatible with more than one existing cluster is an
-ambiguous bridge and remains in a singleton cluster with that status recorded.
-Thus a chain of pairwise similarities cannot merge incompatible endpoints.
+the tolerances. Exact forms are processed in public-identifier order. A candidate
+compatible with every member of exactly one existing cluster joins that cluster.
+A candidate compatible with more than one existing cluster starts a new cluster
+marked `ambiguous_bridge`; the existing clusters are not merged. A candidate with
+no compatible cluster starts an unambiguous cluster.
+
+A bridge-marked cluster starts with one member but may accept later candidates
+when it is their only compatible cluster and every pair still satisfies the
+tolerances. Its `ambiguous_bridge` status is retained: this records the ambiguity
+at cluster creation, not a permanent singleton constraint or a claim that every
+later member was itself an ambiguous bridge. Thus a chain of pairwise similarities
+cannot merge incompatible endpoints.
 Cluster accessions use `txid:FC1.<six-digit accession>` and record algorithm,
 tolerances, membership, and creation software. They never alias or replace exact
 IDs.
@@ -215,3 +224,14 @@ TxID v1 does not implement liftover. Registries with different assembly
 fingerprints cannot be merged or imported into one another. Future mappings must
 retain distinct source and target identifiers and record their validation;
 liftover is never exact identity.
+
+## Draft revision history
+
+2026-09-23, draft 1.0.1: corrected the earlier statement that an ambiguous bridge
+"remains in a singleton cluster". The existing implementation permits later
+mutually compatible forms to join a bridge-marked cluster, as now described above.
+This is a correction to the draft's description of existing behavior, not a
+clustering algorithm change. Exact identity families SC1/TF1/SE1, canonical
+objects, digests, FC1 memberships and accession allocation, and registry schema 1
+are unchanged by this revision. The correction does not rename or recompute
+previously stored identities or clusters.

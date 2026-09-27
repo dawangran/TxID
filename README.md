@@ -156,9 +156,23 @@ StringTie, TALON, gffcompare, SQANTI3, and isoSeQL execution, see the
 [Tier-0 execution report](docs/benchmark/publication-smoke-2026-07-31.md).
 Tier 0 verifies software integration. The separate
 [ENCODE full-genome GTF report](docs/benchmark/encode-gtf-full-2026-07-31.md)
-evaluates released fixed models. The current Technical Note is scoped to
+evaluates released fixed models. The current Application Note is scoped to
 deterministic identity and interoperability of those models, not discovery
 accuracy or full-genome caller superiority.
+
+## Application Note manuscript
+
+The [manuscript package](deliverables/TxID_Bioinformatics_Application_Note_2026-09-20/README.md) contains the final English text,
+paragraph-aligned Chinese review copy, figure, supplement and compact evidence.
+It distinguishes historical TxID 0.1.0 fixed-model evaluations from the separately
+verified 0.1.3 IsoQuant–StringTie case. Author declarations and public archival
+links still require completion before journal submission. The package README
+provides commands for rebuilding and validating the documents.
+
+The bounded real-caller selection script `benchmarks/run_real_interop_callers.py`
+requires Python 3.11 or later and separately installed alignment/caller tools;
+the recorded execution used Python 3.12.13. TxID itself requires Python 3.10 or
+later.
 
 ## Scope and important limitations
 
@@ -171,9 +185,10 @@ accuracy or full-genome caller superiority.
   locus.
 - The current alpha includes synthetic validation, version-pinned integration
   tests, and a documented six-sample public full-genome fixed-model benchmark.
-  Generated inputs and result payloads are deliberately excluded from this
-  source-only repository. TxID does not evaluate discovery sensitivity or
-  abundance accuracy from raw reads.
+  Large generated inputs and full result payloads are excluded from this
+  repository. The Application Note includes an explicit set of compact public-data
+  evidence files for manuscript reproduction. TxID does not evaluate discovery
+  sensitivity or abundance accuracy from raw reads.
 
 ## License
 

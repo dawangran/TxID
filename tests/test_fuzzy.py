@@ -3,9 +3,11 @@ from __future__ import annotations
 import json
 import random
 import unittest
+from itertools import combinations, permutations
 
 from txid.fuzzy import cluster_forms, compatible
-from txid.models import StructuralIdentity
+from txid.identity import identify
+from txid.models import Exon, StructuralIdentity, TranscriptModel
 
 
 def fake_identity(public_id: str, start: int, end: int) -> StructuralIdentity:
@@ -98,6 +100,65 @@ class FuzzyTests(unittest.TestCase):
         )
         self.assertEqual([cluster.members for cluster in clusters], [(left.public_id,), (right.public_id,), (bridge.public_id,)])
         self.assertEqual(clusters[-1].bridge_status, "ambiguous_bridge")
+
+    def test_real_bridge_cluster_accepts_later_compatible_form(self):
+        coordinates = {
+            "left": (100, 200),
+            "right": (110, 210),
+            "bridge": (105, 205),
+            "later": (100, 210),
+        }
+        assembly = "sha256:" + "0" * 63 + "1"
+        identities = {
+            name: identify(
+                TranscriptModel("chr1", "+", (Exon(*interval),), name), assembly
+            ).form
+            for name, interval in coordinates.items()
+        }
+        names = {identity.public_id: name for name, identity in identities.items()}
+        self.assertEqual(
+            [names[item.public_id] for item in sorted(identities.values(), key=lambda item: item.public_id)],
+            ["right", "left", "bridge", "later"],
+        )
+
+        def membership(clusters):
+            return {
+                frozenset(names[member] for member in cluster.members): cluster.bridge_status
+                for cluster in clusters
+            }
+
+        before = cluster_forms(
+            [identities[name] for name in ("left", "right", "bridge")],
+            splice_tolerance=0,
+            end_tolerance=5,
+        )
+        self.assertEqual(
+            membership(before),
+            {
+                frozenset({"left"}): "unambiguous",
+                frozenset({"right"}): "unambiguous",
+                frozenset({"bridge"}): "ambiguous_bridge",
+            },
+        )
+        expected = {
+            frozenset({"left"}): "unambiguous",
+            frozenset({"right"}): "unambiguous",
+            frozenset({"bridge", "later"}): "ambiguous_bridge",
+        }
+        for ordering in permutations(identities):
+            with self.subTest(order=ordering):
+                clusters = cluster_forms(
+                    [identities[name] for name in ordering],
+                    splice_tolerance=0,
+                    end_tolerance=5,
+                )
+                self.assertEqual(membership(clusters), expected)
+                for cluster in clusters:
+                    # Check complete linkage directly from the input intervals,
+                    # independently of the implementation's compatibility helper.
+                    for first, second in combinations(cluster.members, 2):
+                        for a, b in zip(coordinates[names[first]], coordinates[names[second]]):
+                            self.assertLessEqual(abs(a - b), 5)
 
     def test_candidate_index_matches_exhaustive_complete_linkage(self):
         rng = random.Random(20260814)

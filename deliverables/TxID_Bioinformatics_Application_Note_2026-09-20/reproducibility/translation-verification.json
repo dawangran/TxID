@@ -1,0 +1,27 @@
+{
+  "date": "2026-09-23",
+  "status": "PASS",
+  "translated_blocks": 44,
+  "english_prose_paragraphs": 32,
+  "headings": 12,
+  "format": "Each complete English block is followed by its Chinese translation; the figure is included once.",
+  "aligned_to_current_english_revision": true,
+  "numeric_tokens_preserved": true,
+  "number_word_equivalences": [
+    {
+      "source_prefix": "Wyman D, Balderrama-Gutierrez G, Reese F et al. A technology-agnostic ",
+      "English_number_words_rendered_as_Chinese_digits": {
+        "3": 1
+      }
+    }
+  ],
+  "inline_code_preserved": true,
+  "source_sha256": "b69e51cf0d564fbf60287b16a411af88e2be7a5eef34e05f369b49cda89e063e",
+  "figure_sha256": "98c1786013f62dbbf4035fffc1bb92f46523071792b5a9e5673fc5fe19925c87",
+  "notes": [
+    "Complete English-source blocks and Chinese translations synchronized after final editorial revision.",
+    "Numeric and inline-code counters independently checked; Wyman March-to-3 rendering reviewed.",
+    "Separate reviews checked scientific scope and bilingual frontmatter/caption; source experiment data unchanged.",
+    "DOCX XML/text checked separately; Office pagination not rendered."
+  ]
+}

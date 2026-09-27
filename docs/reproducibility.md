@@ -1,6 +1,8 @@
 # Reproducibility checklist
 
-- Identity specification: normative draft 1.0.0 in `docs/superpowers/specs/`.
+- Identity specification: normative draft 1.0.1 in `docs/superpowers/specs/`;
+  the 2026-09-23 clarification records existing fuzzy bridge behavior without
+  changing identity algorithms or cluster memberships.
 - Registry schema: `schemas/registry-v1.sql`.
 - Machine-readable canonical and mapping schemas: `schemas/*.schema.json`.
 - Golden vectors: `tests/conformance/exact-v1.json`.
@@ -15,6 +17,8 @@
 - Checked summary and matrix: `benchmarks/results/`.
 - Runtime dependencies: Python standard library only; Python >=3.10.
 - License: BSD-3-Clause.
+- Conda recipe: `conda-recipe/meta.yaml`, aligned with the current 0.1.3 package.
+  `tests/test_packaging.py` checks recipe, project and runtime version consistency.
 
 The checked external comparison uses synthetic truth-labelled inputs. isoSeQL's
 SQANTI3-compatible fixtures were generated directly; SQANTI3 was not executed.
@@ -24,7 +28,10 @@ checksums.
 
 Before a publication release, replace manuscript placeholders with author,
 repository, RRID/bio.tools, archive DOI, GigaDB/Zenodo DOI, funding, and external
-comparator version information. Build and publish a digest-pinned container. The
-Dockerfile pins the Python base image by immutable digest and pins the JupyterLab
-version. The WDL image tag should be replaced by the published image digest for
-an archival run.
+comparator version information. Record the immutable digest of the published
+final container for an archival run. The Dockerfile pins an existing TxID/JupyterLab
+base image by digest and installs the current TxID wheel on top; that base digest
+does not identify the final image. The WDL defaults to the current image tag and
+accepts an explicit `docker_image` value, which should use the final published
+image digest for archival execution. Historical benchmark results labelled TxID
+0.1.0 retain that version and are not relabelled by packaging updates.

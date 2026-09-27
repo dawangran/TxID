@@ -50,6 +50,10 @@ def main() -> int:
     parser.add_argument("--work-dir", type=Path, required=True)
     parser.add_argument("--run-json", type=Path, required=True)
     parser.add_argument("--threads", type=int, default=4)
+    parser.add_argument(
+        "--infer-annotation-meta-features", action="store_true",
+        help="allow IsoQuant to infer missing gene/transcript records instead of --complete_genedb",
+    )
     args = parser.parse_args()
     args.work_dir.mkdir(parents=True, exist_ok=True)
     args.output_gtf.parent.mkdir(parents=True, exist_ok=True)
@@ -63,7 +67,7 @@ def main() -> int:
             str(args.reference),
             "--genedb",
             str(args.annotation),
-            "--complete_genedb",
+            *([] if args.infer_annotation_meta_features else ["--complete_genedb"]),
             "--bam",
             str(args.bam),
             "--data_type",

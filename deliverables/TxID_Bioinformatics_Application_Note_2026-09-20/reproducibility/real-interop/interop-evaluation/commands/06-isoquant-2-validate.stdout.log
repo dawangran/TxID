@@ -1,0 +1,19 @@
+{
+  "issues": [],
+  "summary": {
+    "annotations": 1,
+    "assembly": "GRCh38-selected-full-reference",
+    "assembly_fingerprint": "sha256:0b301cd433fde99813eef5747cb0c060cb20f65de7aa17beeda1c17520f22408",
+    "classifications": {
+      "ambiguous_gene": 4,
+      "known": 297,
+      "novel_in_known_gene": 10
+    },
+    "exact_forms": 201,
+    "imports": 2,
+    "loci": 4,
+    "observations": 311,
+    "splice_chains": 189
+  },
+  "valid": true
+}

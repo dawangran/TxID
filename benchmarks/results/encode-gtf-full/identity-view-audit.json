@@ -1,0 +1,317 @@
+{
+  "ended_unix": 1785477413.919515,
+  "schema": "txid.gtf-identity-view.v1",
+  "started_unix": 1785477008.5289676,
+  "views": [
+    {
+      "duplicate_attribute_occurrences": 1590140,
+      "duplicate_attribute_occurrences_by_key": {
+        "ont": 7627,
+        "tag": 1582513
+      },
+      "input": {
+        "bytes": 42720023,
+        "path": "/mnt/zzbnew/rnamodel/wangxue/Cyclone/model/data/raw/encode_long_read_rna/ref/gencode.v29.primary_assembly.annotation_UCSC_names.gtf.gz",
+        "sha256": "671eda3b7e29fe825a27252746dac10373a4c1087ebb0d3b14a13988cfc6caf0"
+      },
+      "input_feature_counts": {
+        "cds": 746957,
+        "exon": 1263028,
+        "gene": 58780,
+        "selenocysteine": 120,
+        "start_codon": 86476,
+        "stop_codon": 78600,
+        "transcript": 206761,
+        "utr": 302012
+      },
+      "kept_feature_counts": {
+        "exon": 1263028,
+        "transcript": 206761
+      },
+      "label": "reference-gencode-v29",
+      "output": {
+        "bytes": 10471120,
+        "compressed": true,
+        "gzip_header_policy": "RFC 1952 with mtime=0 and no original filename",
+        "path": "/mnt/zzbnew/rnamodel/wangxue/Cyclone/TxID/benchmark-work/encode-gtf-public/identity-views/reference-gencode-v29.identity.gtf.gz",
+        "payload_bytes": 158138006,
+        "payload_sha256": "2625da7dcc77404625b503477e63ae62eaaa2193a1de5fcc7159bec7d6999e78",
+        "sha256": "7eba34ac1e01966e4ffe5b4f16c8864b876a640e2b56fbac7f2c85621353391f"
+      },
+      "projection_contract": {
+        "coordinate_columns": "preserved byte-for-byte",
+        "duplicate_identifier_attributes": "accepted only when all values are identical",
+        "duplicate_nonidentifier_attributes": "counted in audit and omitted",
+        "kept_attributes": [
+          "gene_id",
+          "transcript_id"
+        ],
+        "kept_features": [
+          "exon",
+          "transcript"
+        ],
+        "record_order": "preserved"
+      },
+      "transcript_rows": 206761,
+      "transcripts_with_exons": 206761
+    },
+    {
+      "duplicate_attribute_occurrences": 0,
+      "duplicate_attribute_occurrences_by_key": {},
+      "input": {
+        "bytes": 12556843,
+        "path": "/tmp/txid-encode-gtf/models/wtc11-encode-ont-r1.talon.gtf.gz",
+        "sha256": "1e48122c5cf0d10b86a354de2b30ebae3ae6f812bc78dce1c47f6343a0121231"
+      },
+      "input_feature_counts": {
+        "exon": 695873,
+        "transcript": 94130
+      },
+      "kept_feature_counts": {
+        "exon": 695873,
+        "transcript": 94130
+      },
+      "label": "wtc11-encode-ont-r1",
+      "output": {
+        "bytes": 4093161,
+        "compressed": true,
+        "gzip_header_policy": "RFC 1952 with mtime=0 and no original filename",
+        "path": "/mnt/zzbnew/rnamodel/wangxue/Cyclone/TxID/benchmark-work/encode-gtf-public/identity-views/wtc11-encode-ont-r1.identity.gtf.gz",
+        "payload_bytes": 87969699,
+        "payload_sha256": "1e7effb528fd95526e06b7174517e1bd7bfde4edfb91d9a2bbaf9f4cd1cbb040",
+        "sha256": "a015111ae1bf33bd34b0bd48a2229ee39edb5b7554a0e0b0b08dce11cf240829"
+      },
+      "projection_contract": {
+        "coordinate_columns": "preserved byte-for-byte",
+        "duplicate_identifier_attributes": "accepted only when all values are identical",
+        "duplicate_nonidentifier_attributes": "counted in audit and omitted",
+        "kept_attributes": [
+          "gene_id",
+          "transcript_id"
+        ],
+        "kept_features": [
+          "exon",
+          "transcript"
+        ],
+        "record_order": "preserved"
+      },
+      "transcript_rows": 94130,
+      "transcripts_with_exons": 94130
+    },
+    {
+      "duplicate_attribute_occurrences": 0,
+      "duplicate_attribute_occurrences_by_key": {},
+      "input": {
+        "bytes": 26978282,
+        "path": "/tmp/txid-encode-gtf/models/wtc11-encode-ont-r2.talon.gtf.gz",
+        "sha256": "e731b308dae413082ec7bc4eca9bc1251abff3dbfe93120efc2cc87faa15f51b"
+      },
+      "input_feature_counts": {
+        "exon": 1699489,
+        "transcript": 189280
+      },
+      "kept_feature_counts": {
+        "exon": 1699489,
+        "transcript": 189280
+      },
+      "label": "wtc11-encode-ont-r2",
+      "output": {
+        "bytes": 8622635,
+        "compressed": true,
+        "gzip_header_policy": "RFC 1952 with mtime=0 and no original filename",
+        "path": "/mnt/zzbnew/rnamodel/wangxue/Cyclone/TxID/benchmark-work/encode-gtf-public/identity-views/wtc11-encode-ont-r2.identity.gtf.gz",
+        "payload_bytes": 210173064,
+        "payload_sha256": "941386b767d3e2460693f925f48efa4648d22e827f34337f2538bd4adfacb255",
+        "sha256": "615110f34b36ab6a0f834dc37248a83033235e7dddda6651617965205215239d"
+      },
+      "projection_contract": {
+        "coordinate_columns": "preserved byte-for-byte",
+        "duplicate_identifier_attributes": "accepted only when all values are identical",
+        "duplicate_nonidentifier_attributes": "counted in audit and omitted",
+        "kept_attributes": [
+          "gene_id",
+          "transcript_id"
+        ],
+        "kept_features": [
+          "exon",
+          "transcript"
+        ],
+        "record_order": "preserved"
+      },
+      "transcript_rows": 189280,
+      "transcripts_with_exons": 189280
+    },
+    {
+      "duplicate_attribute_occurrences": 0,
+      "duplicate_attribute_occurrences_by_key": {},
+      "input": {
+        "bytes": 7442376,
+        "path": "/tmp/txid-encode-gtf/models/wtc11-encode-ont-r3.talon.gtf.gz",
+        "sha256": "0e8a0921d2d585f3fe0a1b22d24aa8126b96f79af71f294025a936df7e54987e"
+      },
+      "input_feature_counts": {
+        "exon": 369152,
+        "transcript": 58600
+      },
+      "kept_feature_counts": {
+        "exon": 369152,
+        "transcript": 58600
+      },
+      "label": "wtc11-encode-ont-r3",
+      "output": {
+        "bytes": 2440191,
+        "compressed": true,
+        "gzip_header_policy": "RFC 1952 with mtime=0 and no original filename",
+        "path": "/mnt/zzbnew/rnamodel/wangxue/Cyclone/TxID/benchmark-work/encode-gtf-public/identity-views/wtc11-encode-ont-r3.identity.gtf.gz",
+        "payload_bytes": 47668813,
+        "payload_sha256": "d63ff1d6a308d952855d46602ce63456e5afc3093868a06c3ace6c00634bbb60",
+        "sha256": "05f2638a62e94bdb88a2801c961d63a98302cd48cf28f1b10239c59ed9069b99"
+      },
+      "projection_contract": {
+        "coordinate_columns": "preserved byte-for-byte",
+        "duplicate_identifier_attributes": "accepted only when all values are identical",
+        "duplicate_nonidentifier_attributes": "counted in audit and omitted",
+        "kept_attributes": [
+          "gene_id",
+          "transcript_id"
+        ],
+        "kept_features": [
+          "exon",
+          "transcript"
+        ],
+        "record_order": "preserved"
+      },
+      "transcript_rows": 58600,
+      "transcripts_with_exons": 58600
+    },
+    {
+      "duplicate_attribute_occurrences": 0,
+      "duplicate_attribute_occurrences_by_key": {},
+      "input": {
+        "bytes": 8627477,
+        "path": "/tmp/txid-encode-gtf/models/wtc11-encode-pacbio-r1.talon.gtf.gz",
+        "sha256": "ea666eb0c104cc7cc5353754c3d7065e58a5f643f0fda6731d593d986aae6b54"
+      },
+      "input_feature_counts": {
+        "exon": 484193,
+        "transcript": 62906
+      },
+      "kept_feature_counts": {
+        "exon": 484193,
+        "transcript": 62906
+      },
+      "label": "wtc11-encode-pacbio-r1",
+      "output": {
+        "bytes": 2864032,
+        "compressed": true,
+        "gzip_header_policy": "RFC 1952 with mtime=0 and no original filename",
+        "path": "/mnt/zzbnew/rnamodel/wangxue/Cyclone/TxID/benchmark-work/encode-gtf-public/identity-views/wtc11-encode-pacbio-r1.identity.gtf.gz",
+        "payload_bytes": 60920298,
+        "payload_sha256": "4f5e3a0743180e9b9a429f77831dbf299c70edbb436157ef082bce172bcdfab2",
+        "sha256": "905a569638aa58aa1fbc36fc2d6a15b9f08f951522b7dbbbd959ad22f0062e12"
+      },
+      "projection_contract": {
+        "coordinate_columns": "preserved byte-for-byte",
+        "duplicate_identifier_attributes": "accepted only when all values are identical",
+        "duplicate_nonidentifier_attributes": "counted in audit and omitted",
+        "kept_attributes": [
+          "gene_id",
+          "transcript_id"
+        ],
+        "kept_features": [
+          "exon",
+          "transcript"
+        ],
+        "record_order": "preserved"
+      },
+      "transcript_rows": 62906,
+      "transcripts_with_exons": 62906
+    },
+    {
+      "duplicate_attribute_occurrences": 0,
+      "duplicate_attribute_occurrences_by_key": {},
+      "input": {
+        "bytes": 7492812,
+        "path": "/tmp/txid-encode-gtf/models/wtc11-encode-pacbio-r2.talon.gtf.gz",
+        "sha256": "320f2b7f61ff60eb18309b3875103680b78fb9351bb2b21f548396e0dfccc9eb"
+      },
+      "input_feature_counts": {
+        "exon": 400682,
+        "transcript": 56211
+      },
+      "kept_feature_counts": {
+        "exon": 400682,
+        "transcript": 56211
+      },
+      "label": "wtc11-encode-pacbio-r2",
+      "output": {
+        "bytes": 2492968,
+        "compressed": true,
+        "gzip_header_policy": "RFC 1952 with mtime=0 and no original filename",
+        "path": "/mnt/zzbnew/rnamodel/wangxue/Cyclone/TxID/benchmark-work/encode-gtf-public/identity-views/wtc11-encode-pacbio-r2.identity.gtf.gz",
+        "payload_bytes": 50893433,
+        "payload_sha256": "bc3d7ffcd943d01c8d35d32c6031188b425835d3730d65dbf0e3a5edb4af6332",
+        "sha256": "29e9f3925c1d09cbb3d33ad8b709ce74da43150991f016723106044f0569f9d8"
+      },
+      "projection_contract": {
+        "coordinate_columns": "preserved byte-for-byte",
+        "duplicate_identifier_attributes": "accepted only when all values are identical",
+        "duplicate_nonidentifier_attributes": "counted in audit and omitted",
+        "kept_attributes": [
+          "gene_id",
+          "transcript_id"
+        ],
+        "kept_features": [
+          "exon",
+          "transcript"
+        ],
+        "record_order": "preserved"
+      },
+      "transcript_rows": 56211,
+      "transcripts_with_exons": 56211
+    },
+    {
+      "duplicate_attribute_occurrences": 0,
+      "duplicate_attribute_occurrences_by_key": {},
+      "input": {
+        "bytes": 10339823,
+        "path": "/tmp/txid-encode-gtf/models/wtc11-encode-pacbio-r3.talon.gtf.gz",
+        "sha256": "4dfd7d9e8ab54a61a6b0e28e3c44e6092bcc7c092d09906574249cb8b95a2ac3"
+      },
+      "input_feature_counts": {
+        "exon": 599605,
+        "transcript": 77677
+      },
+      "kept_feature_counts": {
+        "exon": 599605,
+        "transcript": 77677
+      },
+      "label": "wtc11-encode-pacbio-r3",
+      "output": {
+        "bytes": 3408313,
+        "compressed": true,
+        "gzip_header_policy": "RFC 1952 with mtime=0 and no original filename",
+        "path": "/mnt/zzbnew/rnamodel/wangxue/Cyclone/TxID/benchmark-work/encode-gtf-public/identity-views/wtc11-encode-pacbio-r3.identity.gtf.gz",
+        "payload_bytes": 75412460,
+        "payload_sha256": "3e763c572071cfd9e92859db2b2b0a19778e0328307f6273c30b802465a89bd9",
+        "sha256": "a32726ac18edea4c2568d4a0147c3cbf24e7cf65724420c9947a1244bf24c361"
+      },
+      "projection_contract": {
+        "coordinate_columns": "preserved byte-for-byte",
+        "duplicate_identifier_attributes": "accepted only when all values are identical",
+        "duplicate_nonidentifier_attributes": "counted in audit and omitted",
+        "kept_attributes": [
+          "gene_id",
+          "transcript_id"
+        ],
+        "kept_features": [
+          "exon",
+          "transcript"
+        ],
+        "record_order": "preserved"
+      },
+      "transcript_rows": 77677,
+      "transcripts_with_exons": 77677
+    }
+  ]
+}

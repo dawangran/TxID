@@ -1,0 +1,22 @@
+{
+  "argv": [
+    "/root/miniconda3/bin/python",
+    "-m",
+    "txid",
+    "--version"
+  ],
+  "cwd": "/mnt/zzbnew/rnamodel/wangxue/Cyclone/TxID",
+  "returncode": 0,
+  "stderr": {
+    "bytes": 0,
+    "path": "/mnt/zzbnew/rnamodel/wangxue/Cyclone/TxID/benchmark-work/submission-repair-2026-09-23/interop-evaluation/commands/00-version.stderr.log",
+    "role": "stderr",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "stdout": {
+    "bytes": 11,
+    "path": "/mnt/zzbnew/rnamodel/wangxue/Cyclone/TxID/benchmark-work/submission-repair-2026-09-23/interop-evaluation/commands/00-version.stdout.log",
+    "role": "stdout",
+    "sha256": "b04b7ec61fe9da0fce4ff0ee478aeaf1bbad583e58336f0864860e8d12ea1e0d"
+  }
+}

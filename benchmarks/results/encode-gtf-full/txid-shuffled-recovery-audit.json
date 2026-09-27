@@ -1,0 +1,59 @@
+{
+  "schema": "txid.benchmark-recovery.v1",
+  "interrupted_run": "benchmark-work/encode-gtf-public/txid/shuffled",
+  "interruption": {
+    "exit_code": 143,
+    "signal": "SIGTERM",
+    "stage": "final catalog export after ordered import 6 of 6",
+    "completed_component_imports": 6
+  },
+  "rollback": {
+    "journal_present_after_interruption": false,
+    "rollback_required": false,
+    "database_bytes": 1698844672
+  },
+  "component_observations": {
+    "mapping_files": 6,
+    "rows": 538804,
+    "deterministic_preview": {
+      "path": "benchmark-work/encode-gtf-public/txid/shuffled/observations.from-components.tsv",
+      "bytes": 144008851
+    }
+  },
+  "validation": {
+    "copy": {
+      "path": "/tmp/txid-encode-gtf/txid-shuffled-complete.sqlite",
+      "bytes": 1698844672,
+      "sha256": "08fda7dcf28f98683c052fde2ce6011a9e2f6527b6bd04d60e6eb766b8cceb6b"
+    },
+    "command": [
+      "env",
+      "PYTHONPATH=src",
+      "python",
+      "-m",
+      "txid",
+      "validate",
+      "--db",
+      "/tmp/txid-encode-gtf/txid-shuffled-complete.sqlite"
+    ],
+    "exit_code": 0,
+    "valid": true,
+    "issues": [],
+    "summary": {
+      "annotations": 1,
+      "assembly": "GRCh38-GCA_000001405.15",
+      "assembly_fingerprint": "sha256:0b301cd433fde99813eef5747cb0c060cb20f65de7aa17beeda1c17520f22408",
+      "classifications": {
+        "ambiguous_gene": 118096,
+        "new_locus": 19618,
+        "novel_in_known_gene": 401090
+      },
+      "exact_forms": 467819,
+      "imports": 6,
+      "loci": 27584,
+      "observations": 538804,
+      "splice_chains": 324511
+    }
+  },
+  "resumption_policy": "Resume with completed import count six only after every component artifact exists, no rollback journal is present, and this validated recovery audit is supplied. Pre-interruption runtime is not reconstructed."
+}

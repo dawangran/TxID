@@ -1,0 +1,71 @@
+Command line: /mnt/zzbnew/rnamodel/wangxue/Cyclone/TxID/workflows/publication_benchmark/scripts/isoquant_entry.py --reference /mnt/zzbnew/rnamodel/wangxue/Cyclone/model/data/raw/encode_long_read_rna/ref/GRCh38_no_alt_analysis_set_GCA_000001405.15.fasta --genedb benchmark-work/submission-repair-2026-09-23/inputs/gencode-v29.identity.chr22.gtf --bam benchmark-work/submission-repair-2026-09-23/alignment/chr22.primary.bam --data_type pacbio_ccs --output benchmark-work/submission-repair-2026-09-23/callers/isoquant-inferred --prefix ENCFF105WIJ_chr22 --threads 4 --force
+2026-09-23 07:00:34,933 - INFO - Running IsoQuant version 3.13.0
+2026-09-23 07:00:34,934 - WARNING - Output folder already exists, some files may be overwritten.
+2026-09-23 07:00:34,995 - INFO -  === IsoQuant pipeline started === 
+2026-09-23 07:00:34,996 - INFO - Python version: 3.12.13 | packaged by conda-forge | (main, Mar  5 2026, 16:50:00) [GCC 14.3.0]
+2026-09-23 07:00:34,998 - INFO - gffutils version: 0.14
+2026-09-23 07:00:35,001 - INFO - pysam version: 0.24.0
+2026-09-23 07:00:35,002 - INFO - pyfaidx version: 0.9.0.4
+2026-09-23 07:00:35,003 - INFO - Reading reference genome from /mnt/zzbnew/rnamodel/wangxue/Cyclone/model/data/raw/encode_long_read_rna/ref/GRCh38_no_alt_analysis_set_GCA_000001405.15.fasta
+2026-09-23 07:00:35,007 - INFO - Checking input gene annotation
+2026-09-23 07:00:35,205 - INFO - Gene annotation seems to be correct
+2026-09-23 07:00:35,206 - INFO - Converting gene annotation file to .db format (takes a while)...
+2026-09-23 07:02:05,050 - INFO - Gene database written to /mnt/zzbnew/rnamodel/wangxue/Cyclone/TxID/benchmark-work/submission-repair-2026-09-23/callers/isoquant-inferred/gencode-v29.identity.chr22.db
+2026-09-23 07:02:05,050 - INFO - Provide this database next time to avoid excessive conversion
+2026-09-23 07:02:05,058 - INFO - Loading gene database from /mnt/zzbnew/rnamodel/wangxue/Cyclone/TxID/benchmark-work/submission-repair-2026-09-23/callers/isoquant-inferred/gencode-v29.identity.chr22.db
+2026-09-23 07:02:05,151 - INFO - Loading reference genome from /mnt/zzbnew/rnamodel/wangxue/Cyclone/model/data/raw/encode_long_read_rna/ref/GRCh38_no_alt_analysis_set_GCA_000001405.15.fasta
+2026-09-23 07:02:05,160 - INFO - Processing 1 experiment
+2026-09-23 07:02:05,160 - INFO - Secondary alignments will not be used
+2026-09-23 07:02:05,160 - INFO - Processing experiment ENCFF105WIJ_chr22
+2026-09-23 07:02:05,162 - INFO - Experiment has 1 BAM file: benchmark-work/submission-repair-2026-09-23/alignment/chr22.primary.bam
+2026-09-23 07:02:06,590 - INFO - Total number of chromosomes to be processed 1: chr22 
+2026-09-23 07:02:06,595 - INFO - Collecting read alignments
+2026-09-23 07:02:07,301 - INFO - Processing chromosome chr22
+2026-09-23 07:02:25,116 - INFO - Loading read assignments from benchmark-work/submission-repair-2026-09-23/callers/isoquant-inferred/ENCFF105WIJ_chr22/aux/ENCFF105WIJ_chr22.save_chr22
+2026-09-23 07:02:25,271 - INFO - Finished processing chromosome chr22
+2026-09-23 07:02:25,294 - INFO - Counting multimapped reads
+2026-09-23 07:02:25,294 - INFO - Counting reads from chr22
+2026-09-23 07:02:25,296 - INFO - Resolving multimappers
+2026-09-23 07:02:25,298 - INFO - Multimappers resolved
+2026-09-23 07:02:25,303 - INFO - Alignments collected, overall alignment statistics:
+2026-09-23 07:02:25,303 - INFO -   primary: 2765
+2026-09-23 07:02:25,305 - INFO -   unaligned: 0
+2026-09-23 07:02:25,316 - INFO - Finishing read assignment, total assignments 2611, polyA percentage 97.1
+2026-09-23 07:02:25,316 - INFO - Read assignments files saved to benchmark-work/submission-repair-2026-09-23/callers/isoquant-inferred/ENCFF105WIJ_chr22/aux/ENCFF105WIJ_chr22.save*. 
+2026-09-23 07:02:25,318 - INFO - To keep these intermediate files for debug purposes use --keep_tmp flag
+2026-09-23 07:02:25,320 - INFO - Total assignments used for analysis: 2611, polyA tail detected in 2536 (97.1%)
+2026-09-23 07:02:25,321 - INFO - Processing assigned reads ENCFF105WIJ_chr22
+2026-09-23 07:02:25,322 - INFO - Transcript models construction is turned on
+2026-09-23 07:02:25,346 - INFO - Transcript construction options:
+2026-09-23 07:02:25,346 - INFO -   Novel monoexonic transcripts will be reported: yes
+2026-09-23 07:02:25,350 - INFO -   PolyA tails are required for multi-exon transcripts to be reported: yes
+2026-09-23 07:02:25,352 - INFO -   PolyA tails are required for 2-exon transcripts to be reported: yes
+2026-09-23 07:02:25,353 - INFO -   PolyA tails are required for known monoexon transcripts to be reported: yes
+2026-09-23 07:02:25,354 - INFO -   PolyA tails are required for novel monoexon transcripts to be reported: yes
+2026-09-23 07:02:25,356 - INFO -   Splice site reporting level: only_canonical
+2026-09-23 07:02:25,507 - INFO - Processing chromosome chr22
+2026-09-23 07:02:26,140 - INFO - Loading read assignments from benchmark-work/submission-repair-2026-09-23/callers/isoquant-inferred/ENCFF105WIJ_chr22/aux/ENCFF105WIJ_chr22.save_chr22
+2026-09-23 07:03:16,063 - INFO - Finished processing chromosome chr22
+2026-09-23 07:03:16,197 - INFO - Read assignments are stored in benchmark-work/submission-repair-2026-09-23/callers/isoquant-inferred/ENCFF105WIJ_chr22/ENCFF105WIJ_chr22.read_assignments.tsv.gz.gz
+2026-09-23 07:03:16,198 - INFO - Read assignment statistics
+2026-09-23 07:03:16,199 - INFO -   ambiguous: 255
+2026-09-23 07:03:16,201 - INFO -   inconsistent: 95
+2026-09-23 07:03:16,202 - INFO -   inconsistent_ambiguous: 167
+2026-09-23 07:03:16,204 - INFO -   inconsistent_non_intronic: 425
+2026-09-23 07:03:16,206 - INFO -   intergenic: 3
+2026-09-23 07:03:16,209 - INFO -   noninformative: 14
+2026-09-23 07:03:16,211 - INFO -   unique: 1585
+2026-09-23 07:03:16,212 - INFO -   unique_minor_difference: 67
+2026-09-23 07:03:16,214 - INFO - Gene counts are stored in benchmark-work/submission-repair-2026-09-23/callers/isoquant-inferred/ENCFF105WIJ_chr22/ENCFF105WIJ_chr22.gene_counts.tsv
+2026-09-23 07:03:16,215 - INFO - Transcript counts are stored in benchmark-work/submission-repair-2026-09-23/callers/isoquant-inferred/ENCFF105WIJ_chr22/ENCFF105WIJ_chr22.transcript_counts.tsv
+2026-09-23 07:03:16,217 - INFO - Counts can be converted to other formats using isoquant_lib/convert_grouped_counts.py
+2026-09-23 07:03:16,246 - INFO - Transcript model statistics
+2026-09-23 07:03:16,247 - INFO -   known: 118
+2026-09-23 07:03:16,248 - INFO -   novel_in_catalog: 5
+2026-09-23 07:03:16,250 - INFO -   novel_not_in_catalog: 3
+2026-09-23 07:03:16,286 - INFO - Transcript model file benchmark-work/submission-repair-2026-09-23/callers/isoquant-inferred/ENCFF105WIJ_chr22/ENCFF105WIJ_chr22.transcript_models.gtf
+2026-09-23 07:03:16,299 - INFO - Extended annotation is saved to benchmark-work/submission-repair-2026-09-23/callers/isoquant-inferred/ENCFF105WIJ_chr22/ENCFF105WIJ_chr22.extended_annotation.gtf
+2026-09-23 07:03:16,300 - INFO - Counts for generated transcript models are saves to: benchmark-work/submission-repair-2026-09-23/callers/isoquant-inferred/ENCFF105WIJ_chr22/ENCFF105WIJ_chr22.discovered_transcript_counts.tsv
+2026-09-23 07:03:16,363 - INFO - Processed experiment ENCFF105WIJ_chr22
+2026-09-23 07:03:16,417 - INFO - Processed 1 experiment
+2026-09-23 07:03:16,417 - INFO -  === IsoQuant pipeline finished === 

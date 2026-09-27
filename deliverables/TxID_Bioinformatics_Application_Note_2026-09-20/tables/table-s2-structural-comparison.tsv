@@ -1,0 +1,6 @@
+Layer	Target	Emitted	Missing	Groups	FM pairs	FM denominator	FM rate	FS pairs	FS denominator	FS rate
+TxID exact form	Exact form	538804	0	467819	0	100680	0.0000000	0	100680	0.0000000
+gffcompare tracking	Exact form	538802	2	379407	171218	271895	0.6297210	0	100677	0.0000000
+gffcompare tracking	Complete splice chain	538802	2	379407	20458	271895	0.0752423	0	251437	0.0000000
+isoSeQL exact ends	Exact form	538804	0	467908	0	100587	0.0000000	93	100680	0.0009237
+isoSeQL common junction	Complete splice chain	538804	0	364032	90319	335842	0.2689330	5917	251440	0.0235325

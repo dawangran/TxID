@@ -1,0 +1,41 @@
+metric	value	unit
+exact_form_join.equal_coordinate_pairs	110	cross-caller observation pairs
+exact_form_join.joined_pairs	110	cross-caller observation pairs
+exact_form_join.correctly_joined_pairs	110	cross-caller observation pairs
+exact_form_join.false_merge_pairs	0	cross-caller observation pairs
+exact_form_join.false_split_pairs	0	cross-caller observation pairs
+exact_form_join.false_merge_denominator	110	cross-caller observation pairs
+exact_form_join.false_split_denominator	110	cross-caller observation pairs
+exact_form_join.false_merge_rate	0.0	fraction
+exact_form_join.false_split_rate	0.0	fraction
+multi_exon_chain_join.equal_coordinate_pairs	115	cross-caller observation pairs
+multi_exon_chain_join.joined_pairs	115	cross-caller observation pairs
+multi_exon_chain_join.correctly_joined_pairs	115	cross-caller observation pairs
+multi_exon_chain_join.false_merge_pairs	0	cross-caller observation pairs
+multi_exon_chain_join.false_split_pairs	0	cross-caller observation pairs
+multi_exon_chain_join.false_merge_denominator	115	cross-caller observation pairs
+multi_exon_chain_join.false_split_denominator	115	cross-caller observation pairs
+multi_exon_chain_join.false_merge_rate	0.0	fraction
+multi_exon_chain_join.false_split_rate	0.0	fraction
+coordinate_join_of_original_ids.equal_coordinate_pairs	110	cross-caller observation pairs
+coordinate_join_of_original_ids.joined_pairs	0	cross-caller observation pairs
+coordinate_join_of_original_ids.correctly_joined_pairs	0	cross-caller observation pairs
+coordinate_join_of_original_ids.false_merge_pairs	0	cross-caller observation pairs
+coordinate_join_of_original_ids.false_split_pairs	110	cross-caller observation pairs
+coordinate_join_of_original_ids.false_merge_denominator	0	cross-caller observation pairs
+coordinate_join_of_original_ids.false_split_denominator	110	cross-caller observation pairs
+coordinate_join_of_original_ids.false_merge_rate	NA	fraction
+coordinate_join_of_original_ids.false_split_rate	1.0	fraction
+form_matrix.rows	2	caller outputs
+form_matrix.columns	201	identity groups
+form_matrix.occupied_cells	311	caller-group cells
+form_matrix.shared_columns	110	identity groups
+form_matrix.sparsity	0.22636815920398012	fraction
+chain_matrix.rows	2	caller outputs
+chain_matrix.columns	189	identity groups
+chain_matrix.occupied_cells	298	caller-group cells
+chain_matrix.shared_columns	109	identity groups
+chain_matrix.sparsity	0.21164021164021163	fraction
+original_id_intersection	0	identifier strings
+shared_chains_with_distinct_forms	6	splice chains
+same_chain_different_form_cross_caller_pairs	7	cross-caller observation pairs

@@ -1,0 +1,36 @@
+{
+  "argv": [
+    "/root/miniconda3/bin/python",
+    "-m",
+    "txid",
+    "add",
+    "--db",
+    "/mnt/zzbnew/rnamodel/wangxue/Cyclone/TxID/benchmark-work/submission-repair-2026-09-23/interop-evaluation/stringtie-first/registry.sqlite",
+    "--input",
+    "/mnt/zzbnew/rnamodel/wangxue/Cyclone/TxID/benchmark-work/submission-repair-2026-09-23/callers/isoquant.gtf",
+    "--sample",
+    "ENCFF105WIJ_chr22",
+    "--tool",
+    "isoquant",
+    "--annotation-name",
+    "GENCODE-v29-chr22",
+    "--output-gtf",
+    "/mnt/zzbnew/rnamodel/wangxue/Cyclone/TxID/benchmark-work/submission-repair-2026-09-23/interop-evaluation/stringtie-first/02-isoquant.txid.gtf",
+    "--mapping",
+    "/mnt/zzbnew/rnamodel/wangxue/Cyclone/TxID/benchmark-work/submission-repair-2026-09-23/interop-evaluation/stringtie-first/02-isoquant.mapping.tsv"
+  ],
+  "cwd": "/mnt/zzbnew/rnamodel/wangxue/Cyclone/TxID",
+  "returncode": 0,
+  "stderr": {
+    "bytes": 0,
+    "path": "/mnt/zzbnew/rnamodel/wangxue/Cyclone/TxID/benchmark-work/submission-repair-2026-09-23/interop-evaluation/commands/12-stringtie-2-isoquant-add.stderr.log",
+    "role": "stderr",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "stdout": {
+    "bytes": 479,
+    "path": "/mnt/zzbnew/rnamodel/wangxue/Cyclone/TxID/benchmark-work/submission-repair-2026-09-23/interop-evaluation/commands/12-stringtie-2-isoquant-add.stdout.log",
+    "role": "stdout",
+    "sha256": "f7a3198d34cd4ef833c7c8c606420bbdae3e87ba7df89976e68a4c974888985a"
+  }
+}

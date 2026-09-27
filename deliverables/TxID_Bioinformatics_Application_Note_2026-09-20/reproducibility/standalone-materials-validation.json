@@ -1,0 +1,41 @@
+{
+  "date": "2026-09-23",
+  "revision": "final contribution-focused editorial revision",
+  "status": "PASS",
+  "archive_sha256": "166deff1b84e20dfa0201f48a4be6df9d1c6d302d5058b21f0b2d1f30f4cb106",
+  "standalone_extracted_root": "/tmp/txid-final-materials-rebuild-cvbgbi8e/TxID-submission-materials-2026-09-23",
+  "commands": [
+    {
+      "script": "build_artifacts.py",
+      "returncode": 0,
+      "stdout": "Built four numeric source tables, included identity-semantics Table S5 and any interoperation supplement, figure PNG/SVG/PDF/TIFF, main manuscript and supplement DOCX.\n",
+      "stderr": ""
+    },
+    {
+      "script": "verify_manuscript.py",
+      "returncode": 0,
+      "stdout": "{\n  \"checks_passed\": 1469,\n  \"word_counts\": {\n    \"front-matter.md\": 141,\n    \"01_introduction.md\": 249,\n    \"02_implementation.md\": 439,\n    \"03_evaluation_discussion.md\": 580,\n    \"end-matter.md\": 65,\n    \"figure-caption.md\": 227,\n    \"references.md\": 241,\n    \"main_total\": 1942,\n    \"body_total\": 1268\n  },\n  \"status\": \"PASS\"\n}\n",
+      "stderr": ""
+    }
+  ],
+  "all_archive_file_hashes_checked": 336,
+  "same_scientific_artifacts": 15,
+  "checks_passed": 1469,
+  "real_case_evidence_mode": {
+    "observations": 311,
+    "shared_forms": 110,
+    "form_union": 201,
+    "shared_chains": 109,
+    "chain_pairs": 115,
+    "end_variant_pairs": 7,
+    "shared_forms_all_reference_known": true,
+    "evidence_verification_mode": "package-with-recorded-original-hashes",
+    "packaged_evidence_files_checked": 93,
+    "available_original_evidence_files_checked": 0,
+    "source_files_checked": 19,
+    "source_archive_members_checked": 0,
+    "source_hashes_only": 0
+  },
+  "public_deposit_verified": false,
+  "interpretation": "Standalone rebuild uses copied evidence hashes and included sources, without the 93 extra original benchmark-work file comparisons. All fifteen scientific artifacts reproduce byte for byte. This sidecar is external to avoid an archive-digest cycle."
+}

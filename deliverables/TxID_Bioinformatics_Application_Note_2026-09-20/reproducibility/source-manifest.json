@@ -1,0 +1,617 @@
+[
+  {
+    "bytes": 16154,
+    "path": "benchmarks/results/encode-gtf-full/identity-partitions.json",
+    "sha256": "4cfc3be1277568eb960238c12f285728ef9b3bf50671a561609b418a01a5c020"
+  },
+  {
+    "bytes": 886,
+    "path": "benchmarks/results/encode-gtf-full/invariance-summary.json",
+    "sha256": "6a5e7ecd7f831bea0ed1f77dcfef838b5bd03eb998174c226c126580e0a6c26a"
+  },
+  {
+    "bytes": 5315,
+    "path": "benchmarks/results/encode-gtf-full/annotation-release-v29-v49.json",
+    "sha256": "ee9dfe055e1581f03396d374f8787802c215465325b1be513d29011b354247ec"
+  },
+  {
+    "bytes": 8430,
+    "path": "benchmarks/results/encode-gtf-full/talon-model-extraction-audit.json",
+    "sha256": "ed15e8566583775defc7054dd3165927c7897b792f2165772f7ead73d961911a"
+  },
+  {
+    "bytes": 11716,
+    "path": "benchmarks/results/encode-gtf-full/identity-view-audit.json",
+    "sha256": "028b2f9aa726c440aa7a31053115ca9974fc18498ff45a20bed699d9f7d51d3e"
+  },
+  {
+    "bytes": 1987,
+    "path": "benchmarks/results/encode-gtf-full/gencode-v49-identity-view-audit.json",
+    "sha256": "7d107da90eaa819f388189682248632edf375759f692edf42e1f32675e889e8b"
+  },
+  {
+    "bytes": 2118,
+    "path": "benchmarks/results/encode-gtf-full/encode-files-checked.tsv",
+    "sha256": "91c3e17e85c2af0f864a3dd743fdbf0e6035a3099c4e89a245e87659854bcb13"
+  },
+  {
+    "bytes": 2275,
+    "path": "benchmarks/results/encode-gtf-full/isoseql-compat-audit.json",
+    "sha256": "6223ea265dba68a334af5e818b887cd553b05bc533847cc7fe67bae66a2d1580"
+  },
+  {
+    "bytes": 1779,
+    "path": "benchmarks/results/encode-gtf-full/txid-sorted-recovery-audit.json",
+    "sha256": "a37abd280461739d7743c87ba69dfb4a14204dabceaa22e67c9bacf0d7144ad5"
+  },
+  {
+    "bytes": 1834,
+    "path": "benchmarks/results/encode-gtf-full/txid-shuffled-recovery-audit.json",
+    "sha256": "5a5fca5ff450c09445713866191691d58f59a2b982b3841c7fb9580a8bf7b6f5"
+  },
+  {
+    "bytes": 529,
+    "path": "benchmarks/results/encode-gtf-full/v49-pacbio-r3-classification-only-audit.json",
+    "sha256": "1b0b62937b9f9a9a7bb30a860cfc8d73310bad05ce678ad6be3c04090dcf7685"
+  },
+  {
+    "bytes": 2847,
+    "path": "benchmarks/results/simulation-summary.json",
+    "sha256": "c7cd2de586a34f0de383af15ed23247a57fdbc93afdb09531a9d19ea99e433e0"
+  },
+  {
+    "bytes": 8537,
+    "path": "docs/benchmark/encode-gtf-full-2026-07-31.md",
+    "sha256": "1672e1b800d5ba5c19102198163c9f8d22cbeb5fedfefc1648d676e906f22af1"
+  },
+  {
+    "bytes": 7902,
+    "path": "docs/benchmark/publication-smoke-2026-07-31.md",
+    "sha256": "da3195e751eb06a76caba999cb7a305e3223529bef65e74f2cf70fadadb69947"
+  },
+  {
+    "bytes": 12587,
+    "path": "docs/superpowers/specs/2026-07-19-novel-transcript-identity-registry-design.md",
+    "sha256": "61eace04be9ee8a48285a3c846612f3813cb9bfa612361b54b0a9b493f70ddc9"
+  },
+  {
+    "bytes": 21396,
+    "path": "workflows/publication_benchmark/scripts/evaluate_identity_partitions.py",
+    "sha256": "06d072ebfd4818c773575e0d171fac72897e0c148e1b96a911d646bbd031ce3f"
+  },
+  {
+    "bytes": 21869,
+    "path": "deliverables/TxID_manuscript_cohort_revision_2026-08-08/reproducibility/create_manuscript_docx.py",
+    "sha256": "3974dd40d27f36f58d962aad5f7617bd6d38de8fc1f21460e87724f7962d2227"
+  },
+  {
+    "bytes": 3783,
+    "path": "deliverables/TxID_Bioinformatics_Application_Note_2026-09-20/supplementary-tool-semantics.md",
+    "sha256": "e8c65defb116b9df90c21d2673c9d8a21b32cd4dd6ca128c109c28f1594808d6"
+  },
+  {
+    "bytes": 1697,
+    "path": "deliverables/TxID_Bioinformatics_Application_Note_2026-09-20/tables/table-s5-identity-semantics.tsv",
+    "sha256": "7c19ffefd6e7280fdf1e8ae66569d4214fe95c0219d7c5836dcaf147ab1f4fa1"
+  },
+  {
+    "bytes": 9120,
+    "path": "deliverables/TxID_Bioinformatics_Application_Note_2026-09-20/supplementary-real-interop.md",
+    "sha256": "7710598df86348290d35ebfab8f26ee344a5f2ad653190a83b89f994e40fff12"
+  },
+  {
+    "bytes": 507,
+    "path": "deliverables/TxID_Bioinformatics_Application_Note_2026-09-20/end-matter.md",
+    "sha256": "8deb8e8b9cf476c649e60d4ed9d0526eef80852da72cb3bfd47a310747d0563d"
+  },
+  {
+    "bytes": 1104,
+    "path": "deliverables/TxID_Bioinformatics_Application_Note_2026-09-20/translations/end-matter.zh-CN.json",
+    "sha256": "fc6e777ebaeb7715b91fd986ace4bb9f253fc9fc2223a92f1eb4ab065adf5f0d"
+  },
+  {
+    "bytes": 682,
+    "path": "deliverables/TxID_Bioinformatics_Application_Note_2026-09-20/reproducibility/software-test-report.json",
+    "sha256": "28f00fd22cd505909c2e7c37cf22133c57389179fb34be8884e83ca126c3a95f"
+  },
+  {
+    "bytes": 2189,
+    "path": "deliverables/TxID_Bioinformatics_Application_Note_2026-09-20/tables/table-s6-real-interop.tsv",
+    "sha256": "ed2abdf63ac1209fd2cedbc93883e5bbb34c45ca2921fccfd651f2ce91613b59"
+  },
+  {
+    "bytes": 644,
+    "path": "deliverables/TxID_Bioinformatics_Application_Note_2026-09-20/reproducibility/public-access-check.json",
+    "sha256": "ece0754b4491cba84396b0056dff1a3f8113e35140246c08c3535bcca5c37475"
+  },
+  {
+    "bytes": 1468,
+    "path": "deliverables/TxID_Bioinformatics_Application_Note_2026-09-20/reproducibility/real-interop/README.txt",
+    "sha256": "b537974e644735402fde744da34233f312602f405f49311184487d7f3750eaa0"
+  },
+  {
+    "bytes": 469,
+    "path": "deliverables/TxID_Bioinformatics_Application_Note_2026-09-20/reproducibility/real-interop/alignment/flagstat.txt",
+    "sha256": "0a0131f315645ead6ebf48d7aa026abd6d5fbb0c1b695a4186f52019b6bd563f"
+  },
+  {
+    "bytes": 930,
+    "path": "deliverables/TxID_Bioinformatics_Application_Note_2026-09-20/reproducibility/real-interop/alignment/minimap2.stderr.log",
+    "sha256": "195d18272789ad46692a18f35aab9b79b565efdcc67968e44678f929982a70fe"
+  },
+  {
+    "bytes": 4096,
+    "path": "deliverables/TxID_Bioinformatics_Application_Note_2026-09-20/reproducibility/real-interop/alignment/run.json",
+    "sha256": "2cde05637a9a8a49f433a7414789d373577ab4fa2579b360433e3be19ef84013"
+  },
+  {
+    "bytes": 0,
+    "path": "deliverables/TxID_Bioinformatics_Application_Note_2026-09-20/reproducibility/real-interop/alignment/samtools-flagstat.stderr.log",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "bytes": 469,
+    "path": "deliverables/TxID_Bioinformatics_Application_Note_2026-09-20/reproducibility/real-interop/alignment/samtools-flagstat.stdout.log",
+    "sha256": "0a0131f315645ead6ebf48d7aa026abd6d5fbb0c1b695a4186f52019b6bd563f"
+  },
+  {
+    "bytes": 0,
+    "path": "deliverables/TxID_Bioinformatics_Application_Note_2026-09-20/reproducibility/real-interop/alignment/samtools-index.stderr.log",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "bytes": 0,
+    "path": "deliverables/TxID_Bioinformatics_Application_Note_2026-09-20/reproducibility/real-interop/alignment/samtools-index.stdout.log",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "bytes": 63,
+    "path": "deliverables/TxID_Bioinformatics_Application_Note_2026-09-20/reproducibility/real-interop/alignment/samtools-sort.stderr.log",
+    "sha256": "df77d83792c0c29f5e87cd8488adc1d5da82c001de7d063e04923a00d80c9c52"
+  },
+  {
+    "bytes": 0,
+    "path": "deliverables/TxID_Bioinformatics_Application_Note_2026-09-20/reproducibility/real-interop/alignment/samtools-sort.stdout.log",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "bytes": 1890,
+    "path": "deliverables/TxID_Bioinformatics_Application_Note_2026-09-20/reproducibility/real-interop/callers/isoquant/isoquant.log",
+    "sha256": "707dc9d3fa26432a28d625d36995b7d5be19f3b1c492f5ba16de3730be568bc8"
+  },
+  {
+    "bytes": 0,
+    "path": "deliverables/TxID_Bioinformatics_Application_Note_2026-09-20/reproducibility/real-interop/callers/isoquant/isoquant.stderr.log",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "bytes": 1184,
+    "path": "deliverables/TxID_Bioinformatics_Application_Note_2026-09-20/reproducibility/real-interop/callers/isoquant/isoquant.stdout.log",
+    "sha256": "50394dae854a4f8869c479b4621a6ea9a9a96b56aef19abcc0c15c98c3c401df"
+  },
+  {
+    "bytes": 7269,
+    "path": "deliverables/TxID_Bioinformatics_Application_Note_2026-09-20/reproducibility/real-interop/callers/isoquant-inferred/isoquant.log",
+    "sha256": "6247929d050057b64c21b7187cc8a0ca7fd2e63a79d0181137c17e63a55f91a8"
+  },
+  {
+    "bytes": 1937,
+    "path": "deliverables/TxID_Bioinformatics_Application_Note_2026-09-20/reproducibility/real-interop/callers/isoquant-inferred/isoquant.stderr.log",
+    "sha256": "658ac421f97358b015832189064d42c47fc3ca06181a7dfe210573c1be69d8f5"
+  },
+  {
+    "bytes": 6698,
+    "path": "deliverables/TxID_Bioinformatics_Application_Note_2026-09-20/reproducibility/real-interop/callers/isoquant-inferred/isoquant.stdout.log",
+    "sha256": "e2c9d88428792706c6d01e87922dc4be2ecee1dbc24cf126bdf3904249736e1d"
+  },
+  {
+    "bytes": 174765,
+    "path": "deliverables/TxID_Bioinformatics_Application_Note_2026-09-20/reproducibility/real-interop/callers/isoquant.gtf",
+    "sha256": "383d3faa91a212efaefe0ae4b687fc9943216522d0360430701a3a498c52baf7"
+  },
+  {
+    "bytes": 2832,
+    "path": "deliverables/TxID_Bioinformatics_Application_Note_2026-09-20/reproducibility/real-interop/callers/isoquant.run.json",
+    "sha256": "f9987435879dc6a706430f0ac31e985940309c29346835fbfe73ff5ef258119a"
+  },
+  {
+    "bytes": 0,
+    "path": "deliverables/TxID_Bioinformatics_Application_Note_2026-09-20/reproducibility/real-interop/callers/stringtie/stringtie.stderr.log",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "bytes": 0,
+    "path": "deliverables/TxID_Bioinformatics_Application_Note_2026-09-20/reproducibility/real-interop/callers/stringtie/stringtie.stdout.log",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "bytes": 288922,
+    "path": "deliverables/TxID_Bioinformatics_Application_Note_2026-09-20/reproducibility/real-interop/callers/stringtie.gtf",
+    "sha256": "131d3631a7951123ab7d2ddcb886422b8143264e750cf1014227dfb58c6edbec"
+  },
+  {
+    "bytes": 2395,
+    "path": "deliverables/TxID_Bioinformatics_Application_Note_2026-09-20/reproducibility/real-interop/callers/stringtie.run.json",
+    "sha256": "57d35368ade6dd25f4727deacfb716a3bf7e6c169135f828d309b919fd11d478"
+  },
+  {
+    "bytes": 1560,
+    "path": "deliverables/TxID_Bioinformatics_Application_Note_2026-09-20/reproducibility/real-interop/driver.log",
+    "sha256": "0d402b075ae448a1a3eeab1887098e62326634b3d18483f3c5e36b43ae16eb37"
+  },
+  {
+    "bytes": 47956,
+    "path": "deliverables/TxID_Bioinformatics_Application_Note_2026-09-20/reproducibility/real-interop/evidence-manifest.json",
+    "sha256": "acea94614f9c41e37f9ea6c91515348a435f77b57435c2c42b7d1765315c4a71"
+  },
+  {
+    "bytes": 995,
+    "path": "deliverables/TxID_Bioinformatics_Application_Note_2026-09-20/reproducibility/real-interop/execution-correction.json",
+    "sha256": "b1b36b6c3f54c5d3a573eda7fdf8741bc677d35abbec57b00dd61c307185a03c"
+  },
+  {
+    "bytes": 3499545,
+    "path": "deliverables/TxID_Bioinformatics_Application_Note_2026-09-20/reproducibility/real-interop/inputs/gencode-v29.identity.chr22.gtf",
+    "sha256": "3b20a34e6b9d708ba6f3056c042768270e6b8fc6cc236d9ad7a3c164b14c3b07"
+  },
+  {
+    "bytes": 5742,
+    "path": "deliverables/TxID_Bioinformatics_Application_Note_2026-09-20/reproducibility/real-interop/inputs/selection.json",
+    "sha256": "e326aa6943b6fde652e72cd25db5a9e2305e93034df487a36198bf10e1f51a8b"
+  },
+  {
+    "bytes": 7208,
+    "path": "deliverables/TxID_Bioinformatics_Application_Note_2026-09-20/reproducibility/real-interop/interop-evaluation/caller-by-chain.tsv",
+    "sha256": "3780088eca30b2c3b10da49a368af05daa0603e362d3dda1d0ed8d70f1167af0"
+  },
+  {
+    "bytes": 7664,
+    "path": "deliverables/TxID_Bioinformatics_Application_Note_2026-09-20/reproducibility/real-interop/interop-evaluation/caller-by-form.tsv",
+    "sha256": "c4d245b732c8bee2cb113e522e994456c068aabf70bf215db0dbdce2a06ec428"
+  },
+  {
+    "bytes": 745,
+    "path": "deliverables/TxID_Bioinformatics_Application_Note_2026-09-20/reproducibility/real-interop/interop-evaluation/commands/00-version.json",
+    "sha256": "743c1d32303f5ba6b6f7a4abbe5f6315f926e85da8854157da27ccfd7cb78c39"
+  },
+  {
+    "bytes": 0,
+    "path": "deliverables/TxID_Bioinformatics_Application_Note_2026-09-20/reproducibility/real-interop/interop-evaluation/commands/00-version.stderr.log",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "bytes": 11,
+    "path": "deliverables/TxID_Bioinformatics_Application_Note_2026-09-20/reproducibility/real-interop/interop-evaluation/commands/00-version.stdout.log",
+    "sha256": "b04b7ec61fe9da0fce4ff0ee478aeaf1bbad583e58336f0864860e8d12ea1e0d"
+  },
+  {
+    "bytes": 1314,
+    "path": "deliverables/TxID_Bioinformatics_Application_Note_2026-09-20/reproducibility/real-interop/interop-evaluation/commands/01-isoquant-init.json",
+    "sha256": "eb8a3f8e368a1cffa7faac4370fcdaaeb3c04dd802a035a300d17c020bb80c46"
+  },
+  {
+    "bytes": 0,
+    "path": "deliverables/TxID_Bioinformatics_Application_Note_2026-09-20/reproducibility/real-interop/interop-evaluation/commands/01-isoquant-init.stderr.log",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "bytes": 501,
+    "path": "deliverables/TxID_Bioinformatics_Application_Note_2026-09-20/reproducibility/real-interop/interop-evaluation/commands/01-isoquant-init.stdout.log",
+    "sha256": "f17c0227be18bb17ad98ca202e04d9c0a12700e2cca16669e1513fba93bc57f4"
+  },
+  {
+    "bytes": 1513,
+    "path": "deliverables/TxID_Bioinformatics_Application_Note_2026-09-20/reproducibility/real-interop/interop-evaluation/commands/02-isoquant-1-isoquant-add.json",
+    "sha256": "ac136bc49c810d316e30a5add733ce9f243349514d11fbb7996199e539f648d8"
+  },
+  {
+    "bytes": 0,
+    "path": "deliverables/TxID_Bioinformatics_Application_Note_2026-09-20/reproducibility/real-interop/interop-evaluation/commands/02-isoquant-1-isoquant-add.stderr.log",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "bytes": 477,
+    "path": "deliverables/TxID_Bioinformatics_Application_Note_2026-09-20/reproducibility/real-interop/interop-evaluation/commands/02-isoquant-1-isoquant-add.stdout.log",
+    "sha256": "fbe506370cb9956b043804b316178dd5466c16ee8f8d57bdefce46428b3d24c7"
+  },
+  {
+    "bytes": 924,
+    "path": "deliverables/TxID_Bioinformatics_Application_Note_2026-09-20/reproducibility/real-interop/interop-evaluation/commands/03-isoquant-1-validate.json",
+    "sha256": "5ba42b05373571b94db889ce8360239b01b04e3abdfa964a830dfe482380f536"
+  },
+  {
+    "bytes": 0,
+    "path": "deliverables/TxID_Bioinformatics_Application_Note_2026-09-20/reproducibility/real-interop/interop-evaluation/commands/03-isoquant-1-validate.stderr.log",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "bytes": 448,
+    "path": "deliverables/TxID_Bioinformatics_Application_Note_2026-09-20/reproducibility/real-interop/interop-evaluation/commands/03-isoquant-1-validate.stdout.log",
+    "sha256": "103bad26690ddff30f0983b67cf23ecb28eb0638910e8974303f6dbb63f3e4c5"
+  },
+  {
+    "bytes": 1086,
+    "path": "deliverables/TxID_Bioinformatics_Application_Note_2026-09-20/reproducibility/real-interop/interop-evaluation/commands/04-isoquant-1-export.json",
+    "sha256": "97e923c26cac557d6e6f823ed5277d23873fbf9cdee091669198860f0c2c52f3"
+  },
+  {
+    "bytes": 0,
+    "path": "deliverables/TxID_Bioinformatics_Application_Note_2026-09-20/reproducibility/real-interop/interop-evaluation/commands/04-isoquant-1-export.stderr.log",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "bytes": 178,
+    "path": "deliverables/TxID_Bioinformatics_Application_Note_2026-09-20/reproducibility/real-interop/interop-evaluation/commands/04-isoquant-1-export.stdout.log",
+    "sha256": "5eec00cea546a5cb447135ddef026644a689b5853a556d4ffee650d43a362c32"
+  },
+  {
+    "bytes": 1519,
+    "path": "deliverables/TxID_Bioinformatics_Application_Note_2026-09-20/reproducibility/real-interop/interop-evaluation/commands/05-isoquant-2-stringtie-add.json",
+    "sha256": "1f98df259c275833e3a20c08b983528370a56ca38d5108c8380560bc7e4d9e8b"
+  },
+  {
+    "bytes": 0,
+    "path": "deliverables/TxID_Bioinformatics_Application_Note_2026-09-20/reproducibility/real-interop/interop-evaluation/commands/05-isoquant-2-stringtie-add.stderr.log",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "bytes": 479,
+    "path": "deliverables/TxID_Bioinformatics_Application_Note_2026-09-20/reproducibility/real-interop/interop-evaluation/commands/05-isoquant-2-stringtie-add.stdout.log",
+    "sha256": "5a62feef7689d4ae0c9e47ab88f2a986ce561d1782336f6b3d7830fdf8aeed05"
+  },
+  {
+    "bytes": 924,
+    "path": "deliverables/TxID_Bioinformatics_Application_Note_2026-09-20/reproducibility/real-interop/interop-evaluation/commands/06-isoquant-2-validate.json",
+    "sha256": "2225c857acf353de1d6fbebc872acb250288e73f85783c1521b2807a61a62288"
+  },
+  {
+    "bytes": 0,
+    "path": "deliverables/TxID_Bioinformatics_Application_Note_2026-09-20/reproducibility/real-interop/interop-evaluation/commands/06-isoquant-2-validate.stderr.log",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "bytes": 449,
+    "path": "deliverables/TxID_Bioinformatics_Application_Note_2026-09-20/reproducibility/real-interop/interop-evaluation/commands/06-isoquant-2-validate.stdout.log",
+    "sha256": "72302f6ff0a6807c1f3e562ca896355844aa7c7dd9402ecb58da0d9dcfa4b700"
+  },
+  {
+    "bytes": 1087,
+    "path": "deliverables/TxID_Bioinformatics_Application_Note_2026-09-20/reproducibility/real-interop/interop-evaluation/commands/07-isoquant-2-export.json",
+    "sha256": "3feb1274342f3cf4e919ae58192daa6ed0a4c85f11f0f664ade9f22d7bbb3d89"
+  },
+  {
+    "bytes": 0,
+    "path": "deliverables/TxID_Bioinformatics_Application_Note_2026-09-20/reproducibility/real-interop/interop-evaluation/commands/07-isoquant-2-export.stderr.log",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "bytes": 179,
+    "path": "deliverables/TxID_Bioinformatics_Application_Note_2026-09-20/reproducibility/real-interop/interop-evaluation/commands/07-isoquant-2-export.stdout.log",
+    "sha256": "74a7b6cfc1c9e2a7baa9a032067b7bd94823e913b2a2f6a76ba79bcf29eb1e68"
+  },
+  {
+    "bytes": 1317,
+    "path": "deliverables/TxID_Bioinformatics_Application_Note_2026-09-20/reproducibility/real-interop/interop-evaluation/commands/08-stringtie-init.json",
+    "sha256": "16e9fd6ed86147e4b1501d685eeebec90bf4a94dd4f464060bb0b5a987bba39b"
+  },
+  {
+    "bytes": 0,
+    "path": "deliverables/TxID_Bioinformatics_Application_Note_2026-09-20/reproducibility/real-interop/interop-evaluation/commands/08-stringtie-init.stderr.log",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "bytes": 502,
+    "path": "deliverables/TxID_Bioinformatics_Application_Note_2026-09-20/reproducibility/real-interop/interop-evaluation/commands/08-stringtie-init.stdout.log",
+    "sha256": "c4310d479e8b17aafdf71be47ef44d9b87ecf7100c58edd83c9c0cc6f6b4febb"
+  },
+  {
+    "bytes": 1524,
+    "path": "deliverables/TxID_Bioinformatics_Application_Note_2026-09-20/reproducibility/real-interop/interop-evaluation/commands/09-stringtie-1-stringtie-add.json",
+    "sha256": "ae2e8cc3c9a3fb8623e0e78448c269021fc236c60695b46905f5fd7322748a87"
+  },
+  {
+    "bytes": 0,
+    "path": "deliverables/TxID_Bioinformatics_Application_Note_2026-09-20/reproducibility/real-interop/interop-evaluation/commands/09-stringtie-1-stringtie-add.stderr.log",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "bytes": 481,
+    "path": "deliverables/TxID_Bioinformatics_Application_Note_2026-09-20/reproducibility/real-interop/interop-evaluation/commands/09-stringtie-1-stringtie-add.stdout.log",
+    "sha256": "0e70148d594a2b922bc6f8d7fae01494ee01332d338c9fa46a4d5dc5a4564b16"
+  },
+  {
+    "bytes": 927,
+    "path": "deliverables/TxID_Bioinformatics_Application_Note_2026-09-20/reproducibility/real-interop/interop-evaluation/commands/10-stringtie-1-validate.json",
+    "sha256": "febf09f31fe8c1586c1dfecdeb2090758aaa6271e719a059406d884fd1cab5f1"
+  },
+  {
+    "bytes": 0,
+    "path": "deliverables/TxID_Bioinformatics_Application_Note_2026-09-20/reproducibility/real-interop/interop-evaluation/commands/10-stringtie-1-validate.stderr.log",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "bytes": 448,
+    "path": "deliverables/TxID_Bioinformatics_Application_Note_2026-09-20/reproducibility/real-interop/interop-evaluation/commands/10-stringtie-1-validate.stdout.log",
+    "sha256": "f6b98365b25035f0831e88a668ecf45413c08aca31e7b8ba907a391e7bdbb76c"
+  },
+  {
+    "bytes": 1091,
+    "path": "deliverables/TxID_Bioinformatics_Application_Note_2026-09-20/reproducibility/real-interop/interop-evaluation/commands/11-stringtie-1-export.json",
+    "sha256": "869b9c3480c0e46ac4a1a90f285398279c251a79f6acce9e2e3a2236abc475fe"
+  },
+  {
+    "bytes": 0,
+    "path": "deliverables/TxID_Bioinformatics_Application_Note_2026-09-20/reproducibility/real-interop/interop-evaluation/commands/11-stringtie-1-export.stderr.log",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "bytes": 180,
+    "path": "deliverables/TxID_Bioinformatics_Application_Note_2026-09-20/reproducibility/real-interop/interop-evaluation/commands/11-stringtie-1-export.stdout.log",
+    "sha256": "c8efb421dda68193ff69712067e60a7ea2df6e2a801a954895b55bf21e9be9b9"
+  },
+  {
+    "bytes": 1518,
+    "path": "deliverables/TxID_Bioinformatics_Application_Note_2026-09-20/reproducibility/real-interop/interop-evaluation/commands/12-stringtie-2-isoquant-add.json",
+    "sha256": "532e834e966f97cc442914f461ba89c6324f48aa5171d9c59c14f01b2d04bab3"
+  },
+  {
+    "bytes": 0,
+    "path": "deliverables/TxID_Bioinformatics_Application_Note_2026-09-20/reproducibility/real-interop/interop-evaluation/commands/12-stringtie-2-isoquant-add.stderr.log",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "bytes": 479,
+    "path": "deliverables/TxID_Bioinformatics_Application_Note_2026-09-20/reproducibility/real-interop/interop-evaluation/commands/12-stringtie-2-isoquant-add.stdout.log",
+    "sha256": "f7a3198d34cd4ef833c7c8c606420bbdae3e87ba7df89976e68a4c974888985a"
+  },
+  {
+    "bytes": 927,
+    "path": "deliverables/TxID_Bioinformatics_Application_Note_2026-09-20/reproducibility/real-interop/interop-evaluation/commands/13-stringtie-2-validate.json",
+    "sha256": "65d5186cae6aed670db39e69f5f0fccf9750e56e9909c0f2e2d121e8e44b40d9"
+  },
+  {
+    "bytes": 0,
+    "path": "deliverables/TxID_Bioinformatics_Application_Note_2026-09-20/reproducibility/real-interop/interop-evaluation/commands/13-stringtie-2-validate.stderr.log",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "bytes": 449,
+    "path": "deliverables/TxID_Bioinformatics_Application_Note_2026-09-20/reproducibility/real-interop/interop-evaluation/commands/13-stringtie-2-validate.stdout.log",
+    "sha256": "72302f6ff0a6807c1f3e562ca896355844aa7c7dd9402ecb58da0d9dcfa4b700"
+  },
+  {
+    "bytes": 1090,
+    "path": "deliverables/TxID_Bioinformatics_Application_Note_2026-09-20/reproducibility/real-interop/interop-evaluation/commands/14-stringtie-2-export.json",
+    "sha256": "1afb45a371aa7fce2f99b2c98b88d2c215be55d07b3409070738a0aa483b7d42"
+  },
+  {
+    "bytes": 0,
+    "path": "deliverables/TxID_Bioinformatics_Application_Note_2026-09-20/reproducibility/real-interop/interop-evaluation/commands/14-stringtie-2-export.stderr.log",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "bytes": 179,
+    "path": "deliverables/TxID_Bioinformatics_Application_Note_2026-09-20/reproducibility/real-interop/interop-evaluation/commands/14-stringtie-2-export.stdout.log",
+    "sha256": "6dce1b7df98e6096731c53e12c6cb157ab3645f239c2651155819a673560e9b0"
+  },
+  {
+    "bytes": 18384,
+    "path": "deliverables/TxID_Bioinformatics_Application_Note_2026-09-20/reproducibility/real-interop/interop-evaluation/commands.json",
+    "sha256": "ad6ceb9dd05d1c9256e3f427405cf8bd5c93bd3bf4c0a47b527192299b7a8ac4"
+  },
+  {
+    "bytes": 10114,
+    "path": "deliverables/TxID_Bioinformatics_Application_Note_2026-09-20/reproducibility/real-interop/interop-evaluation/input-provenance.json",
+    "sha256": "b851eed0b843956aa010cd16d31bb061c327c0e4967d7252cb27c18b18e3cace"
+  },
+  {
+    "bytes": 12560,
+    "path": "deliverables/TxID_Bioinformatics_Application_Note_2026-09-20/reproducibility/real-interop/interop-evaluation/isoquant-first/01-isoquant.catalog.tsv",
+    "sha256": "10d9e8196c16fc56df75c184dbd6d0f111ed46a469ea826c8c386d91374871ae"
+  },
+  {
+    "bytes": 27338,
+    "path": "deliverables/TxID_Bioinformatics_Application_Note_2026-09-20/reproducibility/real-interop/interop-evaluation/isoquant-first/01-isoquant.mapping.tsv",
+    "sha256": "c881350b23e2870774afc51e3e3c85460f5fef6294cb132e67b2f8d8220cda7b"
+  },
+  {
+    "bytes": 542479,
+    "path": "deliverables/TxID_Bioinformatics_Application_Note_2026-09-20/reproducibility/real-interop/interop-evaluation/isoquant-first/01-isoquant.txid.gtf",
+    "sha256": "988376d755538fcce1173bf1acf7e1893afacff160fa7d4d46001d6c9a60d819"
+  },
+  {
+    "bytes": 19898,
+    "path": "deliverables/TxID_Bioinformatics_Application_Note_2026-09-20/reproducibility/real-interop/interop-evaluation/isoquant-first/02-stringtie.catalog.tsv",
+    "sha256": "e34d8b7aece2bd5cd5a09ecd548b95e835b530a1f746c21cc06d203cb6976014"
+  },
+  {
+    "bytes": 36433,
+    "path": "deliverables/TxID_Bioinformatics_Application_Note_2026-09-20/reproducibility/real-interop/interop-evaluation/isoquant-first/02-stringtie.mapping.tsv",
+    "sha256": "c0e98b35697c75551219c5e195306da40b5e674fbc7be3660c27c5ba23f4c65b"
+  },
+  {
+    "bytes": 751619,
+    "path": "deliverables/TxID_Bioinformatics_Application_Note_2026-09-20/reproducibility/real-interop/interop-evaluation/isoquant-first/02-stringtie.txid.gtf",
+    "sha256": "29e708474fa1eca819a477318c5ba7ba4114a3da8b66e9fa7589cbf0e30bf13c"
+  },
+  {
+    "bytes": 2596,
+    "path": "deliverables/TxID_Bioinformatics_Application_Note_2026-09-20/reproducibility/real-interop/interop-evaluation/metric.tsv",
+    "sha256": "950244325158cef72b3ddd252b9adf022fca6ffea8ae97b0755e35dc9c13f4a8"
+  },
+  {
+    "bytes": 317458,
+    "path": "deliverables/TxID_Bioinformatics_Application_Note_2026-09-20/reproducibility/real-interop/interop-evaluation/per-observation-evidence.tsv",
+    "sha256": "9e9131157e164cb13cd24e805ed9b390143a9c357f1ea724ec517460e82d4078"
+  },
+  {
+    "bytes": 18225,
+    "path": "deliverables/TxID_Bioinformatics_Application_Note_2026-09-20/reproducibility/real-interop/interop-evaluation/stringtie-first/01-stringtie.catalog.tsv",
+    "sha256": "4282fc57e2547ce444914d8e3cb6cc239df18db9248fe680a71683c97e1d7c0b"
+  },
+  {
+    "bytes": 36433,
+    "path": "deliverables/TxID_Bioinformatics_Application_Note_2026-09-20/reproducibility/real-interop/interop-evaluation/stringtie-first/01-stringtie.mapping.tsv",
+    "sha256": "9c1d8937cc7ce1bcae8c4fd378a9e2ed5085d3551d1514ae0fee61ce9a17ca87"
+  },
+  {
+    "bytes": 751619,
+    "path": "deliverables/TxID_Bioinformatics_Application_Note_2026-09-20/reproducibility/real-interop/interop-evaluation/stringtie-first/01-stringtie.txid.gtf",
+    "sha256": "27da73f0ad1ba11248cf36a3dcb6f1fd4cf11585c215e2898e0c466032c2fbc1"
+  },
+  {
+    "bytes": 19898,
+    "path": "deliverables/TxID_Bioinformatics_Application_Note_2026-09-20/reproducibility/real-interop/interop-evaluation/stringtie-first/02-isoquant.catalog.tsv",
+    "sha256": "d6ccd8350c03de1581eecef834e119ae8764d33a12cfc0d88e4db6981b3d2361"
+  },
+  {
+    "bytes": 27338,
+    "path": "deliverables/TxID_Bioinformatics_Application_Note_2026-09-20/reproducibility/real-interop/interop-evaluation/stringtie-first/02-isoquant.mapping.tsv",
+    "sha256": "8a8f7106e657b9d16d6505307ff8671539dba6bf9e45adf95230e428c9cb5429"
+  },
+  {
+    "bytes": 542479,
+    "path": "deliverables/TxID_Bioinformatics_Application_Note_2026-09-20/reproducibility/real-interop/interop-evaluation/stringtie-first/02-isoquant.txid.gtf",
+    "sha256": "e07f77a6553b2d1bc2057425256b7b0e2ed1d87cd77ef27d37ec80eeaef21a91"
+  },
+  {
+    "bytes": 16820,
+    "path": "deliverables/TxID_Bioinformatics_Application_Note_2026-09-20/reproducibility/real-interop/interop-evaluation/summary.json",
+    "sha256": "1d343f6b3336604490623efcb1ef3a4dddafa66e4a308cee2a1c0341278ca564"
+  },
+  {
+    "bytes": 0,
+    "path": "deliverables/TxID_Bioinformatics_Application_Note_2026-09-20/reproducibility/real-interop/isoquant-retry.log",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "bytes": 5694,
+    "path": "deliverables/TxID_Bioinformatics_Application_Note_2026-09-20/reproducibility/real-interop/provenance/first-attempt/run_caller.py",
+    "sha256": "01ea4a0e53f54e6bf6cdc39a09adf788f256576df9a5390ac2629f0e2935a233"
+  },
+  {
+    "bytes": 6427,
+    "path": "deliverables/TxID_Bioinformatics_Application_Note_2026-09-20/reproducibility/real-interop/provenance/first-attempt/run_real_interop_callers.py",
+    "sha256": "6fe477c3eb062e8e4b98cbb460c52fce30f6b7916d7df24c61fc9b619c5cb102"
+  },
+  {
+    "bytes": 5774,
+    "path": "deliverables/TxID_Bioinformatics_Application_Note_2026-09-20/reproducibility/real-interop/results-for-s9.md",
+    "sha256": "e6c77c71fb9c0d3bc912cee1808ca37e8e6ecafbfc8dc0d36a1a7a82dc776e51"
+  },
+  {
+    "bytes": 50288,
+    "path": "deliverables/TxID_Bioinformatics_Application_Note_2026-09-20/reproducibility/real-interop/supplement-classification-audit.json",
+    "sha256": "46b7d7afb8cb6267e2abc6df1d2c16f550fe5d2abcee046946c7caade8d4f7c2"
+  },
+  {
+    "bytes": 864,
+    "path": "deliverables/TxID_Bioinformatics_Application_Note_2026-09-20/reproducibility/real-interop/tools/tool-manifest.json",
+    "sha256": "7451193fa10125910d123f10b1b3573c26ca9f2f547d544cf98ff6b1c2d0c14b"
+  },
+  {
+    "bytes": 1477,
+    "path": "benchmarks/results/independent-identity-2026-09-23.json",
+    "sha256": "1d6d8e566c436e4d2f1a6798ee1c64a2ef9bcfc3ff91e169eb19b786f8a460d1"
+  }
+]

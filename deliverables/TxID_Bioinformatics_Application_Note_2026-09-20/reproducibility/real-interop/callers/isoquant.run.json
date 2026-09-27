@@ -1,0 +1,61 @@
+{
+  "argv": [
+    "/root/miniconda3/envs/isoquant/bin/python",
+    "/mnt/zzbnew/rnamodel/wangxue/Cyclone/TxID/workflows/publication_benchmark/scripts/isoquant_entry.py",
+    "--reference",
+    "/mnt/zzbnew/rnamodel/wangxue/Cyclone/model/data/raw/encode_long_read_rna/ref/GRCh38_no_alt_analysis_set_GCA_000001405.15.fasta",
+    "--genedb",
+    "benchmark-work/submission-repair-2026-09-23/inputs/gencode-v29.identity.chr22.gtf",
+    "--bam",
+    "benchmark-work/submission-repair-2026-09-23/alignment/chr22.primary.bam",
+    "--data_type",
+    "pacbio_ccs",
+    "--output",
+    "benchmark-work/submission-repair-2026-09-23/callers/isoquant-inferred",
+    "--prefix",
+    "ENCFF105WIJ_chr22",
+    "--threads",
+    "4",
+    "--force"
+  ],
+  "caller": "isoquant",
+  "child_system_seconds": 9.767577,
+  "child_user_seconds": 70.392869,
+  "compatibility_entry": "isoquant_entry.py redirects IsoQuant 3.13.0 mutable config from its hard-coded home path; analysis code is unchanged",
+  "cwd": "/mnt/zzbnew/rnamodel/wangxue/Cyclone/TxID",
+  "dataset": "ENCFF105WIJ_chr22",
+  "ended_unix": 1790118196.85537,
+  "inputs": [
+    {
+      "bytes": 3144230986,
+      "path": "/mnt/zzbnew/rnamodel/wangxue/Cyclone/model/data/raw/encode_long_read_rna/ref/GRCh38_no_alt_analysis_set_GCA_000001405.15.fasta",
+      "sha256": "9cce8b926416dd96b152deea85188495b75f7ac8d634cc723a017067be8702b7"
+    },
+    {
+      "bytes": 3499545,
+      "path": "/mnt/zzbnew/rnamodel/wangxue/Cyclone/TxID/benchmark-work/submission-repair-2026-09-23/inputs/gencode-v29.identity.chr22.gtf",
+      "sha256": "3b20a34e6b9d708ba6f3056c042768270e6b8fc6cc236d9ad7a3c164b14c3b07"
+    },
+    {
+      "bytes": 840510,
+      "path": "/mnt/zzbnew/rnamodel/wangxue/Cyclone/TxID/benchmark-work/submission-repair-2026-09-23/alignment/chr22.primary.bam",
+      "sha256": "2a40930bb104d4c35d00b9943d73cf6f13814970cf388e18993d9e0d3bfe5707"
+    }
+  ],
+  "max_rss_kib": 231636,
+  "normalized_from": "/mnt/zzbnew/rnamodel/wangxue/Cyclone/TxID/benchmark-work/submission-repair-2026-09-23/callers/isoquant-inferred/ENCFF105WIJ_chr22/ENCFF105WIJ_chr22.transcript_models.gtf",
+  "outputs": [
+    {
+      "bytes": 174765,
+      "path": "/mnt/zzbnew/rnamodel/wangxue/Cyclone/TxID/benchmark-work/submission-repair-2026-09-23/callers/isoquant.gtf",
+      "sha256": "383d3faa91a212efaefe0ae4b687fc9943216522d0360430701a3a498c52baf7"
+    }
+  ],
+  "returncode": 0,
+  "stage": "transcript_discovery",
+  "started_unix": 1790118033.7381277,
+  "stderr": "/mnt/zzbnew/rnamodel/wangxue/Cyclone/TxID/benchmark-work/submission-repair-2026-09-23/callers/isoquant-inferred/isoquant.stderr.log",
+  "stdout": "/mnt/zzbnew/rnamodel/wangxue/Cyclone/TxID/benchmark-work/submission-repair-2026-09-23/callers/isoquant-inferred/isoquant.stdout.log",
+  "version": "IsoQuant 3.13.0",
+  "wall_seconds": 163.11724213138223
+}

@@ -1,0 +1,103 @@
+{
+  "child_system_seconds": 71.695609,
+  "child_user_seconds": 892.721241,
+  "ended_unix": 1790117878.0411162,
+  "environment": {
+    "CONDA_DEFAULT_ENV": "base",
+    "CONDA_PREFIX": "/root/miniconda3"
+  },
+  "flagstat": {
+    "argv": [
+      "samtools",
+      "flagstat",
+      "-@",
+      "8",
+      "/mnt/zzbnew/rnamodel/wangxue/Cyclone/TxID/benchmark-work/submission-repair-2026-09-23/alignment/whole-genome.bam"
+    ],
+    "child_system_seconds": 0.07178400000000806,
+    "child_user_seconds": 0.40506999999990967,
+    "cwd": "/mnt/zzbnew/rnamodel/wangxue/Cyclone/TxID",
+    "ended_unix": 1790117878.024304,
+    "max_rss_kib": 19348008,
+    "returncode": 0,
+    "started_unix": 1790117877.9338486,
+    "stderr": "/mnt/zzbnew/rnamodel/wangxue/Cyclone/TxID/benchmark-work/submission-repair-2026-09-23/alignment/samtools-flagstat.stderr.log",
+    "stdout": "/mnt/zzbnew/rnamodel/wangxue/Cyclone/TxID/benchmark-work/submission-repair-2026-09-23/alignment/samtools-flagstat.stdout.log",
+    "wall_seconds": 0.09045509248971939
+  },
+  "index": {
+    "argv": [
+      "samtools",
+      "index",
+      "-@",
+      "8",
+      "/mnt/zzbnew/rnamodel/wangxue/Cyclone/TxID/benchmark-work/submission-repair-2026-09-23/alignment/whole-genome.bam",
+      "/mnt/zzbnew/rnamodel/wangxue/Cyclone/TxID/benchmark-work/submission-repair-2026-09-23/alignment/whole-genome.bam.bai"
+    ],
+    "child_system_seconds": 0.10515900000000045,
+    "child_user_seconds": 0.35491000000001804,
+    "cwd": "/mnt/zzbnew/rnamodel/wangxue/Cyclone/TxID",
+    "ended_unix": 1790117877.925862,
+    "max_rss_kib": 19348008,
+    "returncode": 0,
+    "started_unix": 1790117877.718159,
+    "stderr": "/mnt/zzbnew/rnamodel/wangxue/Cyclone/TxID/benchmark-work/submission-repair-2026-09-23/alignment/samtools-index.stderr.log",
+    "stdout": "/mnt/zzbnew/rnamodel/wangxue/Cyclone/TxID/benchmark-work/submission-repair-2026-09-23/alignment/samtools-index.stdout.log",
+    "wall_seconds": 0.20770356804132462
+  },
+  "inputs": [
+    {
+      "bytes": 3144230986,
+      "path": "/mnt/zzbnew/rnamodel/wangxue/Cyclone/model/data/raw/encode_long_read_rna/ref/GRCh38_no_alt_analysis_set_GCA_000001405.15.fasta",
+      "sha256": "9cce8b926416dd96b152deea85188495b75f7ac8d634cc723a017067be8702b7"
+    },
+    {
+      "bytes": 32120025,
+      "path": "/mnt/zzbnew/rnamodel/wangxue/Cyclone/TxID/benchmark-work/submission-repair-2026-09-23/inputs/ENCFF105WIJ.first100000.fastq.gz",
+      "sha256": "77ccd7297ba783a3ae297025ec4e46c6129e6b105a3298db4084c4dc56771dde"
+    }
+  ],
+  "max_rss_kib": 19348008,
+  "minimap2_argv": [
+    "minimap2",
+    "-ax",
+    "splice:hq",
+    "-uf",
+    "--secondary=no",
+    "--MD",
+    "-t",
+    "8",
+    "/mnt/zzbnew/rnamodel/wangxue/Cyclone/model/data/raw/encode_long_read_rna/ref/GRCh38_no_alt_analysis_set_GCA_000001405.15.fasta",
+    "/mnt/zzbnew/rnamodel/wangxue/Cyclone/TxID/benchmark-work/submission-repair-2026-09-23/inputs/ENCFF105WIJ.first100000.fastq.gz"
+  ],
+  "minimap2_version": "2.31-r1302",
+  "outputs": [
+    {
+      "bytes": 29060776,
+      "path": "/mnt/zzbnew/rnamodel/wangxue/Cyclone/TxID/benchmark-work/submission-repair-2026-09-23/alignment/whole-genome.bam",
+      "sha256": "3180b8972cff1df5b3110356996890699c9fc56b5710e5cbe4b4735b6795a247"
+    },
+    {
+      "bytes": 1591888,
+      "path": "/mnt/zzbnew/rnamodel/wangxue/Cyclone/TxID/benchmark-work/submission-repair-2026-09-23/alignment/whole-genome.bam.bai",
+      "sha256": "659e6360930d9bd414ffb621ba958b1e381ad6643d4f9f4bde5a26eaa66401e4"
+    },
+    {
+      "bytes": 469,
+      "path": "/mnt/zzbnew/rnamodel/wangxue/Cyclone/TxID/benchmark-work/submission-repair-2026-09-23/alignment/flagstat.txt",
+      "sha256": "0a0131f315645ead6ebf48d7aa026abd6d5fbb0c1b695a4186f52019b6bd563f"
+    }
+  ],
+  "samtools_sort_argv": [
+    "samtools",
+    "sort",
+    "-@",
+    "8",
+    "-o",
+    "/mnt/zzbnew/rnamodel/wangxue/Cyclone/TxID/benchmark-work/submission-repair-2026-09-23/alignment/whole-genome.bam"
+  ],
+  "samtools_version": "samtools 1.23.1",
+  "stage": "alignment",
+  "started_unix": 1790117613.0973887,
+  "wall_seconds": 264.9437278062105
+}

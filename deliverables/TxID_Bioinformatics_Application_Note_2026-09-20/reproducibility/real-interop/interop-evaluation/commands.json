@@ -1,0 +1,432 @@
+[
+  {
+    "argv": [
+      "/root/miniconda3/bin/python",
+      "-m",
+      "txid",
+      "--version"
+    ],
+    "cwd": "/mnt/zzbnew/rnamodel/wangxue/Cyclone/TxID",
+    "returncode": 0,
+    "stderr": {
+      "bytes": 0,
+      "path": "/mnt/zzbnew/rnamodel/wangxue/Cyclone/TxID/benchmark-work/submission-repair-2026-09-23/interop-evaluation/commands/00-version.stderr.log",
+      "role": "stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "stdout": {
+      "bytes": 11,
+      "path": "/mnt/zzbnew/rnamodel/wangxue/Cyclone/TxID/benchmark-work/submission-repair-2026-09-23/interop-evaluation/commands/00-version.stdout.log",
+      "role": "stdout",
+      "sha256": "b04b7ec61fe9da0fce4ff0ee478aeaf1bbad583e58336f0864860e8d12ea1e0d"
+    }
+  },
+  {
+    "argv": [
+      "/root/miniconda3/bin/python",
+      "-m",
+      "txid",
+      "init",
+      "--db",
+      "/mnt/zzbnew/rnamodel/wangxue/Cyclone/TxID/benchmark-work/submission-repair-2026-09-23/interop-evaluation/isoquant-first/registry.sqlite",
+      "--fasta",
+      "/mnt/zzbnew/rnamodel/wangxue/Cyclone/model/data/raw/encode_long_read_rna/ref/GRCh38_no_alt_analysis_set_GCA_000001405.15.fasta",
+      "--assembly",
+      "GRCh38-selected-full-reference",
+      "--annotation",
+      "/mnt/zzbnew/rnamodel/wangxue/Cyclone/TxID/benchmark-work/submission-repair-2026-09-23/inputs/gencode-v29.identity.chr22.gtf",
+      "--annotation-name",
+      "GENCODE-v29-chr22"
+    ],
+    "cwd": "/mnt/zzbnew/rnamodel/wangxue/Cyclone/TxID",
+    "returncode": 0,
+    "stderr": {
+      "bytes": 0,
+      "path": "/mnt/zzbnew/rnamodel/wangxue/Cyclone/TxID/benchmark-work/submission-repair-2026-09-23/interop-evaluation/commands/01-isoquant-init.stderr.log",
+      "role": "stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "stdout": {
+      "bytes": 501,
+      "path": "/mnt/zzbnew/rnamodel/wangxue/Cyclone/TxID/benchmark-work/submission-repair-2026-09-23/interop-evaluation/commands/01-isoquant-init.stdout.log",
+      "role": "stdout",
+      "sha256": "f17c0227be18bb17ad98ca202e04d9c0a12700e2cca16669e1513fba93bc57f4"
+    }
+  },
+  {
+    "argv": [
+      "/root/miniconda3/bin/python",
+      "-m",
+      "txid",
+      "add",
+      "--db",
+      "/mnt/zzbnew/rnamodel/wangxue/Cyclone/TxID/benchmark-work/submission-repair-2026-09-23/interop-evaluation/isoquant-first/registry.sqlite",
+      "--input",
+      "/mnt/zzbnew/rnamodel/wangxue/Cyclone/TxID/benchmark-work/submission-repair-2026-09-23/callers/isoquant.gtf",
+      "--sample",
+      "ENCFF105WIJ_chr22",
+      "--tool",
+      "isoquant",
+      "--annotation-name",
+      "GENCODE-v29-chr22",
+      "--output-gtf",
+      "/mnt/zzbnew/rnamodel/wangxue/Cyclone/TxID/benchmark-work/submission-repair-2026-09-23/interop-evaluation/isoquant-first/01-isoquant.txid.gtf",
+      "--mapping",
+      "/mnt/zzbnew/rnamodel/wangxue/Cyclone/TxID/benchmark-work/submission-repair-2026-09-23/interop-evaluation/isoquant-first/01-isoquant.mapping.tsv"
+    ],
+    "cwd": "/mnt/zzbnew/rnamodel/wangxue/Cyclone/TxID",
+    "returncode": 0,
+    "stderr": {
+      "bytes": 0,
+      "path": "/mnt/zzbnew/rnamodel/wangxue/Cyclone/TxID/benchmark-work/submission-repair-2026-09-23/interop-evaluation/commands/02-isoquant-1-isoquant-add.stderr.log",
+      "role": "stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "stdout": {
+      "bytes": 477,
+      "path": "/mnt/zzbnew/rnamodel/wangxue/Cyclone/TxID/benchmark-work/submission-repair-2026-09-23/interop-evaluation/commands/02-isoquant-1-isoquant-add.stdout.log",
+      "role": "stdout",
+      "sha256": "fbe506370cb9956b043804b316178dd5466c16ee8f8d57bdefce46428b3d24c7"
+    }
+  },
+  {
+    "argv": [
+      "/root/miniconda3/bin/python",
+      "-m",
+      "txid",
+      "validate",
+      "--db",
+      "/mnt/zzbnew/rnamodel/wangxue/Cyclone/TxID/benchmark-work/submission-repair-2026-09-23/interop-evaluation/isoquant-first/registry.sqlite"
+    ],
+    "cwd": "/mnt/zzbnew/rnamodel/wangxue/Cyclone/TxID",
+    "returncode": 0,
+    "stderr": {
+      "bytes": 0,
+      "path": "/mnt/zzbnew/rnamodel/wangxue/Cyclone/TxID/benchmark-work/submission-repair-2026-09-23/interop-evaluation/commands/03-isoquant-1-validate.stderr.log",
+      "role": "stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "stdout": {
+      "bytes": 448,
+      "path": "/mnt/zzbnew/rnamodel/wangxue/Cyclone/TxID/benchmark-work/submission-repair-2026-09-23/interop-evaluation/commands/03-isoquant-1-validate.stdout.log",
+      "role": "stdout",
+      "sha256": "103bad26690ddff30f0983b67cf23ecb28eb0638910e8974303f6dbb63f3e4c5"
+    }
+  },
+  {
+    "argv": [
+      "/root/miniconda3/bin/python",
+      "-m",
+      "txid",
+      "export",
+      "--db",
+      "/mnt/zzbnew/rnamodel/wangxue/Cyclone/TxID/benchmark-work/submission-repair-2026-09-23/interop-evaluation/isoquant-first/registry.sqlite",
+      "--catalog",
+      "/mnt/zzbnew/rnamodel/wangxue/Cyclone/TxID/benchmark-work/submission-repair-2026-09-23/interop-evaluation/isoquant-first/01-isoquant.catalog.tsv"
+    ],
+    "cwd": "/mnt/zzbnew/rnamodel/wangxue/Cyclone/TxID",
+    "returncode": 0,
+    "stderr": {
+      "bytes": 0,
+      "path": "/mnt/zzbnew/rnamodel/wangxue/Cyclone/TxID/benchmark-work/submission-repair-2026-09-23/interop-evaluation/commands/04-isoquant-1-export.stderr.log",
+      "role": "stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "stdout": {
+      "bytes": 178,
+      "path": "/mnt/zzbnew/rnamodel/wangxue/Cyclone/TxID/benchmark-work/submission-repair-2026-09-23/interop-evaluation/commands/04-isoquant-1-export.stdout.log",
+      "role": "stdout",
+      "sha256": "5eec00cea546a5cb447135ddef026644a689b5853a556d4ffee650d43a362c32"
+    }
+  },
+  {
+    "argv": [
+      "/root/miniconda3/bin/python",
+      "-m",
+      "txid",
+      "add",
+      "--db",
+      "/mnt/zzbnew/rnamodel/wangxue/Cyclone/TxID/benchmark-work/submission-repair-2026-09-23/interop-evaluation/isoquant-first/registry.sqlite",
+      "--input",
+      "/mnt/zzbnew/rnamodel/wangxue/Cyclone/TxID/benchmark-work/submission-repair-2026-09-23/callers/stringtie.gtf",
+      "--sample",
+      "ENCFF105WIJ_chr22",
+      "--tool",
+      "stringtie",
+      "--annotation-name",
+      "GENCODE-v29-chr22",
+      "--output-gtf",
+      "/mnt/zzbnew/rnamodel/wangxue/Cyclone/TxID/benchmark-work/submission-repair-2026-09-23/interop-evaluation/isoquant-first/02-stringtie.txid.gtf",
+      "--mapping",
+      "/mnt/zzbnew/rnamodel/wangxue/Cyclone/TxID/benchmark-work/submission-repair-2026-09-23/interop-evaluation/isoquant-first/02-stringtie.mapping.tsv"
+    ],
+    "cwd": "/mnt/zzbnew/rnamodel/wangxue/Cyclone/TxID",
+    "returncode": 0,
+    "stderr": {
+      "bytes": 0,
+      "path": "/mnt/zzbnew/rnamodel/wangxue/Cyclone/TxID/benchmark-work/submission-repair-2026-09-23/interop-evaluation/commands/05-isoquant-2-stringtie-add.stderr.log",
+      "role": "stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "stdout": {
+      "bytes": 479,
+      "path": "/mnt/zzbnew/rnamodel/wangxue/Cyclone/TxID/benchmark-work/submission-repair-2026-09-23/interop-evaluation/commands/05-isoquant-2-stringtie-add.stdout.log",
+      "role": "stdout",
+      "sha256": "5a62feef7689d4ae0c9e47ab88f2a986ce561d1782336f6b3d7830fdf8aeed05"
+    }
+  },
+  {
+    "argv": [
+      "/root/miniconda3/bin/python",
+      "-m",
+      "txid",
+      "validate",
+      "--db",
+      "/mnt/zzbnew/rnamodel/wangxue/Cyclone/TxID/benchmark-work/submission-repair-2026-09-23/interop-evaluation/isoquant-first/registry.sqlite"
+    ],
+    "cwd": "/mnt/zzbnew/rnamodel/wangxue/Cyclone/TxID",
+    "returncode": 0,
+    "stderr": {
+      "bytes": 0,
+      "path": "/mnt/zzbnew/rnamodel/wangxue/Cyclone/TxID/benchmark-work/submission-repair-2026-09-23/interop-evaluation/commands/06-isoquant-2-validate.stderr.log",
+      "role": "stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "stdout": {
+      "bytes": 449,
+      "path": "/mnt/zzbnew/rnamodel/wangxue/Cyclone/TxID/benchmark-work/submission-repair-2026-09-23/interop-evaluation/commands/06-isoquant-2-validate.stdout.log",
+      "role": "stdout",
+      "sha256": "72302f6ff0a6807c1f3e562ca896355844aa7c7dd9402ecb58da0d9dcfa4b700"
+    }
+  },
+  {
+    "argv": [
+      "/root/miniconda3/bin/python",
+      "-m",
+      "txid",
+      "export",
+      "--db",
+      "/mnt/zzbnew/rnamodel/wangxue/Cyclone/TxID/benchmark-work/submission-repair-2026-09-23/interop-evaluation/isoquant-first/registry.sqlite",
+      "--catalog",
+      "/mnt/zzbnew/rnamodel/wangxue/Cyclone/TxID/benchmark-work/submission-repair-2026-09-23/interop-evaluation/isoquant-first/02-stringtie.catalog.tsv"
+    ],
+    "cwd": "/mnt/zzbnew/rnamodel/wangxue/Cyclone/TxID",
+    "returncode": 0,
+    "stderr": {
+      "bytes": 0,
+      "path": "/mnt/zzbnew/rnamodel/wangxue/Cyclone/TxID/benchmark-work/submission-repair-2026-09-23/interop-evaluation/commands/07-isoquant-2-export.stderr.log",
+      "role": "stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "stdout": {
+      "bytes": 179,
+      "path": "/mnt/zzbnew/rnamodel/wangxue/Cyclone/TxID/benchmark-work/submission-repair-2026-09-23/interop-evaluation/commands/07-isoquant-2-export.stdout.log",
+      "role": "stdout",
+      "sha256": "74a7b6cfc1c9e2a7baa9a032067b7bd94823e913b2a2f6a76ba79bcf29eb1e68"
+    }
+  },
+  {
+    "argv": [
+      "/root/miniconda3/bin/python",
+      "-m",
+      "txid",
+      "init",
+      "--db",
+      "/mnt/zzbnew/rnamodel/wangxue/Cyclone/TxID/benchmark-work/submission-repair-2026-09-23/interop-evaluation/stringtie-first/registry.sqlite",
+      "--fasta",
+      "/mnt/zzbnew/rnamodel/wangxue/Cyclone/model/data/raw/encode_long_read_rna/ref/GRCh38_no_alt_analysis_set_GCA_000001405.15.fasta",
+      "--assembly",
+      "GRCh38-selected-full-reference",
+      "--annotation",
+      "/mnt/zzbnew/rnamodel/wangxue/Cyclone/TxID/benchmark-work/submission-repair-2026-09-23/inputs/gencode-v29.identity.chr22.gtf",
+      "--annotation-name",
+      "GENCODE-v29-chr22"
+    ],
+    "cwd": "/mnt/zzbnew/rnamodel/wangxue/Cyclone/TxID",
+    "returncode": 0,
+    "stderr": {
+      "bytes": 0,
+      "path": "/mnt/zzbnew/rnamodel/wangxue/Cyclone/TxID/benchmark-work/submission-repair-2026-09-23/interop-evaluation/commands/08-stringtie-init.stderr.log",
+      "role": "stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "stdout": {
+      "bytes": 502,
+      "path": "/mnt/zzbnew/rnamodel/wangxue/Cyclone/TxID/benchmark-work/submission-repair-2026-09-23/interop-evaluation/commands/08-stringtie-init.stdout.log",
+      "role": "stdout",
+      "sha256": "c4310d479e8b17aafdf71be47ef44d9b87ecf7100c58edd83c9c0cc6f6b4febb"
+    }
+  },
+  {
+    "argv": [
+      "/root/miniconda3/bin/python",
+      "-m",
+      "txid",
+      "add",
+      "--db",
+      "/mnt/zzbnew/rnamodel/wangxue/Cyclone/TxID/benchmark-work/submission-repair-2026-09-23/interop-evaluation/stringtie-first/registry.sqlite",
+      "--input",
+      "/mnt/zzbnew/rnamodel/wangxue/Cyclone/TxID/benchmark-work/submission-repair-2026-09-23/callers/stringtie.gtf",
+      "--sample",
+      "ENCFF105WIJ_chr22",
+      "--tool",
+      "stringtie",
+      "--annotation-name",
+      "GENCODE-v29-chr22",
+      "--output-gtf",
+      "/mnt/zzbnew/rnamodel/wangxue/Cyclone/TxID/benchmark-work/submission-repair-2026-09-23/interop-evaluation/stringtie-first/01-stringtie.txid.gtf",
+      "--mapping",
+      "/mnt/zzbnew/rnamodel/wangxue/Cyclone/TxID/benchmark-work/submission-repair-2026-09-23/interop-evaluation/stringtie-first/01-stringtie.mapping.tsv"
+    ],
+    "cwd": "/mnt/zzbnew/rnamodel/wangxue/Cyclone/TxID",
+    "returncode": 0,
+    "stderr": {
+      "bytes": 0,
+      "path": "/mnt/zzbnew/rnamodel/wangxue/Cyclone/TxID/benchmark-work/submission-repair-2026-09-23/interop-evaluation/commands/09-stringtie-1-stringtie-add.stderr.log",
+      "role": "stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "stdout": {
+      "bytes": 481,
+      "path": "/mnt/zzbnew/rnamodel/wangxue/Cyclone/TxID/benchmark-work/submission-repair-2026-09-23/interop-evaluation/commands/09-stringtie-1-stringtie-add.stdout.log",
+      "role": "stdout",
+      "sha256": "0e70148d594a2b922bc6f8d7fae01494ee01332d338c9fa46a4d5dc5a4564b16"
+    }
+  },
+  {
+    "argv": [
+      "/root/miniconda3/bin/python",
+      "-m",
+      "txid",
+      "validate",
+      "--db",
+      "/mnt/zzbnew/rnamodel/wangxue/Cyclone/TxID/benchmark-work/submission-repair-2026-09-23/interop-evaluation/stringtie-first/registry.sqlite"
+    ],
+    "cwd": "/mnt/zzbnew/rnamodel/wangxue/Cyclone/TxID",
+    "returncode": 0,
+    "stderr": {
+      "bytes": 0,
+      "path": "/mnt/zzbnew/rnamodel/wangxue/Cyclone/TxID/benchmark-work/submission-repair-2026-09-23/interop-evaluation/commands/10-stringtie-1-validate.stderr.log",
+      "role": "stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "stdout": {
+      "bytes": 448,
+      "path": "/mnt/zzbnew/rnamodel/wangxue/Cyclone/TxID/benchmark-work/submission-repair-2026-09-23/interop-evaluation/commands/10-stringtie-1-validate.stdout.log",
+      "role": "stdout",
+      "sha256": "f6b98365b25035f0831e88a668ecf45413c08aca31e7b8ba907a391e7bdbb76c"
+    }
+  },
+  {
+    "argv": [
+      "/root/miniconda3/bin/python",
+      "-m",
+      "txid",
+      "export",
+      "--db",
+      "/mnt/zzbnew/rnamodel/wangxue/Cyclone/TxID/benchmark-work/submission-repair-2026-09-23/interop-evaluation/stringtie-first/registry.sqlite",
+      "--catalog",
+      "/mnt/zzbnew/rnamodel/wangxue/Cyclone/TxID/benchmark-work/submission-repair-2026-09-23/interop-evaluation/stringtie-first/01-stringtie.catalog.tsv"
+    ],
+    "cwd": "/mnt/zzbnew/rnamodel/wangxue/Cyclone/TxID",
+    "returncode": 0,
+    "stderr": {
+      "bytes": 0,
+      "path": "/mnt/zzbnew/rnamodel/wangxue/Cyclone/TxID/benchmark-work/submission-repair-2026-09-23/interop-evaluation/commands/11-stringtie-1-export.stderr.log",
+      "role": "stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "stdout": {
+      "bytes": 180,
+      "path": "/mnt/zzbnew/rnamodel/wangxue/Cyclone/TxID/benchmark-work/submission-repair-2026-09-23/interop-evaluation/commands/11-stringtie-1-export.stdout.log",
+      "role": "stdout",
+      "sha256": "c8efb421dda68193ff69712067e60a7ea2df6e2a801a954895b55bf21e9be9b9"
+    }
+  },
+  {
+    "argv": [
+      "/root/miniconda3/bin/python",
+      "-m",
+      "txid",
+      "add",
+      "--db",
+      "/mnt/zzbnew/rnamodel/wangxue/Cyclone/TxID/benchmark-work/submission-repair-2026-09-23/interop-evaluation/stringtie-first/registry.sqlite",
+      "--input",
+      "/mnt/zzbnew/rnamodel/wangxue/Cyclone/TxID/benchmark-work/submission-repair-2026-09-23/callers/isoquant.gtf",
+      "--sample",
+      "ENCFF105WIJ_chr22",
+      "--tool",
+      "isoquant",
+      "--annotation-name",
+      "GENCODE-v29-chr22",
+      "--output-gtf",
+      "/mnt/zzbnew/rnamodel/wangxue/Cyclone/TxID/benchmark-work/submission-repair-2026-09-23/interop-evaluation/stringtie-first/02-isoquant.txid.gtf",
+      "--mapping",
+      "/mnt/zzbnew/rnamodel/wangxue/Cyclone/TxID/benchmark-work/submission-repair-2026-09-23/interop-evaluation/stringtie-first/02-isoquant.mapping.tsv"
+    ],
+    "cwd": "/mnt/zzbnew/rnamodel/wangxue/Cyclone/TxID",
+    "returncode": 0,
+    "stderr": {
+      "bytes": 0,
+      "path": "/mnt/zzbnew/rnamodel/wangxue/Cyclone/TxID/benchmark-work/submission-repair-2026-09-23/interop-evaluation/commands/12-stringtie-2-isoquant-add.stderr.log",
+      "role": "stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "stdout": {
+      "bytes": 479,
+      "path": "/mnt/zzbnew/rnamodel/wangxue/Cyclone/TxID/benchmark-work/submission-repair-2026-09-23/interop-evaluation/commands/12-stringtie-2-isoquant-add.stdout.log",
+      "role": "stdout",
+      "sha256": "f7a3198d34cd4ef833c7c8c606420bbdae3e87ba7df89976e68a4c974888985a"
+    }
+  },
+  {
+    "argv": [
+      "/root/miniconda3/bin/python",
+      "-m",
+      "txid",
+      "validate",
+      "--db",
+      "/mnt/zzbnew/rnamodel/wangxue/Cyclone/TxID/benchmark-work/submission-repair-2026-09-23/interop-evaluation/stringtie-first/registry.sqlite"
+    ],
+    "cwd": "/mnt/zzbnew/rnamodel/wangxue/Cyclone/TxID",
+    "returncode": 0,
+    "stderr": {
+      "bytes": 0,
+      "path": "/mnt/zzbnew/rnamodel/wangxue/Cyclone/TxID/benchmark-work/submission-repair-2026-09-23/interop-evaluation/commands/13-stringtie-2-validate.stderr.log",
+      "role": "stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "stdout": {
+      "bytes": 449,
+      "path": "/mnt/zzbnew/rnamodel/wangxue/Cyclone/TxID/benchmark-work/submission-repair-2026-09-23/interop-evaluation/commands/13-stringtie-2-validate.stdout.log",
+      "role": "stdout",
+      "sha256": "72302f6ff0a6807c1f3e562ca896355844aa7c7dd9402ecb58da0d9dcfa4b700"
+    }
+  },
+  {
+    "argv": [
+      "/root/miniconda3/bin/python",
+      "-m",
+      "txid",
+      "export",
+      "--db",
+      "/mnt/zzbnew/rnamodel/wangxue/Cyclone/TxID/benchmark-work/submission-repair-2026-09-23/interop-evaluation/stringtie-first/registry.sqlite",
+      "--catalog",
+      "/mnt/zzbnew/rnamodel/wangxue/Cyclone/TxID/benchmark-work/submission-repair-2026-09-23/interop-evaluation/stringtie-first/02-isoquant.catalog.tsv"
+    ],
+    "cwd": "/mnt/zzbnew/rnamodel/wangxue/Cyclone/TxID",
+    "returncode": 0,
+    "stderr": {
+      "bytes": 0,
+      "path": "/mnt/zzbnew/rnamodel/wangxue/Cyclone/TxID/benchmark-work/submission-repair-2026-09-23/interop-evaluation/commands/14-stringtie-2-export.stderr.log",
+      "role": "stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "stdout": {
+      "bytes": 179,
+      "path": "/mnt/zzbnew/rnamodel/wangxue/Cyclone/TxID/benchmark-work/submission-repair-2026-09-23/interop-evaluation/commands/14-stringtie-2-export.stdout.log",
+      "role": "stdout",
+      "sha256": "6dce1b7df98e6096731c53e12c6cb157ab3645f239c2651155819a673560e9b0"
+    }
+  }
+]
