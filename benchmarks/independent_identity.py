@@ -347,7 +347,7 @@ def verify_conformance(path: str | Path) -> dict[str, object]:
         "valid": not failures, "failures": failures,
         "inputs": [_source_record(path, "golden_vectors"),
                    _source_record(Path(__file__), "independent_calculator"),
-                   _source_record(root / "docs/superpowers/specs/2026-07-19-novel-transcript-identity-registry-design.md", "specification"),
+                   _source_record(root / "docs/spec/identity-v1.md", "specification"),
                    _source_record(root / "schemas/canonical-object.schema.json", "canonical_schema")],
     }
 

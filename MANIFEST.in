@@ -1,0 +1,5 @@
+include LICENSE README.md CITATION.cff CONTRIBUTING.md
+recursive-include schemas *.sql *.json
+recursive-include examples/minimal *.py *.fa *.gtf *.json *.md
+# Developer tests and authoring files are not part of the installable source archive.
+prune tests

@@ -1,0 +1,11 @@
+chr1	ref	exon	100	199	.	+	.	gene_id "g1"; transcript_id "tx_ref1"; gene_name "GENE1";
+chr1	ref	exon	300	399	.	+	.	gene_id "g1"; transcript_id "tx_ref1"; gene_name "GENE1";
+chr1	ref	exon	500	599	.	+	.	gene_id "g2"; transcript_id "tx_ref2";
+chr1	ref	exon	700	799	.	+	.	gene_id "g2"; transcript_id "tx_ref2";
+chr1	ref	exon	1100	1199	.	-	.	gene_id "g3"; transcript_id "tx_ref3";
+chr1	ref	exon	900	999	.	-	.	gene_id "g3"; transcript_id "tx_ref3";
+chr1	ref	exon	1300	1349	.	+	.	gene_id "gA"; transcript_id "tx_A";
+chr1	ref	exon	1450	1499	.	+	.	gene_id "gA"; transcript_id "tx_A";
+chr1	ref	exon	1400	1440	.	+	.	gene_id "gB"; transcript_id "tx_B";
+chr1	ref	exon	1550	1599	.	+	.	gene_id "gB"; transcript_id "tx_B";
+chr1	ref	exon	1700	1799	.	+	.	gene_id "gSE"; transcript_id "tx_SE";

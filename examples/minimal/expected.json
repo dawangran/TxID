@@ -1,0 +1,16 @@
+{
+  "transcripts": 9,
+  "catalog_forms": 9,
+  "classifications": {
+    "ambiguous_gene": 2,
+    "known": 2,
+    "new_locus": 2,
+    "novel_in_known_gene": 3
+  },
+  "valid": true,
+  "reference_id_preserved": true,
+  "end_variant_same_splice_chain": true,
+  "end_variant_distinct_form": true,
+  "splice_change_distinct_chain": true,
+  "retry_created": false
+}

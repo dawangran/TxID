@@ -1,7 +1,7 @@
 # TxID publication benchmark workflow
 
 This Snakemake workflow implements the benchmark protocol in
-`docs/superpowers/specs/2026-07-31-publication-benchmark-design.md`.
+[benchmark protocol](../../docs/design/benchmark-protocol.md).
 It keeps transcript discovery and transcript identity as separate evidence
 tracks.
 

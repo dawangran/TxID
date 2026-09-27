@@ -1,13 +1,14 @@
-# Synthetic evaluation and external benchmark plan
+# Benchmark guide
 
 ## Publication workflow
 
-The current publication protocol is implemented as a separate Snakemake workflow
-under `workflows/publication_benchmark/`. Unlike the legacy structure-only
+The [benchmark protocol](design/benchmark-protocol.md) is implemented as a
+separate [Snakemake workflow](../workflows/publication_benchmark/README.md).
+Unlike the legacy structure-only
 simulation described below, its Tier-0 profile starts from sequence-backed reads
 and actually invokes IsoQuant, FLAIR, StringTie, TALON, gffcompare, SQANTI3, and
 isoSeQL. The checked execution and its evidence boundary are recorded in
-`docs/benchmark/publication-smoke-2026-07-31.md`.
+[Tier-0 execution report](benchmark/publication-smoke-2026-07-31.md).
 
 The public WTC11 PacBio/ONT triplicate manifest and the two-annotation-context
 template are checked in but disabled. They become runnable only after local

@@ -1,0 +1,16 @@
+chr1	caller	exon	300	399	42	+	.	gene_id "up_g1"; transcript_id "alt_known"; note "known\"quote";
+chr1	caller	exon	100	199	41	+	.	gene_id "up_g1"; transcript_id "alt_known"; note "known\"quote";
+chr1	caller	exon	300	410	.	+	.	gene_id "up_g1"; transcript_id "end_variant";
+chr1	caller	exon	110	199	.	+	.	gene_id "up_g1"; transcript_id "end_variant";
+chr1	caller	exon	300	399	.	+	.	gene_id "up_g1"; transcript_id "one_bp_splice";
+chr1	caller	exon	100	200	.	+	.	gene_id "up_g1"; transcript_id "one_bp_splice";
+chr2	caller	exon	100	150	.	+	.	gene_id "new_upstream"; transcript_id "new_chr2";
+chr2	caller	exon	250	300	.	+	.	gene_id "new_upstream"; transcript_id "new_chr2";
+chr1	caller	exon	100	399	.	-	.	gene_id "antisense_upstream"; transcript_id "antisense_single";
+chr1	caller	exon	1320	1360	.	+	.	gene_id "bridge"; transcript_id "ambiguous_AB";
+chr1	caller	exon	1500	1570	.	+	.	gene_id "bridge"; transcript_id "ambiguous_AB";
+chr1	caller	exon	510	790	.	+	.	gene_id "retained"; transcript_id "retained_intron";
+chr1	caller	exon	150	180	.	+	.	gene_id "readthrough"; transcript_id "readthrough_1";
+chr1	caller	exon	720	750	.	+	.	gene_id "readthrough"; transcript_id "readthrough_1";
+chr1	caller	exon	900	999	.	-	.	gene_id "up_g3"; transcript_id "alt_minus";
+chr1	caller	exon	1100	1199	.	-	.	gene_id "up_g3"; transcript_id "alt_minus";

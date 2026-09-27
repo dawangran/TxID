@@ -7,6 +7,10 @@ on:
 permissions:
   contents: read
 
+concurrency:
+  group: tests-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   unit-tests:
     runs-on: ubuntu-latest
@@ -19,7 +23,21 @@ jobs:
       - uses: actions/setup-python@v7
         with:
           python-version: ${{ matrix.python-version }}
-      - name: Install TxID
-        run: python -m pip install .
+      - name: Build source distribution and wheel
+        run: |
+          python -m pip install build
+          python -m build
+      - name: Install the built wheel
+        run: |
+          python -m venv "$RUNNER_TEMP/txid-venv"
+          "$RUNNER_TEMP/txid-venv/bin/python" -m pip install --no-deps dist/*.whl
+          echo "$RUNNER_TEMP/txid-venv/bin" >> "$GITHUB_PATH"
+      - name: Check installed package outside the checkout
+        working-directory: ${{ runner.temp }}
+        run: |
+          txid --version
+          python "$GITHUB_WORKSPACE/examples/minimal/run.py" --output-dir "$RUNNER_TEMP/txid-example"
       - name: Run tests
         run: python -m unittest discover -s tests -v
+      - name: Verify independent conformance
+        run: python -I benchmarks/independent_identity.py conformance --vectors tests/conformance/exact-v1.json

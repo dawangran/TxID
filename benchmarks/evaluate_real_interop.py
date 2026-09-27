@@ -255,7 +255,7 @@ def evaluate_case(case_dir: Path, reference: Path, *, output: Path | None = None
     sources = [_file(path, "source_code") for path in [
         Path(__file__), REPOSITORY / "benchmarks/independent_identity.py",
         *sorted((REPOSITORY / "src/txid").glob("*.py")), REPOSITORY / "schemas/registry-v1.sql",
-        REPOSITORY / "docs/superpowers/specs/2026-07-19-novel-transcript-identity-registry-design.md"]]
+        REPOSITORY / "docs/spec/identity-v1.md"]]
     output.mkdir(parents=True, exist_ok=False)
     commands = _Commands(output)
     _json(output / "input-provenance.json", {"inputs": [reference_record, annotation_record, *caller_records.values()],
