@@ -1,0 +1,37 @@
+{
+  "assembly_fingerprint": "sha256:0000000000000000000000000000000000000000000000000000000000000000",
+  "calculator_version": "independent-exact-v1.0",
+  "failures": [],
+  "identities_checked": 5,
+  "inputs": [
+    {
+      "bytes": 2547,
+      "path": "tests/conformance/exact-v1.json",
+      "role": "golden_vectors",
+      "sha256": "d8acf86920184de2618b108c238b2f1a5c3d45e4f6b2d62f9cd492b0dcff810a"
+    },
+    {
+      "bytes": 21331,
+      "path": "/mnt/zzbnew/rnamodel/wangxue/Cyclone/TxID/benchmarks/independent_identity.py",
+      "role": "independent_calculator",
+      "sha256": "13088a563794ea67ba512bde32b40ad51eb59847323215352169d6c7f0524713"
+    },
+    {
+      "bytes": 12587,
+      "path": "/mnt/zzbnew/rnamodel/wangxue/Cyclone/TxID/docs/superpowers/specs/2026-07-19-novel-transcript-identity-registry-design.md",
+      "role": "specification",
+      "sha256": "61eace04be9ee8a48285a3c846612f3813cb9bfa612361b54b0a9b493f70ddc9"
+    },
+    {
+      "bytes": 2187,
+      "path": "/mnt/zzbnew/rnamodel/wangxue/Cyclone/TxID/schemas/canonical-object.schema.json",
+      "role": "canonical_schema",
+      "sha256": "0e131a8733c69dbd136e231d6ea4350603b6b82273a545a37e2dca269891ae89"
+    }
+  ],
+  "python_version": "3.13.13",
+  "schema": "txid.independent-conformance.v1",
+  "scope": "Separate standard-library implementation of published exact-v1 rules; no TxID imports. Supplied assembly fingerprint; no independent FASTA validation.",
+  "valid": true,
+  "vectors": 3
+}

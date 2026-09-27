@@ -1,0 +1,18 @@
+[
+  {
+    "source": "## Data availability",
+    "translation": "## 数据可用性"
+  },
+  {
+    "source": "The public ENCODE annotations are identified in Table S1; the new read-based case uses ENCFF105WIJ. Numerical source data, input manifests, analysis scripts and the unmodified caller annotations for that case are included in the accompanying reproducibility package.",
+    "translation": "公开 ENCODE 注释的文件登录号列于表 S1；新增基于读段的案例使用 ENCFF105WIJ。数值源数据、输入清单、分析脚本及该案例未经修改的工具输出注释均包含在随附的复现材料包中。"
+  },
+  {
+    "source": "## Acknowledgements",
+    "translation": "## 致谢"
+  },
+  {
+    "source": "OpenAI Codex assisted with drafting, translation, code revision and verification workflows. Numerical results were taken from retained reports or produced by the recorded computational workflows.",
+    "translation": "OpenAI Codex 辅助了起草、翻译、代码修订及核验流程。数值结果来自保留的报告或所记录计算流程的实际运行。"
+  }
+]

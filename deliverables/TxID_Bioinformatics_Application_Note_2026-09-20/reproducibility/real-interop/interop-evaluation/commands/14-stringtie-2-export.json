@@ -1,0 +1,26 @@
+{
+  "argv": [
+    "/root/miniconda3/bin/python",
+    "-m",
+    "txid",
+    "export",
+    "--db",
+    "/mnt/zzbnew/rnamodel/wangxue/Cyclone/TxID/benchmark-work/submission-repair-2026-09-23/interop-evaluation/stringtie-first/registry.sqlite",
+    "--catalog",
+    "/mnt/zzbnew/rnamodel/wangxue/Cyclone/TxID/benchmark-work/submission-repair-2026-09-23/interop-evaluation/stringtie-first/02-isoquant.catalog.tsv"
+  ],
+  "cwd": "/mnt/zzbnew/rnamodel/wangxue/Cyclone/TxID",
+  "returncode": 0,
+  "stderr": {
+    "bytes": 0,
+    "path": "/mnt/zzbnew/rnamodel/wangxue/Cyclone/TxID/benchmark-work/submission-repair-2026-09-23/interop-evaluation/commands/14-stringtie-2-export.stderr.log",
+    "role": "stderr",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "stdout": {
+    "bytes": 179,
+    "path": "/mnt/zzbnew/rnamodel/wangxue/Cyclone/TxID/benchmark-work/submission-repair-2026-09-23/interop-evaluation/commands/14-stringtie-2-export.stdout.log",
+    "role": "stdout",
+    "sha256": "6dce1b7df98e6096731c53e12c6cb157ab3645f239c2651155819a673560e9b0"
+  }
+}

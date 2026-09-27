@@ -1,0 +1,56 @@
+{
+  "schema": "txid.benchmark-recovery.v1",
+  "interrupted_run": "benchmark-work/encode-gtf-public/txid/sorted-core",
+  "interruption": {
+    "exit_code": 143,
+    "signal": "SIGTERM",
+    "stage": "ordered import 4 of 6",
+    "completed_component_imports": 3
+  },
+  "rollback": {
+    "journal_bytes_before_recovery": 96396272,
+    "command": [
+      "sqlite3",
+      "benchmark-work/encode-gtf-public/txid/sorted-core/registry.sqlite",
+      "BEGIN IMMEDIATE; ROLLBACK;"
+    ],
+    "database_bytes_after_recovery": 1228550144,
+    "journal_present_after_recovery": false
+  },
+  "validation": {
+    "copy": {
+      "path": "/tmp/txid-encode-gtf/sorted-core-recovered.sqlite",
+      "bytes": 1228550144,
+      "sha256": "17e6c4b116a1a8b09fd813b3b90b828d85dbd7df1f9785024c9357512183e21d"
+    },
+    "command": [
+      "env",
+      "PYTHONPATH=src",
+      "python",
+      "-m",
+      "txid",
+      "validate",
+      "--db",
+      "/tmp/txid-encode-gtf/sorted-core-recovered.sqlite"
+    ],
+    "exit_code": 0,
+    "valid": true,
+    "issues": [],
+    "summary": {
+      "annotations": 1,
+      "assembly": "GRCh38-GCA_000001405.15",
+      "assembly_fingerprint": "sha256:0b301cd433fde99813eef5747cb0c060cb20f65de7aa17beeda1c17520f22408",
+      "classifications": {
+        "ambiguous_gene": 71759,
+        "new_locus": 11578,
+        "novel_in_known_gene": 258673
+      },
+      "exact_forms": 310588,
+      "imports": 3,
+      "loci": 19263,
+      "observations": 342010,
+      "splice_chains": 225210
+    }
+  },
+  "resumption_policy": "Resume only after the live journal is absent, the registry import count equals three, all first-three component GTF and mapping artifacts exist, and this audit is supplied to the checked runner. Pre-interruption runtime is not reconstructed."
+}

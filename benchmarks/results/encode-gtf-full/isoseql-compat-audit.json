@@ -1,0 +1,47 @@
+{
+  "compatibility_change": {
+    "id": "duplicate-exact-ends-observation-retention",
+    "operation": "Change only the ends_counts insertion to INSERT OR IGNORE; PBID insertion remains unchanged, so every source transcript name is retained for identity-partition evaluation.",
+    "reason": "Unmodified isoSeQL raises a UNIQUE constraint error when one experiment contains multiple transcript names for the same exact end structure and the same read-count value.",
+    "structural_queries_changed": false
+  },
+  "ended_unix": 1785478826.6167548,
+  "output_files": [
+    {
+      "bytes": 3303,
+      "path": "/mnt/zzbnew/rnamodel/wangxue/Cyclone/TxID/benchmark-work/encode-gtf-public/isoseql/compat-source/isoSeQL_run.py",
+      "sha256": "38fdb5483627e2307182f12284765f15c5cbfbc44eabd18979909f86ea38f937"
+    },
+    {
+      "bytes": 12326,
+      "path": "/mnt/zzbnew/rnamodel/wangxue/Cyclone/TxID/benchmark-work/encode-gtf-public/isoseql/compat-source/isoSeQL_db.py",
+      "sha256": "6cf6cb4eb8d7e667ff70a2c14aff00cb68e3699719318530d3045435f9ea00ad"
+    },
+    {
+      "bytes": 4221,
+      "path": "/mnt/zzbnew/rnamodel/wangxue/Cyclone/TxID/benchmark-work/encode-gtf-public/isoseql/compat-source/isoSeQL_parse.py",
+      "sha256": "c00f5819c20c1fe3616653bca068b1679f48cdbe8f0100855a29dedc1bfd547c"
+    }
+  ],
+  "schema": "txid.isoseql-compat-source.v1",
+  "source_files": [
+    {
+      "bytes": 3303,
+      "path": "/mnt/zzbnew/rnamodel/wangxue/Cyclone/TxID/benchmark-work/public-pacbio-two-replicate/sources/isoSeQL/isoSeQL_run.py",
+      "sha256": "38fdb5483627e2307182f12284765f15c5cbfbc44eabd18979909f86ea38f937"
+    },
+    {
+      "bytes": 12316,
+      "path": "/mnt/zzbnew/rnamodel/wangxue/Cyclone/TxID/benchmark-work/public-pacbio-two-replicate/sources/isoSeQL/isoSeQL_db.py",
+      "sha256": "33b446e50eb8118c2c46dd7aac2be2561225e570fd043386ab3ee750e1bb8601"
+    },
+    {
+      "bytes": 4221,
+      "path": "/mnt/zzbnew/rnamodel/wangxue/Cyclone/TxID/benchmark-work/public-pacbio-two-replicate/sources/isoSeQL/isoSeQL_parse.py",
+      "sha256": "c00f5819c20c1fe3616653bca068b1679f48cdbe8f0100855a29dedc1bfd547c"
+    }
+  ],
+  "started_unix": 1785478826.5375247,
+  "upstream_commit": "25d9366d8b236d3b912e62dcd2c267fe6df31a4c",
+  "upstream_version": "isoSeQL 1.0.1"
+}

@@ -1,0 +1,26 @@
+Panel	Metric	Value	Unit	Source
+b	Exact form ID changes	0	observations	annotation-release-v29-v49.json/totals/txid_form_changes
+b	Classification changes	29435	observations	annotation-release-v29-v49.json/totals/classification_changes
+b	Compared observations	538804	observations	annotation-release-v29-v49.json/totals/shared_observations
+b	ambiguous_gene -> known	140	changed observations	annotation-release-v29-v49.json/totals/classification_transitions/ambiguous_gene -> known
+b	ambiguous_gene -> novel_in_known_gene	3137	changed observations	annotation-release-v29-v49.json/totals/classification_transitions/ambiguous_gene -> novel_in_known_gene
+b	new_locus -> ambiguous_gene	509	changed observations	annotation-release-v29-v49.json/totals/classification_transitions/new_locus -> ambiguous_gene
+b	new_locus -> known	26	changed observations	annotation-release-v29-v49.json/totals/classification_transitions/new_locus -> known
+b	new_locus -> novel_in_known_gene	10732	changed observations	annotation-release-v29-v49.json/totals/classification_transitions/new_locus -> novel_in_known_gene
+b	novel_in_known_gene -> ambiguous_gene	14517	changed observations	annotation-release-v29-v49.json/totals/classification_transitions/novel_in_known_gene -> ambiguous_gene
+b	novel_in_known_gene -> known	282	changed observations	annotation-release-v29-v49.json/totals/classification_transitions/novel_in_known_gene -> known
+b	novel_in_known_gene -> new_locus	92	changed observations	annotation-release-v29-v49.json/totals/classification_transitions/novel_in_known_gene -> new_locus
+Table S3	TxID exact form: Changed observation labels	0	observations	identity-partitions.json/order_comparisons
+Table S3	TxID exact form: Changed pair relations	0	pairs	identity-partitions.json/order_comparisons
+Table S3	TxID gene/locus: Changed observation labels	137658	observations	identity-partitions.json/order_comparisons
+Table S3	TxID gene/locus: Changed pair relations	418224	pairs	identity-partitions.json/order_comparisons
+Table S3	gffcompare tracking: Changed observation labels	538768	observations	identity-partitions.json/order_comparisons
+Table S3	gffcompare tracking: Changed pair relations	4438	pairs	identity-partitions.json/order_comparisons
+Table S3	isoSeQL exact ends: Changed observation labels	538804	observations	identity-partitions.json/order_comparisons
+Table S3	isoSeQL exact ends: Changed pair relations	0	pairs	identity-partitions.json/order_comparisons
+Table S3	isoSeQL common junction: Changed observation labels	538804	observations	identity-partitions.json/order_comparisons
+Table S3	isoSeQL common junction: Changed pair relations	0	pairs	identity-partitions.json/order_comparisons
+c	TxID exact form	467819	columns	identity-partitions.json/evaluations
+c	gffcompare tracking	379407	columns	identity-partitions.json/evaluations
+c	isoSeQL exact ends	467908	columns	identity-partitions.json/evaluations
+c	isoSeQL common junction	364032	columns	identity-partitions.json/evaluations

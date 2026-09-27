@@ -1,0 +1,24 @@
+{
+  "annotation_release_classification_changes": 29435,
+  "annotation_release_form_identifier_changes": 0,
+  "catalog_bytes_identical": false,
+  "catalog_sha256": {
+    "shuffled": "3da5e36b350bede39136cf950194072e2647b889b4017aed061ed91f00713398",
+    "sorted": "d40546fb214ba8952ea38e1998e70de807dc7be40cd417c8ca39328850e3c0ca"
+  },
+  "incremental_classification_regressions": 0,
+  "incremental_final_catalog_bytes_identical": true,
+  "incremental_identifier_disappearances": 0,
+  "incremental_snapshots": 6,
+  "incremental_structural_metadata_changes": 0,
+  "matrix_excluded_tools": [],
+  "matrix_nonzero": 538804,
+  "matrix_nonzero_fraction": 0.1919560057771631,
+  "matrix_observations": 538804,
+  "observations": 538804,
+  "order_form_identifier_changes": 0,
+  "order_splice_identifier_changes": 0,
+  "raw_upstream_columns": 538804,
+  "samples": 6,
+  "txid_form_columns": 467819
+}

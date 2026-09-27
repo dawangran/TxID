@@ -1,0 +1,25 @@
+{
+  "date": "2026-09-23",
+  "revision": "final contribution-focused editorial revision",
+  "status": "PASS",
+  "artifact_count": 15,
+  "changed_artifacts": [],
+  "artifacts": {
+    "manuscript.md": "98eb04dff2fbd3f30a7071d884048941c1f68d02b1b4f93fc38e02506dd32d5d",
+    "manuscript.docx": "0bd89a84b12b1e82aa101529919a34718a516e62662d66b5dfe88819fffc89cb",
+    "supplementary.md": "4faf02406711e39bd0915d93445b63e386b2fd4e65850579264bbb6752692d1c",
+    "supplementary.docx": "354dc9bdd28d41fce32c60b3b4c35891e003f703ab2c222d133705edadc5f1d9",
+    "figures/figure1.png": "98c1786013f62dbbf4035fffc1bb92f46523071792b5a9e5673fc5fe19925c87",
+    "figures/figure1.svg": "14ceaf39753abd184e8a75e38efa4facf35c8518dedc08ac440beddfccc2f41a",
+    "figures/figure1.pdf": "cfcff1f2530ba9836276fc324375668aedf19e6f3e0bd4364808191deb882c90",
+    "figures/figure1.tif": "1fc5bea4b59932a04b4066e226e3b234af04be64180e6a0e534f00109cf756c2",
+    "figures/figure1-layout-check.json": "fe058404c58b0be5f8ba1b90450ac00ec7272ff8bfd8d13be33ee4f0387f5f64",
+    "figures/figure1-plot-data.json": "937b4fc4b9efdf35e95111d0878a4f73927a91d9d8dedd72ab0a899f391138b6",
+    "figures/figure1-annotation-transitions.tsv": "6f7093403e8765dab89dfb99666ec743681eed33df35c8632da022ee575aba9e",
+    "figures/source-data.json": "4f1bed36d8bf94ef6969dc3f3e5589c982420db75d25f4c7d0683be6c1bea664",
+    "figures/source-data.tsv": "20017ddbe63bc35ab3dbfcd911ef1d92fc8566b345dcd969207cd2fa57e8e14a",
+    "manuscript.en.md": "b69e51cf0d564fbf60287b16a411af88e2be7a5eef34e05f369b49cda89e063e",
+    "manuscript.en.docx": "23cbb909a27cb621fd39b75cb181eece77a2fbf61b198f022d29a96f2f8ebf7b"
+  },
+  "scope": "Second generation of the final presentation artifacts; no raw experiment or software test rerun."
+}

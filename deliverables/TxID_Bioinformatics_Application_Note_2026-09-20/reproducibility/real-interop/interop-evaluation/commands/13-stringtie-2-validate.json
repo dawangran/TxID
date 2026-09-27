@@ -1,0 +1,24 @@
+{
+  "argv": [
+    "/root/miniconda3/bin/python",
+    "-m",
+    "txid",
+    "validate",
+    "--db",
+    "/mnt/zzbnew/rnamodel/wangxue/Cyclone/TxID/benchmark-work/submission-repair-2026-09-23/interop-evaluation/stringtie-first/registry.sqlite"
+  ],
+  "cwd": "/mnt/zzbnew/rnamodel/wangxue/Cyclone/TxID",
+  "returncode": 0,
+  "stderr": {
+    "bytes": 0,
+    "path": "/mnt/zzbnew/rnamodel/wangxue/Cyclone/TxID/benchmark-work/submission-repair-2026-09-23/interop-evaluation/commands/13-stringtie-2-validate.stderr.log",
+    "role": "stderr",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "stdout": {
+    "bytes": 449,
+    "path": "/mnt/zzbnew/rnamodel/wangxue/Cyclone/TxID/benchmark-work/submission-repair-2026-09-23/interop-evaluation/commands/13-stringtie-2-validate.stdout.log",
+    "role": "stdout",
+    "sha256": "72302f6ff0a6807c1f3e562ca896355844aa7c7dd9402ecb58da0d9dcfa4b700"
+  }
+}

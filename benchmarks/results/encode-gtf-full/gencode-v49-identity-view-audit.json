@@ -1,0 +1,59 @@
+{
+  "ended_unix": 1785480477.344734,
+  "schema": "txid.gtf-identity-view.v1",
+  "started_unix": 1785480221.265831,
+  "views": [
+    {
+      "duplicate_attribute_occurrences": 6894182,
+      "duplicate_attribute_occurrences_by_key": {
+        "ont": 13177,
+        "tag": 6881005
+      },
+      "input": {
+        "bytes": 93496634,
+        "path": "/tmp/txid-encode-gtf/gencode.v49.primary_assembly.annotation.gtf.gz",
+        "sha256": "5cabe88e93064851dc6cb826efe0e8b7babf7985e73df280cfb05910d05cd023"
+      },
+      "input_feature_counts": {
+        "cds": 2283168,
+        "exon": 3683354,
+        "gene": 78899,
+        "selenocysteine": 130,
+        "start_codon": 221201,
+        "stop_codon": 215166,
+        "transcript": 509650,
+        "utr": 770748
+      },
+      "kept_feature_counts": {
+        "exon": 3683354,
+        "transcript": 509650
+      },
+      "label": "reference-gencode-v49-primary",
+      "output": {
+        "bytes": 24098156,
+        "compressed": true,
+        "gzip_header_policy": "RFC 1952 with mtime=0 and no original filename",
+        "path": "/mnt/zzbnew/rnamodel/wangxue/Cyclone/TxID/benchmark-work/encode-gtf-public/identity-views/reference-gencode-v49.identity.gtf.gz",
+        "payload_bytes": 450151932,
+        "payload_sha256": "167a4b0e7e461ebdfba3e28471498496e2b4d401e5ca258fc5e029e99d1f77f9",
+        "sha256": "34c886a2da43fa9f9b89d7c32af5b041d5f742a8fcac105cc40c1f9bedfaa977"
+      },
+      "projection_contract": {
+        "coordinate_columns": "preserved byte-for-byte",
+        "duplicate_identifier_attributes": "accepted only when all values are identical",
+        "duplicate_nonidentifier_attributes": "counted in audit and omitted",
+        "kept_attributes": [
+          "gene_id",
+          "transcript_id"
+        ],
+        "kept_features": [
+          "exon",
+          "transcript"
+        ],
+        "record_order": "preserved"
+      },
+      "transcript_rows": 509650,
+      "transcripts_with_exons": 509650
+    }
+  ]
+}

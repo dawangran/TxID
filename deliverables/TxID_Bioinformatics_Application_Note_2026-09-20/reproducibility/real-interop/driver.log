@@ -1,0 +1,11 @@
+Traceback (most recent call last):
+  File "/mnt/zzbnew/rnamodel/wangxue/Cyclone/TxID/workflows/publication_benchmark/scripts/run_caller.py", line 164, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/mnt/zzbnew/rnamodel/wangxue/Cyclone/TxID/workflows/publication_benchmark/scripts/run_caller.py", line 132, in main
+    record = run_command(
+             ^^^^^^^^^^^^
+  File "/mnt/zzbnew/rnamodel/wangxue/Cyclone/TxID/workflows/publication_benchmark/scripts/benchmark_lib.py", line 233, in run_command
+    raise RuntimeError(
+RuntimeError: command failed with exit 24: ['/root/miniconda3/envs/isoquant/bin/python', '/mnt/zzbnew/rnamodel/wangxue/Cyclone/TxID/workflows/publication_benchmark/scripts/isoquant_entry.py', '--reference', '/mnt/zzbnew/rnamodel/wangxue/Cyclone/model/data/raw/encode_long_read_rna/ref/GRCh38_no_alt_analysis_set_GCA_000001405.15.fasta', '--genedb', '/mnt/zzbnew/rnamodel/wangxue/Cyclone/TxID/benchmark-work/submission-repair-2026-09-23/inputs/gencode-v29.identity.chr22.gtf', '--complete_genedb', '--bam', '/mnt/zzbnew/rnamodel/wangxue/Cyclone/TxID/benchmark-work/submission-repair-2026-09-23/alignment/chr22.primary.bam', '--data_type', 'pacbio_ccs', '--output', '/mnt/zzbnew/rnamodel/wangxue/Cyclone/TxID/benchmark-work/submission-repair-2026-09-23/callers/isoquant', '--prefix', 'ENCFF105WIJ_chr22', '--threads', '4', '--force']; see /mnt/zzbnew/rnamodel/wangxue/Cyclone/TxID/benchmark-work/submission-repair-2026-09-23/callers/isoquant/isoquant.stderr.log
+Caller failure: [1, 0]; inspect retained logs

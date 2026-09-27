@@ -1,0 +1,95 @@
+{
+  "annotation_release_check": {
+    "classification_status_changes": 22,
+    "exact_txid_invariant": true,
+    "shared_observations": 109
+  },
+  "benchmark": "TxID truth-defined synthetic interoperability evaluation",
+  "classification_accuracy": 1.0,
+  "comparator_status": {
+    "TALON_shared_database": "outside this simulation run; see external-comparison-summary.json",
+    "gffcompare": "outside this simulation run; see external-comparison-summary.json",
+    "isoSeQL": "outside this simulation run; see external-comparison-summary.json"
+  },
+  "end_to_end_resources": {
+    "peak_memory_mib": 5.474397659301758,
+    "seconds": 3.4545706873759627
+  },
+  "environment": {
+    "machine": "x86_64",
+    "platform": "Linux",
+    "python": "3.13.13",
+    "sqlite": "3.51.2"
+  },
+  "exact_structural_identity": {
+    "eligible_same_prediction_pairs": 22720,
+    "eligible_same_truth_pairs": 22720,
+    "false_merge_pairs": 0,
+    "false_merge_rate": 0.0,
+    "false_split_pairs": 0,
+    "false_split_rate": 0.0
+  },
+  "fuzzy_clusters": 120,
+  "observations": 2511,
+  "parameters": {
+    "artifact_rate": 0.05,
+    "fuzzy_end_tolerance": 15,
+    "fuzzy_splice_tolerance": 2,
+    "samples": 6,
+    "simulated_callers": [
+      "IsoQuant-like",
+      "TALON-like",
+      "FLAIR-like",
+      "StringTie-like"
+    ],
+    "truth_transcripts": 120
+  },
+  "perturbed_observations": 128,
+  "raw_upstream_identifier_baseline": {
+    "eligible_same_prediction_pairs": 0,
+    "eligible_same_truth_pairs": 22720,
+    "false_merge_pairs": 0,
+    "false_merge_rate": 0.0,
+    "false_split_pairs": 22720,
+    "false_split_rate": 1.0
+  },
+  "sample_by_transcript_matrix": {
+    "column_reduction": 2321,
+    "output": "sample-by-txid.tsv",
+    "raw_upstream_columns": 2511,
+    "txid_exact_columns": 190
+  },
+  "scaling": [
+    {
+      "items": 120,
+      "items_per_second": 11190.523467752939,
+      "seconds": 0.010723358951508999,
+      "synthetic_resampled_scaling": true
+    },
+    {
+      "items": 240,
+      "items_per_second": 11421.644209838254,
+      "seconds": 0.02101273648440838,
+      "synthetic_resampled_scaling": true
+    },
+    {
+      "items": 480,
+      "items_per_second": 11367.76758371474,
+      "seconds": 0.04222464933991432,
+      "synthetic_resampled_scaling": true
+    }
+  ],
+  "seed": 20260730,
+  "software_version": "0.1.0",
+  "underlying_biological_model_fragmentation": {
+    "eligible_same_prediction_pairs": 22720,
+    "eligible_same_truth_pairs": 25152,
+    "false_merge_pairs": 0,
+    "false_merge_rate": 0.0,
+    "false_split_pairs": 2432,
+    "false_split_rate": 0.09669211195928754,
+    "fraction_fragmented": 0.5833333333333334,
+    "fragmented_truth_transcripts": 70,
+    "interpretation": "Includes intentionally injected caller boundary errors; exact TxID correctly keeps distinct emitted structures distinct."
+  }
+}
