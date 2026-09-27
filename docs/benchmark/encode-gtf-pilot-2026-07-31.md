@@ -11,8 +11,10 @@ from official ENCODE TALON GTF outputs to avoid the much larger BAM transfers.
 It does not measure transcript discovery accuracy, full-genome performance, or
 agreement among independent callers.
 
-The checked compact artifacts are in
-[`benchmarks/results/encode-gtf-pilot/`](../../benchmarks/results/encode-gtf-pilot/).
+The pilot's local artifacts were recorded under
+`benchmarks/results/encode-gtf-pilot/`; that generated directory is not included
+in the source repository. Retained compact reports for the superseding experiment
+are in [`benchmarks/results/encode-gtf-full/`](../../benchmarks/results/encode-gtf-full/).
 Large source GTFs, SQANTI3 products, rewritten annotations, and SQLite databases
 remain outside Git.
 

@@ -39,6 +39,12 @@ manuscript/
 /figures/
 /tables/
 /plan/
+/patent/
+/docs/superpowers/
+/docs/assets/*.prompt.md
+/docs/assets/*-paradigm-*.png
+/docs/assets/txid-data-center-concept-*.png
+/docs/txid-data-center-concept.md
 /benchmarks/render_manuscript_figures*.py
 /tests/test_manuscript_figure_*.py
 website/
@@ -53,3 +59,9 @@ AGENTS.md
 environment.yml
 conda-recipe/*
 !conda-recipe/meta.yaml
+
+# Local editor and operating-system files.
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/

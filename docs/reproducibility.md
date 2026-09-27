@@ -1,6 +1,6 @@
 # Reproducibility checklist
 
-- Identity specification: normative draft 1.0.1 in `docs/superpowers/specs/`;
+- Identity specification: [normative draft 1.0.1](spec/identity-v1.md);
   the 2026-09-23 clarification records existing fuzzy bridge behavior without
   changing identity algorithms or cluster memberships.
 - Registry schema: `schemas/registry-v1.sql`.
