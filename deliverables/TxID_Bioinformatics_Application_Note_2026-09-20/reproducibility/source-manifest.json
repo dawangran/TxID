@@ -100,14 +100,14 @@
     "sha256": "7710598df86348290d35ebfab8f26ee344a5f2ad653190a83b89f994e40fff12"
   },
   {
-    "bytes": 507,
+    "bytes": 801,
     "path": "deliverables/TxID_Bioinformatics_Application_Note_2026-09-20/end-matter.md",
-    "sha256": "8deb8e8b9cf476c649e60d4ed9d0526eef80852da72cb3bfd47a310747d0563d"
+    "sha256": "bb04b4718dfcbb785ef7f8ddd455a75d63c98f8f9c87a68cefb469cc37ed1de0"
   },
   {
-    "bytes": 1104,
+    "bytes": 2036,
     "path": "deliverables/TxID_Bioinformatics_Application_Note_2026-09-20/translations/end-matter.zh-CN.json",
-    "sha256": "fc6e777ebaeb7715b91fd986ace4bb9f253fc9fc2223a92f1eb4ab065adf5f0d"
+    "sha256": "860c3e05ca39c13d6a34e0df9f8701abe61a2339a9dc364a8614d559ce0b733b"
   },
   {
     "bytes": 682,
@@ -123,6 +123,16 @@
     "bytes": 644,
     "path": "deliverables/TxID_Bioinformatics_Application_Note_2026-09-20/reproducibility/public-access-check.json",
     "sha256": "ece0754b4491cba84396b0056dff1a3f8113e35140246c08c3535bcca5c37475"
+  },
+  {
+    "bytes": 1038,
+    "path": "deliverables/TxID_Bioinformatics_Application_Note_2026-09-20/reproducibility/public-access-check-2026-09-27.json",
+    "sha256": "b39bd55fe8ca5f51ffcdb98377cda914fa24406d8f47fbebed42d07fa866c7ad"
+  },
+  {
+    "bytes": 733,
+    "path": "deliverables/TxID_Bioinformatics_Application_Note_2026-09-20/submission/author-fields.json",
+    "sha256": "199a7b6d385fdba6f122731e72fd3d4b60f3c2f2168f249e619684ea8e3a791e"
   },
   {
     "bytes": 1468,

@@ -1,5 +1,5 @@
 {
-  "date": "2026-09-23",
+  "date": "2026-09-27",
   "historical_reports_unchanged": 12,
   "historical_reports": [
     {
@@ -64,13 +64,13 @@
     }
   ],
   "source_archive_sha256": "2945eecbe1e8b618c06739a0ead8773ef9a6a3ab3e2077b4370706524f9fc034",
-  "materials_archive_sha256": "166deff1b84e20dfa0201f48a4be6df9d1c6d302d5058b21f0b2d1f30f4cb106",
+  "materials_archive_sha256": "849ec4587a55f2afcb40f5bf3e08aeac5dc5b8b8fe372079b61fde6694ce2c9a",
   "materials_standalone_rebuild": "PASS",
-  "scientific_artifacts_reproduced": 15,
+  "scientific_artifacts_reproduced": 16,
   "public_release_performed": false,
   "journal_submission_performed": false,
   "author_metadata_received": false,
-  "revision": "final contribution-focused editorial revision",
-  "archive_files_checked": 336,
+  "revision": "submission format and author fields revision",
+  "archive_files_checked": 340,
   "post_build_reports_external_to_archive": true
 }

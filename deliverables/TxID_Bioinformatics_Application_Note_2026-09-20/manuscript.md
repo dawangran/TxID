@@ -2,6 +2,18 @@
 
 # TxID：面向长读长转录本模型的参考序列感知型身份规范
 
+[AUTHOR NAMES AND AFFILIATION INDICES]
+
+[作者姓名及单位序号]
+
+[AFFILIATIONS: DEPARTMENT, INSTITUTION, CITY, POSTCODE, COUNTRY]
+
+[作者单位：部门、机构、城市、邮编、国家]
+
+Corresponding author: [CORRESPONDING AUTHOR NAME]
+
+通讯作者：[通讯作者姓名]
+
 ## Abstract
 
 ## 摘要
@@ -14,15 +26,23 @@ TxID provides a versioned, reference-aware identity specification and registry f
 
 TxID 为 GTF/GFF3 转录本模型提供版本化、纳入参考序列信息的身份规范及注册库，使独立分析能够重新计算精确剪接链、转录本形式和单外显子模型的共同结构键，同时单独记录依赖注释的分类与溯源信息。对 538,804 条 ENCODE WTC11 观测的评估表明，输入顺序置换和 29,435 条观测的注释分类变化均未改变精确标识符；一个基于真实读段的 IsoQuant–StringTie 案例在独立初始化的注册库之间关联了 110 种共享的参考已知形式，并由单独实现的解析器和身份计算器确认关联结果。
 
-### Availability and implementation
+### Availability and Implementation
 
 ### 可用性与实现
 
-TxID requires Python 3.10 or later, has no runtime dependencies and uses a BSD 3-Clause license. Source code, the versioned specification, tests and installation instructions are supplied in the accompanying TxID 0.1.3 source archive.
+TxID is implemented in Python 3.10 or later, has no third-party runtime dependencies and is distributed under the BSD 3-Clause license. Source code, the versioned specification, tests and installation instructions are provided at [https://github.com/dawangran/TxID](https://github.com/dawangran/TxID).
 
-TxID 需要 Python 3.10 或更新版本，无运行时依赖，采用 BSD 3-Clause 许可证。源代码、版本化规范、测试及安装说明包含在随附的 TxID 0.1.3 源码归档中。
+TxID 以 Python 实现，需要 Python 3.10 或更新版本，无第三方运行时依赖，采用 BSD 3-Clause 许可证。源代码、版本化规范、测试及安装说明见 [https://github.com/dawangran/TxID](https://github.com/dawangran/TxID)。
 
-### Supplementary information
+### Contact
+
+### 联系方式
+
+[CONTACT EMAIL]
+
+[通讯作者邮箱]
+
+### Supplementary Information
 
 ### 补充信息
 
@@ -98,21 +118,49 @@ The evidence covers one cell line, fixed TALON models and a bounded two-caller c
 
 现有证据覆盖一个细胞系、固定 TALON 模型和一个有限范围的双工具案例。精确身份会保留上游工具产生的边界错误；转录本发现准确性、表达量估计、基于基因区间的归属及模糊分组均未经过生物学验证。这些比较未评估共享数据库 TALON 工作流。在这一范围内，TxID 明确定义了可由独立实现核查的结构等价关系，在共享参考上下文中提供可移植的键，同时保留依赖注释的解释及溯源信息。
 
-## Data availability
-
-## 数据可用性
-
-The public ENCODE annotations are identified in Table S1; the new read-based case uses ENCFF105WIJ. Numerical source data, input manifests, analysis scripts and the unmodified caller annotations for that case are included in the accompanying reproducibility package.
-
-公开 ENCODE 注释的文件登录号列于表 S1；新增基于读段的案例使用 ENCFF105WIJ。数值源数据、输入清单、分析脚本及该案例未经修改的工具输出注释均包含在随附的复现材料包中。
-
 ## Acknowledgements
 
 ## 致谢
 
-OpenAI Codex assisted with drafting, translation, code revision and verification workflows. Numerical results were taken from retained reports or produced by the recorded computational workflows.
+### Funding
 
-OpenAI Codex 辅助了起草、翻译、代码修订及核验流程。数值结果来自保留的报告或所记录计算流程的实际运行。
+### 基金支持
+
+[AUTHOR FUNDING STATEMENT]
+
+[作者填写基金支持声明]
+
+### Author contributions
+
+### 作者贡献
+
+[AUTHOR CONTRIBUTIONS]
+
+[作者填写贡献声明]
+
+### Use of AI tools
+
+### AI 工具使用说明
+
+OpenAI Codex assisted with drafting, translation, code revision and verification workflows. The installed Codex CLI version recorded during final preparation was 0.142.2. [AUTHOR REVIEW STATEMENT]
+
+OpenAI Codex 辅助了起草、翻译、代码修订及核验流程。定稿整理时记录的已安装 Codex CLI 版本为 0.142.2。[作者填写实际审核及责任声明]
+
+## Conflict of interest
+
+## 利益冲突
+
+[AUTHOR COMPETING-INTEREST STATEMENT]
+
+[作者填写利益冲突声明]
+
+## Data availability
+
+## 数据可用性
+
+Public ENCODE input accessions are listed in Table S1; the real-read case uses ENCFF105WIJ. Numerical source data, input manifests, analysis scripts and unmodified caller annotations are provided in the [versioned reproducibility materials](https://github.com/dawangran/TxID/tree/35c124be9b0e76cd4d71b39c3ec394d035e5be8d/deliverables/TxID_Bioinformatics_Application_Note_2026-09-20).
+
+公开 ENCODE 输入数据的登录号列于表 S1；真实读段案例使用 ENCFF105WIJ。数值源数据、输入清单、分析脚本及未经修改的工具输出注释见[固定版本的复现材料](https://github.com/dawangran/TxID/tree/35c124be9b0e76cd4d71b39c3ec394d035e5be8d/deliverables/TxID_Bioinformatics_Application_Note_2026-09-20)。
 
 ## Figure 1
 

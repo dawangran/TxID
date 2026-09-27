@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="96" height="96" viewBox="0 0 96 96" role="img" aria-labelledby="title desc">
+  <title id="title">TxID icon</title>
+  <desc id="desc">Two exon chains sharing their splice boundaries while retaining different terminal boundaries.</desc>
+  <rect x="1" y="1" width="94" height="94" rx="19" fill="#f6faf9" stroke="#d3e5e0" stroke-width="2"/>
+  <g fill="none" stroke="#148779" stroke-width="3" stroke-linecap="round">
+    <path d="M24 34h15m14 0h15"/>
+    <path d="M24 62h15m14 0h15"/>
+  </g>
+  <g fill="#116d65">
+    <rect x="12" y="26" width="13" height="16" rx="2"/>
+    <rect x="39" y="26" width="14" height="16" rx="2"/>
+    <rect x="68" y="26" width="13" height="16" rx="2"/>
+    <rect x="8" y="54" width="17" height="16" rx="2"/>
+    <rect x="39" y="54" width="14" height="16" rx="2"/>
+    <rect x="68" y="54" width="17" height="16" rx="2"/>
+  </g>
+</svg>

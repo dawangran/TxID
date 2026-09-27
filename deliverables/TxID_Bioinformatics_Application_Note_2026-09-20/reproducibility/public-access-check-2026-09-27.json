@@ -1,0 +1,33 @@
+{
+  "date": "2026-09-27",
+  "authentication": "none",
+  "repository_url": "https://github.com/dawangran/TxID",
+  "web_http_status": 404,
+  "api_http_status": 404,
+  "cache_busted": true,
+  "user_reported_public": true,
+  "observed_state": "Anonymous web and API requests still return HTTP 404; authenticated connector currently reports private. User clarification requested.",
+  "archive_lookup": {
+    "url": "https://archive.softwareheritage.org/api/1/origin/https://github.com/dawangran/TxID/get/",
+    "status": 404,
+    "error": "HTTPError"
+  },
+  "public_deposit_verified": false,
+  "request_details": {
+    "web": {
+      "url": "https://github.com/dawangran/TxID",
+      "status": 404,
+      "error": "HTTPError"
+    },
+    "api": {
+      "url": "https://api.github.com/repos/dawangran/TxID",
+      "status": 404,
+      "error": "HTTPError"
+    },
+    "archive": {
+      "url": "https://archive.softwareheritage.org/api/1/origin/https://github.com/dawangran/TxID/get/",
+      "status": 404,
+      "error": "HTTPError"
+    }
+  }
+}

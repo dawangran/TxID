@@ -1,6 +1,6 @@
-# TxID — Bioinformatics Application Note, revised 23 September 2026
+# TxID — Bioinformatics Application Note, prepared 27 September 2026
 
-The final editorial revision foregrounds the independently recomputable and verifiable identity specification in the title, abstract, methods and conclusions. The English submission text and paragraph-aligned Chinese review copy are synchronized. The English draft currently contains 1,942 visible-text words, including headings, caption, declarations and eleven references. Final journal pagination has not been rendered.
+The manuscript presents TxID as an independently recomputable and verifiable identity specification. The English text and paragraph-aligned Chinese review copy are synchronized. The English draft contains 1,974 visible-text words, including headings, caption, author completion fields and eleven references; the three body sections contain 1,268 words. The scientific body and figure retain the verified 23 September revision.
 
 - [English manuscript, Word](manuscript.en.docx) · [Markdown](manuscript.en.md)
 - [English–Chinese review copy, Word](manuscript.docx) · [Markdown](manuscript.md)
@@ -8,7 +8,10 @@ The final editorial revision foregrounds the independently recomputable and veri
 - [Current Chinese handoff](editorial-notes.zh-CN.md)
 - [Source archive](submission/TxID-0.1.3-submission-source.zip)
 - Complete local review/reproduction ZIP: generate with `python deliverables/TxID_Bioinformatics_Application_Note_2026-09-20/submission/build_materials_archive.py`; the generated bundle is kept outside Git history.
-- [Author information still required](submission/author-information-needed.md) · [Cover-letter draft](submission/cover-letter.md)
+- [Author information still required](submission/author-information-needed.md) · [Allowed author fields](submission/author-fields.json)
+- [Cover letter, Word](submission/cover-letter.docx) · [Markdown](submission/cover-letter.md)
+
+The abstract has all four Application Note headings: Summary, Availability and Implementation, Contact, and Supplementary Information. Eight designated fields remain for author names, affiliations, corresponding author, contact email, funding, contributions, human review and competing interests. These are the only remaining manuscript text placeholders. The Word files have active hyperlinks and automatic page numbers; the manuscripts and supplement use 12 pt body text, double spacing and continuous line numbering. The cover letter omits line numbering. This is a Format-Free submission layout; final journal pagination has not been rendered.
 
 The revision credits the Isosceles transcript-hash precedent and defines TxID's contribution as a versioned, reference-aware exact-identity contract and registry. Historical six-TALON results remain explicitly assigned to TxID 0.1.0. A new prespecified real-read case used TxID 0.1.3, IsoQuant and StringTie on 2,765 chr22 primary alignments from the first 100,000 records of public accession ENCFF105WIJ. Two independent registries joined 110 coordinate-identical forms into a two-row, 201-column caller-presence matrix, with no false or missed exact joins. All 110 shared forms were reference-known, and their reference aliases also agree. The case does not demonstrate shared novel discovery, biological correctness or superiority to reference-alias joins.
 
@@ -27,6 +30,6 @@ PYTHONDONTWRITEBYTECODE=1 \
 
 The artifact environment is pinned in `reproducibility/requirements-artifacts.txt`. Verification records distinguish numerical/source consistency, translation alignment, package installation and actual experimental execution. They are not an editorial acceptance prediction.
 
-Authors, Contact, funding, competing interests and author approval are still required. The declared GitHub address returned HTTP 404 to an anonymous check on 23 September; the cause is not inferred. Public software/test-data access and permanent archive links must be completed before submission. The journal permits Format-Free initial submission; journal-style pagination remains to be checked when preparing the formatted version. This synchronization does not submit the manuscript to the journal or make a public release.
+Author completion is separate from access and archival status. On 27 September 2026, anonymous requests to both the declared GitHub web URL and repository API returned HTTP 404; the authenticated repository API identified `dawangran/TxID` as private. See the [current access record](reproducibility/public-access-check-2026-09-27.json). The manuscript supplies the declared software URL and a fixed-revision evidence link, without claiming public access or a completed archival deposit. Anonymous software/test-data access and dedicated immutable software/data archives with verified persistent identifiers remain unresolved.
 
-GitHub synchronization, 27 September 2026: the authenticated repository API confirms that `dawangran/TxID` is private. Pushing these materials does not make the software publicly accessible or satisfy the journal public-availability requirement. The dated anonymous-access report remains an unchanged historical record. Frozen source archives record the earlier tested snapshot; the current Git commit is the source of truth for this repository revision.
+The AI disclosure records Codex CLI 0.142.2 only as the installed version observed during final preparation. Authors must complete the actual human-review statement and the cover letter's approval and submission declarations. Frozen source archives and historical access reports retain their original scope; they do not certify the current revision or public availability. This package has not been submitted to the journal.

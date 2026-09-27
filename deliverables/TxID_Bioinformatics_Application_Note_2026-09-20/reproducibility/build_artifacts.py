@@ -124,19 +124,51 @@ def load_docx_builder():
 def docx(source):
     builder=load_docx_builder()
     lines=source.read_text(encoding="utf-8").splitlines()
-    # Convert Markdown links to readable bibliographic text while retaining images.
-    lines=[re.sub(r"(?<!!)\[([^\]]+)\]\(([^)]+)\)",r"\1 (\2)",line) for line in lines]
+    # Preserve readable labels as actual external Word hyperlinks.
+    hyperlink_ids = {}
+    original_inline_runs = builder.inline_runs
+    def linked_inline_runs(value, *, default_color=None):
+        runs = []
+        position = 0
+        for match in re.finditer(r"(?<!!)\[([^\]]+)\]\(([^)]+)\)", value):
+            runs.append(original_inline_runs(value[position:match.start()], default_color=default_color))
+            label, target = match.groups()
+            if not target.startswith(("https://", "http://", "mailto:")):
+                runs.append(original_inline_runs(label, default_color=default_color))
+            else:
+                identifier = hyperlink_ids.setdefault(target, f"rIdLink{len(hyperlink_ids)+1}")
+                runs.append(f'<w:hyperlink r:id="{identifier}" w:history="1">' +
+                            original_inline_runs(label, default_color=default_color) + '</w:hyperlink>')
+            position = match.end()
+        runs.append(original_inline_runs(value[position:], default_color=default_color))
+        return "".join(runs)
+    builder.inline_runs = linked_inline_runs
     assets,payloads=builder.collect_assets(lines,source_path=source)
     document=builder.document_xml(lines,assets)
-    document=document.replace('w:line="270"','w:line="480"')
-    document=document.replace('<w:docGrid ', '<w:lnNumType w:countBy="1" w:restart="continuous"/><w:docGrid ')
+    is_letter = source.name == "cover-letter.md"
+    document=document.replace('w:line="270"', 'w:line="276"' if is_letter else 'w:line="480"')
+    if not is_letter:
+        document=document.replace('<w:cols ', '<w:lnNumType w:countBy="1" w:restart="continuous"/><w:cols ')
+    document=document.replace('<w:sectPr>', '<w:sectPr><w:footerReference w:type="default" r:id="rIdPageFooter"/>')
     styles=builder.STYLES.replace('w:val="20"','w:val="24"').replace('w:val="23"','w:val="24"')
     core=builder.CORE.replace('TxID GigaScience Technical Note — cohort-scale identity revision','TxID Bioinformatics Application Note draft').replace('Technical Note submission manuscript','Application Note review manuscript').replace('Bilingual-ready Technical Note manuscript with three code-generated scientific figures and three result tables.','English scientific draft; author details and submission declarations are maintained separately.').replace('2026-08-08','2026-09-20')
     if source.name == "manuscript.md" and (PACKAGE / "translations").is_dir():
         core = core.replace('English scientific draft;', 'English–Chinese paragraph-aligned review draft;')
+    core = core.replace('author details and submission declarations are maintained separately.',
+                        'author information and declarations have designated completion fields.')
+    if is_letter:
+        core = core.replace('TxID Bioinformatics Application Note draft', 'TxID cover letter')
+    relationships = builder.document_relationships(assets)
+    extra_relationships = ''.join(
+        f'<Relationship Id="{identifier}" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/hyperlink" Target="{builder.xml_text(target, attribute=True)}" TargetMode="External"/>'
+        for target, identifier in hyperlink_ids.items())
+    extra_relationships += '<Relationship Id="rIdPageFooter" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/footer" Target="footer1.xml"/>'
+    relationships = relationships.replace('</Relationships>', extra_relationships + '</Relationships>')
+    content_types = builder.CONTENT_TYPES.replace('</Types>', '<Override PartName="/word/footer1.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.footer+xml"/></Types>')
+    footer = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?><w:ftr xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main"><w:p><w:pPr><w:jc w:val="center"/></w:pPr><w:fldSimple w:instr="PAGE"><w:r><w:t>1</w:t></w:r></w:fldSimple></w:p></w:ftr>'
     output=source.with_suffix(".docx")
     with zipfile.ZipFile(output,"w") as archive:
-        entries={"[Content_Types].xml":builder.CONTENT_TYPES,"_rels/.rels":builder.ROOT_RELS,"docProps/core.xml":core,"docProps/app.xml":builder.APP,"word/document.xml":document,"word/styles.xml":styles,"word/settings.xml":builder.SETTINGS,"word/_rels/document.xml.rels":builder.document_relationships(assets)}
+        entries={"[Content_Types].xml":content_types,"_rels/.rels":builder.ROOT_RELS,"docProps/core.xml":core,"docProps/app.xml":builder.APP,"word/document.xml":document,"word/styles.xml":styles,"word/settings.xml":builder.SETTINGS,"word/_rels/document.xml.rels":relationships,"word/footer1.xml":footer}
         for name,payload in entries.items():
             ET.fromstring(payload)
             builder.write_member(archive,name,payload)
@@ -212,6 +244,9 @@ def assemble():
     supplement="\n\n".join(path.read_text(encoding="utf-8").strip() for path in supplementary_components())+"\n"
     (PACKAGE/"supplementary.md").write_text(supplement,encoding="utf-8")
     for name in ["manuscript.md","supplementary.md"]: docx(PACKAGE/name)
+    letter = PACKAGE / "submission/cover-letter.md"
+    if letter.is_file():
+        docx(letter)
 
 
 def source_manifest():
@@ -222,7 +257,8 @@ def source_manifest():
         path = PACKAGE / name
         if path.is_file():
             paths.append(path)
-    for name in ["tables/table-s6-real-interop.tsv", "reproducibility/public-access-check.json"]:
+    for name in ["tables/table-s6-real-interop.tsv", "reproducibility/public-access-check.json",
+                 "reproducibility/public-access-check-2026-09-27.json", "submission/author-fields.json"]:
         path = PACKAGE / name
         if path.is_file():
             paths.append(path)
