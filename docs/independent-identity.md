@@ -141,7 +141,7 @@ failure.
 
 The new compact conformance result is
 `benchmarks/results/independent-identity-2026-09-23.json`, included in the explicit
-allowlist of compact manuscript reports. It covers the existing
+allowlist of compact verification reports. It covers the existing
 three vectors and five non-null identities: positive-strand SC1/TF1,
 negative-strand SC1/TF1, and single-exon SE1. Exact canonical JSON, full SHA-256
 and public identifiers all match. It does not amend prior benchmark results.

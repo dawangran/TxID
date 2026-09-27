@@ -34,6 +34,13 @@ benchmarks/results/encode-gtf-full/*
 
 # Authoring, presentation, and local-agent material are maintained separately.
 manuscript/
+/deliverables/
+/chapters/
+/figures/
+/tables/
+/plan/
+/benchmarks/render_manuscript_figures*.py
+/tests/test_manuscript_figure_*.py
 website/
 docs/website-plan.md
 tests/test_site.py
@@ -46,7 +53,3 @@ AGENTS.md
 environment.yml
 conda-recipe/*
 !conda-recipe/meta.yaml
-
-# Rebuilt manuscript bundles and superseded local draft backups.
-/deliverables/TxID_Bioinformatics_Application_Note_2026-09-20/submission/TxID-submission-materials-*
-/deliverables/TxID_Bioinformatics_Application_Note_2026-09-20/reproducibility/*before*.zip

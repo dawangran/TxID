@@ -1,5 +1,5 @@
 cff-version: 1.2.0
-message: "If you use TxID, cite the archived software release and Technical Note."
+message: "If you use TxID, cite the software and record the version and source commit."
 title: "TxID: deterministic transcript identity and interoperability"
 type: software
 version: 0.1.3
