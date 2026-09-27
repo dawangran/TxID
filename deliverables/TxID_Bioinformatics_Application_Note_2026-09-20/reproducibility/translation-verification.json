@@ -1,27 +1,130 @@
 {
-  "date": "2026-09-23",
+  "date": "2026-09-27",
   "status": "PASS",
-  "translated_blocks": 44,
-  "english_prose_paragraphs": 32,
-  "headings": 12,
+  "translated_blocks": 56,
+  "english_prose_paragraphs": 39,
+  "headings": 17,
   "format": "Each complete English block is followed by its Chinese translation; the figure is included once.",
   "aligned_to_current_english_revision": true,
+  "component_sources_match_translation_json": true,
+  "bilingual_markdown_matches_block_sequence": true,
   "numeric_tokens_preserved": true,
   "number_word_equivalences": [
     {
-      "source_prefix": "Wyman D, Balderrama-Gutierrez G, Reese F et al. A technology-agnostic ",
+      "source_prefix": "Wyman D, Balderrama-Gutierrez G, Reese F et al. A technology-agnostic long-read ",
       "English_number_words_rendered_as_Chinese_digits": {
         "3": 1
-      }
+      },
+      "explanation": "The publication date 24 March 2020 is rendered as 2020 年 3 月 24 日; the added numeric 3 is the month."
     }
   ],
   "inline_code_preserved": true,
-  "source_sha256": "b69e51cf0d564fbf60287b16a411af88e2be7a5eef34e05f369b49cda89e063e",
+  "markdown_link_targets_preserved": true,
+  "heading_levels_preserved": true,
+  "source_sha256": "38840fce38539e8575a8ce0998b4bb7446c0988e3f301a6e5330e3c218ad0b85",
+  "bilingual_sha256": "3eb9584aa96a772565b3c8d8ba4d2fad0f548a38a24fff03c227aa58690da99a",
   "figure_sha256": "98c1786013f62dbbf4035fffc1bb92f46523071792b5a9e5673fc5fe19925c87",
+  "source_components": [
+    {
+      "path": "front-matter.md",
+      "bytes": 1460,
+      "sha256": "7bc8bb7d1f36aa657fa9fc3ab51578ae150fe814499eb7be787229209f4f5a4e"
+    },
+    {
+      "path": "chapters/01_introduction.md",
+      "bytes": 1965,
+      "sha256": "3aaf6784faa862c13994a6ea6ac8ed4b8576e5caec15ab75e7e66eafbbb390ed"
+    },
+    {
+      "path": "chapters/02_implementation.md",
+      "bytes": 3436,
+      "sha256": "e00fd8057e6933d952df39a777b94f1a829fb029546c3ff78b844b28fba91b48"
+    },
+    {
+      "path": "chapters/03_evaluation_discussion.md",
+      "bytes": 4434,
+      "sha256": "92b45e16b0da2165a0487aaa0dc49bd17516fbac61dd73a2ce6a8e2d7a95f467"
+    },
+    {
+      "path": "end-matter.md",
+      "bytes": 801,
+      "sha256": "bb04b4718dfcbb785ef7f8ddd455a75d63c98f8f9c87a68cefb469cc37ed1de0"
+    },
+    {
+      "path": "figure-caption.md",
+      "bytes": 1771,
+      "sha256": "e1c12301e4629b9075d4ba4ccc902cf55b20ad36397a23140a1df23bc86e1f33"
+    },
+    {
+      "path": "references.md",
+      "bytes": 2581,
+      "sha256": "7d1dd62124409542f669da38b7d107866cdbe530e493aa3332c22540e7173b2c"
+    }
+  ],
+  "translation_files": [
+    {
+      "path": "translations/01_introduction.zh-CN.json",
+      "bytes": 4044,
+      "sha256": "2dcb340dc6d294f4fc9b10b5516a58d0cffcd367312331bd9974f60f3a5380e4",
+      "source": "chapters/01_introduction.md",
+      "translated_blocks": 4,
+      "headings": 1
+    },
+    {
+      "path": "translations/02_implementation.zh-CN.json",
+      "bytes": 6966,
+      "sha256": "4e7c4f6bb7065f0a6f75359bf566173154a0b350e4262c8982d6d37c8a7208cc",
+      "source": "chapters/02_implementation.md",
+      "translated_blocks": 5,
+      "headings": 1
+    },
+    {
+      "path": "translations/03_evaluation_discussion.zh-CN.json",
+      "bytes": 9340,
+      "sha256": "179cbc55d03ab2a8856a747e5cfa70bc203c35e0e5e78d39022d53245be2bc1c",
+      "source": "chapters/03_evaluation_discussion.md",
+      "translated_blocks": 8,
+      "headings": 1
+    },
+    {
+      "path": "translations/end-matter.zh-CN.json",
+      "bytes": 2036,
+      "sha256": "860c3e05ca39c13d6a34e0df9f8701abe61a2339a9dc364a8614d559ce0b733b",
+      "source": "end-matter.md",
+      "translated_blocks": 11,
+      "headings": 6
+    },
+    {
+      "path": "translations/figure-caption.zh-CN.json",
+      "bytes": 3345,
+      "sha256": "c4b6f11a191ed4f57e7abceff816bd1c323f38171759a0b5fff5ec0161853e36",
+      "source": "figure-caption.md",
+      "translated_blocks": 3,
+      "headings": 1
+    },
+    {
+      "path": "translations/front-matter.zh-CN.json",
+      "bytes": 3315,
+      "sha256": "4010b1fb5964eb7bafd13755c3ac7dcb5d8a8485bc0fd476ccfa1b8a74b42fb2",
+      "source": "front-matter.md",
+      "translated_blocks": 13,
+      "headings": 6
+    },
+    {
+      "path": "translations/references.zh-CN.json",
+      "bytes": 5620,
+      "sha256": "dc6ceb499f0b77af8c0e69476836736762c8de6870bdd3adb63eab18f75e1727",
+      "source": "references.md",
+      "translated_blocks": 12,
+      "headings": 1
+    }
+  ],
   "notes": [
-    "Complete English-source blocks and Chinese translations synchronized after final editorial revision.",
-    "Numeric and inline-code counters independently checked; Wyman March-to-3 rendering reviewed.",
-    "Separate reviews checked scientific scope and bilingual frontmatter/caption; source experiment data unchanged.",
-    "DOCX XML/text checked separately; Office pagination not rendered."
+    "All complete English blocks were checked against component files, translation JSON sources and the assembled English manuscript; the bilingual Markdown reproduces the exact English/Chinese sequence.",
+    "Front matter contains 13 translated blocks and end matter contains 11; the full manuscript contains 56 translated blocks plus one figure included once.",
+    "Non-heading text-block counts include six standalone author-information placeholders. Their prompts are rendered in Chinese; the actual author information remains pending.",
+    "Numeric-token multisets, inline-code multisets, Markdown link targets and heading levels were checked independently for every translation. The sole numeric-token exception is the reviewed Wyman March-to-3 publication-date rendering.",
+    "The figure SHA-256 matches the prior translation manifest; these checks do not change manuscript prose, scientific figures or experiment data.",
+    "This verification checks Markdown and translation JSON, not DOCX rendering, external-link accessibility or biological validity."
   ]
 }

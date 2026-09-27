@@ -1,30 +1,30 @@
-# Verification report — final editorial revision, 23 September 2026
+# Verification report — submission format revision, 27 September 2026
 
-The contribution-focused manuscript revision passed its source, numerical, translation and artifact checks. No experimental results or software behavior changed in this editorial revision; the software installation/test results below are retained from the preceding validated repair, not newly rerun tests. This is not a statement that author declarations, public deposits or journal pagination are complete.
+The revised submission documents passed source, numerical, translation and document-structure checks. The scientific body, figure and experimental evidence retain their previous content. This report distinguishes document preparation from completed public deposition or journal submission.
 
-- The frozen software source archive passed 99 included automated tests, 4 archive-boundary tests, offline wheel installation in a fresh virtual environment, independent golden-vector checks and a separate installed CLI init/add/export/validate smoke. See `submission/release-validation.json` and `software-test-report.json`.
-- The real-read case actually executed alignment, IsoQuant, StringTie and four staged imports into two independently initialized TxID 0.1.3 registries. Canonical objects, full digests, observation coordinates, exact joins and reciprocal incremental stability were checked against a separately implemented reader/calculator. All numerical results and the initial execution correction are retained in `real-interop/`.
-- The manuscript verifier passed 1562 checks. It independently aggregates the 311 observation rows, distinguishes 110 exact-form matches from 109 chain groups and 115 chain pairs, verifies Table S6 and matrix cells, and confirms that all shared forms are reference-known. Its detailed checks and explicit archive/original-evidence modes are in `verification-report.json`.
-- All 44 bilingual blocks match the current English components. Quantities and inline code agree, with one reviewed English-month-name/Chinese-digit conversion. Semantic cross-review retained all version, sampling and known-only limitations. See `translation-verification.json`.
-- The English and bilingual DOCX files contain all current paragraphs and the current embedded figure; ZIP/XML checks pass. Office pagination was not rendered.
-- Regeneration reproduced all 15 scientific presentation artifacts byte for byte; see `regeneration-check.json`. The figure's checked geometry, transitions, sources, DPI and font embedding remain intact.
-- The style scan found no stock emphasis/transitions, unnecessary bold text, body lists or subjective first-person phrases. This does not establish authorship or an absence of AI assistance; actual assistance is disclosed.
-- Eleven primary references and their narrow citation roles were checked. The direct transcript-hash precedent, IsoQuant and StringTie methods were added with primary-source evidence.
+- The manuscript verifier passed 1673 checks, including exact source assembly, numerical recounts, source hashes, paragraph retention, figure embedding and DOCX package validation. Details are in `verification-report.json`.
+- The four required abstract headings are present. Eight explicitly authorized author fields remain in the manuscript; their exact allowlist is recorded in `submission/author-fields.json`. Funding, contributions, competing interests and author review are not inferred.
+- English and bilingual manuscripts use A4 pages, 12-point body text, double spacing, continuous line numbering, automatic page numbers and active external hyperlinks. The new cover-letter DOCX has page numbers and letter spacing, without manuscript line numbering. XML and content were checked; no Office layout renderer was available.
+- Translation source alignment, quantities and inline code are checked in `translation-verification.json`. The Chinese version remains a paragraph-aligned review copy; `manuscript.en.docx` is the submission-preparation file.
+- All 16 presentation artifacts reproduce byte for byte on regeneration; see `regeneration-check.json`. This count now includes the cover letter. Figure geometry, sources, DPI and font embedding are unchanged.
+- The real-read case retains 311 observations, 110 shared exact forms, 109 shared chain groups and 115 chain pairs. All shared forms are reference-known. The verifier distinguishes packaged evidence from additional comparisons against original local evidence.
+- Earlier software validation remains recorded in `submission/release-validation.json` and `software-test-report.json`: 99 included automated tests, four archive-boundary tests, installation, conformance vectors and an installed CLI smoke test. These historical results are not represented as new experimental runs.
+- README installation and the complete quickstart were executed using TxID 0.1.3: nine mapping rows, nine catalog rows, successful validation, byte-identical retry exports and unchanged input annotations. Both SVG marks were rendered on light and dark backgrounds; all 35 local README links resolve.
 
-The English visible-text counts include headings, declarations, caption, accessibility paragraph and reference text; image alt text and URL targets are excluded.
+Visible-text counts include headings, author fields, declarations, caption, accessibility text and references; image alt text and URL targets are excluded.
 
 | Component | Words |
 |---|---:|
-| front-matter.md | 141 |
+| front-matter.md | 160 |
 | 01_introduction.md | 249 |
 | 02_implementation.md | 439 |
 | 03_evaluation_discussion.md | 580 |
-| end-matter.md | 65 |
+| end-matter.md | 78 |
 | figure-caption.md | 227 |
 | references.md | 241 |
-| main_total | 1942 |
+| main_total | 1974 |
 | body_total | 1268 |
 
-The PowerShell research-writing gate is unavailable; the manuscript-specific Python verifier and direct source/scientific review were used. Missing author/Contact/declaration fields remain outside the scientific draft in the author-information form; no values were fabricated. The declared GitHub web URL returned HTTP 404 anonymously, and permanent public software/data archive identifiers remain absent. Complete Conda solving/building, the final release container and the journal's four-page layout have not been verified. Local archives must not be represented as completed public deposits. Historical large-scale 0.1.0 benchmarks were not rerun or relabelled.
+Initial submission permits Format-Free presentation; final journal pagination is not claimed. Author details and declarations intentionally remain for the authors to complete. The 27 September anonymous repository checks still returned HTTP 404, while the authenticated connector reported private visibility, despite the user's report that the repository is public. The declared GitHub links identify repository locations; they do not demonstrate anonymous access or permanent archival deposition. No archive DOI or public deposit is invented.
 
-The two-sentence Summary and concise title follow the checked Application Note guidance. Initial submission may use Format-Free presentation; final journal pagination remains unrendered. Two separate read-only reviews checked the revised frontmatter/caption/cover letter and the contribution/result claims. Both found no necessary scientific corrections. See `plan/review/final-editorial-review-2026-09-23.md`.
+Historical large-scale TxID 0.1.0 results have not been rerun or relabelled. Complete Conda solving/building and a pinned published container remain unverified. The PowerShell writing gate was unavailable; manuscript-specific Python checks and independent source review were used. Scientific claims and author-only placeholders received a separate read-only review with no necessary corrections.

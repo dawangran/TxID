@@ -1,18 +1,46 @@
 [
   {
-    "source": "## Data availability",
-    "translation": "## 数据可用性"
-  },
-  {
-    "source": "The public ENCODE annotations are identified in Table S1; the new read-based case uses ENCFF105WIJ. Numerical source data, input manifests, analysis scripts and the unmodified caller annotations for that case are included in the accompanying reproducibility package.",
-    "translation": "公开 ENCODE 注释的文件登录号列于表 S1；新增基于读段的案例使用 ENCFF105WIJ。数值源数据、输入清单、分析脚本及该案例未经修改的工具输出注释均包含在随附的复现材料包中。"
-  },
-  {
     "source": "## Acknowledgements",
     "translation": "## 致谢"
   },
   {
-    "source": "OpenAI Codex assisted with drafting, translation, code revision and verification workflows. Numerical results were taken from retained reports or produced by the recorded computational workflows.",
-    "translation": "OpenAI Codex 辅助了起草、翻译、代码修订及核验流程。数值结果来自保留的报告或所记录计算流程的实际运行。"
+    "source": "### Funding",
+    "translation": "### 基金支持"
+  },
+  {
+    "source": "[AUTHOR FUNDING STATEMENT]",
+    "translation": "[作者填写基金支持声明]"
+  },
+  {
+    "source": "### Author contributions",
+    "translation": "### 作者贡献"
+  },
+  {
+    "source": "[AUTHOR CONTRIBUTIONS]",
+    "translation": "[作者填写贡献声明]"
+  },
+  {
+    "source": "### Use of AI tools",
+    "translation": "### AI 工具使用说明"
+  },
+  {
+    "source": "OpenAI Codex assisted with drafting, translation, code revision and verification workflows. The installed Codex CLI version recorded during final preparation was 0.142.2. [AUTHOR REVIEW STATEMENT]",
+    "translation": "OpenAI Codex 辅助了起草、翻译、代码修订及核验流程。定稿整理时记录的已安装 Codex CLI 版本为 0.142.2。[作者填写实际审核及责任声明]"
+  },
+  {
+    "source": "## Conflict of interest",
+    "translation": "## 利益冲突"
+  },
+  {
+    "source": "[AUTHOR COMPETING-INTEREST STATEMENT]",
+    "translation": "[作者填写利益冲突声明]"
+  },
+  {
+    "source": "## Data availability",
+    "translation": "## 数据可用性"
+  },
+  {
+    "source": "Public ENCODE input accessions are listed in Table S1; the real-read case uses ENCFF105WIJ. Numerical source data, input manifests, analysis scripts and unmodified caller annotations are provided in the [versioned reproducibility materials](https://github.com/dawangran/TxID/tree/35c124be9b0e76cd4d71b39c3ec394d035e5be8d/deliverables/TxID_Bioinformatics_Application_Note_2026-09-20).",
+    "translation": "公开 ENCODE 输入数据的登录号列于表 S1；真实读段案例使用 ENCFF105WIJ。数值源数据、输入清单、分析脚本及未经修改的工具输出注释见[固定版本的复现材料](https://github.com/dawangran/TxID/tree/35c124be9b0e76cd4d71b39c3ec394d035e5be8d/deliverables/TxID_Bioinformatics_Application_Note_2026-09-20)。"
   }
 ]

@@ -28,6 +28,13 @@ EXPECTED_REFERENCES = {
     "Wagner2021": "10.1016/j.xgen.2021.100027",
     "Wyman2020": "10.1101/672931",
 }
+AUTHOR_FIELDS = {
+    "front-matter.md": ["[AUTHOR NAMES AND AFFILIATION INDICES]",
+                        "[AFFILIATIONS: DEPARTMENT, INSTITUTION, CITY, POSTCODE, COUNTRY]",
+                        "[CORRESPONDING AUTHOR NAME]", "[CONTACT EMAIL]"],
+    "end-matter.md": ["[AUTHOR FUNDING STATEMENT]", "[AUTHOR CONTRIBUTIONS]",
+                      "[AUTHOR REVIEW STATEMENT]", "[AUTHOR COMPETING-INTEREST STATEMENT]"],
+}
 
 def require(condition, message):
     if not condition: raise AssertionError(message)
@@ -50,7 +57,9 @@ def software_test_report():
     return report
 
 def public_access_report():
-    path = PACKAGE / "reproducibility/public-access-check.json"
+    path = PACKAGE / "reproducibility/public-access-check-2026-09-27.json"
+    if not path.is_file():
+        path = PACKAGE / "reproducibility/public-access-check.json"
     if not path.is_file():
         return {"status": "NOT CHECKED"}, "Public repository availability has no retained access check"
     report = json.loads(path.read_text())
@@ -290,6 +299,25 @@ def main():
     require(manuscript.count("![")==1,"Exactly one composite figure is embedded")
     require(not re.search(r"(?im)^\s*(?:[-*+]\s|\d+\.\s)","\n".join(p.read_text() for p in body_paths)),"Main body is continuous prose without lists")
     require(not re.search(r"(?i)TO BE ADDED|\bTODO\b|\bTBD\b|\[INSERT|待补|待真实",manuscript+(PACKAGE/"supplementary.md").read_text()),"Scientific manuscript and supplement contain no fabricated replacement placeholders")
+    author_manifest = json.loads((PACKAGE/"submission/author-fields.json").read_text())
+    require(author_manifest["allowed_placeholders"] == AUTHOR_FIELDS,
+            "Only the explicitly authorized author information and declaration fields are allowed")
+    remaining_author_fields = []
+    for path in components:
+        fields = re.findall(r"\[[A-Z][A-Z0-9 ,:/-]+\](?!\()", path.read_text())
+        require(set(fields) <= set(AUTHOR_FIELDS.get(path.name, [])),
+                "No unapproved scientific or availability placeholder appears in " + path.name)
+        remaining_author_fields.extend(fields)
+    front = (PACKAGE/"front-matter.md").read_text()
+    require(re.findall(r"(?m)^### (.+)$", front) ==
+            ["Summary", "Availability and Implementation", "Contact", "Supplementary Information"],
+            "Application Note abstract has all four required headings in order")
+    require("https://github.com/dawangran/TxID" in front and
+            "35c124be9b0e76cd4d71b39c3ec394d035e5be8d" in (PACKAGE/"end-matter.md").read_text(),
+            "Software location and fixed-revision reproducibility link are supplied without a fabricated archive identifier")
+    require("### Funding" in (PACKAGE/"end-matter.md").read_text() and
+            "## Conflict of interest" in (PACKAGE/"end-matter.md").read_text(),
+            "Funding and competing-interest declarations have designated author completion fields")
     require(not re.search(r"(?i)first and foremost|moreover|furthermore|it is worth noting|groundbreaking|transformative|seamlessly",manuscript),"Stock emphasis/transition scan passed")
 
     reference_text=(PACKAGE/"references.md").read_text()
@@ -307,7 +335,9 @@ def main():
     require((PACKAGE/"reproducibility/reference-checks.md").is_file(),"Primary-record verification and unresolved access limits are recorded")
 
     source_manifest=json.loads((PACKAGE/"reproducibility/source-manifest.json").read_text())
-    additional_sources=[PACKAGE/name for name in ["supplementary-tool-semantics.md","tables/table-s5-identity-semantics.tsv","tables/table-s6-real-interop.tsv","reproducibility/public-access-check.json"]]
+    additional_sources=[PACKAGE/name for name in ["supplementary-tool-semantics.md","tables/table-s5-identity-semantics.tsv","tables/table-s6-real-interop.tsv","reproducibility/public-access-check.json","submission/author-fields.json"]]
+    if (PACKAGE/"reproducibility/public-access-check-2026-09-27.json").is_file():
+        additional_sources.append(PACKAGE/"reproducibility/public-access-check-2026-09-27.json")
     additional_sources += sorted(path for path in (PACKAGE/"reproducibility/real-interop").rglob("*") if path.is_file())
     for name in ["supplementary-real-interop.md", "end-matter.md", "translations/end-matter.zh-CN.json", "reproducibility/software-test-report.json"]:
         if (PACKAGE/name).is_file():
@@ -432,13 +462,34 @@ def main():
     real_case = verify_real_interop(manuscript, supplement)
     public_access, public_access_limitation = public_access_report()
 
-    docx_names=["manuscript.docx","supplementary.docx"] + (["manuscript.en.docx"] if bilingual else [])
+    docx_names=["manuscript.docx","supplementary.docx", "submission/cover-letter.docx"] + (["manuscript.en.docx"] if bilingual else [])
     for name in docx_names:
         with zipfile.ZipFile(PACKAGE/name) as archive:
             require(archive.testzip() is None,"DOCX ZIP CRC check: "+name)
             for entry in archive.namelist():
                 if entry.endswith((".xml",".rels")): ET.fromstring(archive.read(entry))
             require(True,"DOCX XML parts parse: "+name)
+            document_tree=ET.fromstring(archive.read("word/document.xml"))
+            ns={"w":"http://schemas.openxmlformats.org/wordprocessingml/2006/main"}
+            require("word/footer1.xml" in archive.namelist() and
+                    b'w:instr="PAGE"' in archive.read("word/footer1.xml"),
+                    "DOCX has an automatic page-number footer: " + name)
+            relations=ET.fromstring(archive.read("word/_rels/document.xml.rels"))
+            relation_ids={node.get("Id") for node in relations}
+            require(len(relation_ids)==len(relations), "DOCX relationship identifiers are unique: " + name)
+            for node in document_tree.findall(".//w:hyperlink",ns):
+                identifier=node.get("{http://schemas.openxmlformats.org/officeDocument/2006/relationships}id")
+                matches=[r for r in relations if r.get("Id")==identifier]
+                require(len(matches)==1 and matches[0].get("TargetMode")=="External" and
+                        matches[0].get("Target","").startswith(("https://","http://","mailto:")),
+                        "Word hyperlink resolves to a supported external target: "+identifier+" in "+name)
+            style_tree=ET.fromstring(archive.read("word/styles.xml"))
+            default_size=style_tree.find(".//w:rPrDefault/w:rPr/w:sz",ns)
+            require(default_size is not None and default_size.get("{"+ns["w"]+"}val")=="24",
+                    "DOCX default body font is 12 pt: "+name)
+            line_numbers=document_tree.find(".//w:lnNumType",ns)
+            require((line_numbers is None)==(name=="submission/cover-letter.docx"),
+                    "Line numbering applies to manuscripts and supplement, not the cover letter: "+name)
             if name in {"manuscript.docx","manuscript.en.docx"}:
                 require(len([x for x in archive.namelist() if x.startswith("word/media/")])==1,"Main DOCX contains one embedded figure")
                 figure_entry=next(x for x in archive.namelist() if x.startswith("word/media/"))
@@ -447,7 +498,7 @@ def main():
                 text="".join(n.text or "" for n in tree.iter("{http://schemas.openxmlformats.org/wordprocessingml/2006/main}t"))
                 for line in (display_manuscript if name=="manuscript.docx" else manuscript).splitlines():
                     if not line.strip() or line.startswith(("#","![")): continue
-                    line=re.sub(r"\[([^\]]+)\]\(([^)]+)\)",r"\1 (\2)",line).replace("`","")
+                    line=re.sub(r"\[([^\]]+)\]\(([^)]+)\)",r"\1",line).replace("`","")
                     require(line in text,"DOCX preserves paragraph: "+line[:65])
             elif name=="supplementary.docx":
                 tree=ET.fromstring(archive.read("word/document.xml"))
@@ -461,16 +512,25 @@ def main():
                         else:
                             fragments=[re.sub(r"^#+\s*","",line)]
                         for fragment in fragments:
-                            rendered=re.sub(r"\[([^\]]+)\]\(([^)]+)\)",r"\1 (\2)",fragment).replace("`","")
+                            rendered=re.sub(r"\[([^\]]+)\]\(([^)]+)\)",r"\1",fragment).replace("`","")
                             require(rendered in text,"Supplement DOCX preserves reviewed content: "+rendered[:65])
+            elif name=="submission/cover-letter.docx":
+                text="".join(n.text or "" for n in document_tree.iter("{"+ns["w"]+"}t"))
+                for block in (PACKAGE/"submission/cover-letter.md").read_text().strip().split("\n\n"):
+                    if block.startswith("#"): continue
+                    rendered=re.sub(r"\[([^\]]+)\]\(([^)]+)\)",r"\1",block).replace("*","")
+                    require(rendered in text,"Cover-letter Word preserves paragraph: "+rendered[:65])
     ET.parse(PACKAGE/"figures/figure1.svg")
     require((PACKAGE/"figures/figure1.pdf").read_bytes().startswith(b"%PDF"),"Figure PDF and SVG formats are valid")
     counts={path.name:words(path.read_text()) for path in components}
     counts["main_total"]=words(manuscript)
     counts["body_total"]=sum(words(path.read_text()) for path in body_paths)
     summary={"status":"PASS for scientific-draft consistency; not a submission-readiness declaration","checks_passed":len(checks),"word_count_rule":"whitespace-separated visible Markdown text; includes headings, excludes image alt text and URL targets","word_counts":counts,"checks":checks,"current_checkout_tests":software_test_report(),"real_case_recount":real_case,"public_access_check":public_access,"limitations":["Author identities, affiliations, Contact and author-supplied declarations remain incomplete",public_access_limitation,"Persistent software and manuscript-data archive identifiers remain incomplete","Four-page journal pagination not rendered","Full historical benchmarks not rerun","Complete Conda package build and final container image were not tested","PowerShell quality gate unavailable; equivalent Python document/data checks used","DOCX XML/text validated; no office layout renderer available"]}
+    summary["author_fields"] = {"authorized_to_remain": True, "remaining": remaining_author_fields}
+    summary["document_format"] = "Format-Free: A4, 12 pt body, manuscript line numbering and double spacing, automatic page numbers, active hyperlinks; author completion fields explicit"
     (PACKAGE/"reproducibility/verification-report.json").write_text(json.dumps(summary,ensure_ascii=False,indent=2)+"\n")
     outputs=[PACKAGE/name for name in ["manuscript.md","manuscript.docx","supplementary.md","supplementary.docx","figures/figure1.png","figures/figure1.svg","figures/figure1.pdf","figures/figure1.tif","figures/figure1-layout-check.json","figures/figure1-plot-data.json","figures/figure1-annotation-transitions.tsv","figures/source-data.json","figures/source-data.tsv"]]
+    outputs.append(PACKAGE/"submission/cover-letter.docx")
     if bilingual:
         outputs += [PACKAGE/"manuscript.en.md",PACKAGE/"manuscript.en.docx"]
     (PACKAGE/"reproducibility/artifact-sha256.json").write_text(json.dumps({str(path.relative_to(PACKAGE)):hashlib.sha256(path.read_bytes()).hexdigest() for path in outputs},indent=2)+"\n")

@@ -1,16 +1,26 @@
 # TxID: a reference-aware identity specification for long-read transcript models
 
+[AUTHOR NAMES AND AFFILIATION INDICES]
+
+[AFFILIATIONS: DEPARTMENT, INSTITUTION, CITY, POSTCODE, COUNTRY]
+
+Corresponding author: [CORRESPONDING AUTHOR NAME]
+
 ## Abstract
 
 ### Summary
 
 TxID provides a versioned, reference-aware identity specification and registry for GTF/GFF3 transcript models, enabling independent analyses to recompute common structural keys for exact splice chains, transcript forms and single-exon models while recording annotation-dependent classifications and provenance separately. Evaluation across 538,804 ENCODE WTC11 observations showed stable exact identifiers despite input permutation and 29,435 annotation-classification changes; a real-read IsoQuant–StringTie case joined 110 shared reference-known forms across independently initialized registries, with a separately implemented parser and identity calculator confirming the joins.
 
-### Availability and implementation
+### Availability and Implementation
 
-TxID requires Python 3.10 or later, has no runtime dependencies and uses a BSD 3-Clause license. Source code, the versioned specification, tests and installation instructions are supplied in the accompanying TxID 0.1.3 source archive.
+TxID is implemented in Python 3.10 or later, has no third-party runtime dependencies and is distributed under the BSD 3-Clause license. Source code, the versioned specification, tests and installation instructions are provided at [https://github.com/dawangran/TxID](https://github.com/dawangran/TxID).
 
-### Supplementary information
+### Contact
+
+[CONTACT EMAIL]
+
+### Supplementary Information
 
 Supplementary methods, input accessions, comparison tables and figure source data accompany this manuscript.
 
@@ -48,13 +58,27 @@ A real-caller case tested TxID 0.1.3. Whole-genome alignment of the first 100,00
 
 The evidence covers one cell line, fixed TALON models and a bounded two-caller case. Exact identities retain caller boundary errors; discovery accuracy, expression estimates, gene-span assignment and fuzzy grouping were not biologically validated. The comparisons did not evaluate the shared-database TALON workflow. Within this scope, TxID makes structural equivalence explicit and independently checkable, providing portable keys under a shared reference context while retaining annotation-dependent interpretation and provenance.
 
-## Data availability
-
-The public ENCODE annotations are identified in Table S1; the new read-based case uses ENCFF105WIJ. Numerical source data, input manifests, analysis scripts and the unmodified caller annotations for that case are included in the accompanying reproducibility package.
-
 ## Acknowledgements
 
-OpenAI Codex assisted with drafting, translation, code revision and verification workflows. Numerical results were taken from retained reports or produced by the recorded computational workflows.
+### Funding
+
+[AUTHOR FUNDING STATEMENT]
+
+### Author contributions
+
+[AUTHOR CONTRIBUTIONS]
+
+### Use of AI tools
+
+OpenAI Codex assisted with drafting, translation, code revision and verification workflows. The installed Codex CLI version recorded during final preparation was 0.142.2. [AUTHOR REVIEW STATEMENT]
+
+## Conflict of interest
+
+[AUTHOR COMPETING-INTEREST STATEMENT]
+
+## Data availability
+
+Public ENCODE input accessions are listed in Table S1; the real-read case uses ENCFF105WIJ. Numerical source data, input manifests, analysis scripts and unmodified caller annotations are provided in the [versioned reproducibility materials](https://github.com/dawangran/TxID/tree/35c124be9b0e76cd4d71b39c3ec394d035e5be8d/deliverables/TxID_Bioinformatics_Application_Note_2026-09-20).
 
 ## Figure 1
 

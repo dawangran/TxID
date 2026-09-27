@@ -1,10 +1,6 @@
-# Cover letter — final scientific text, author fields pending
+# Cover letter
 
-Complete the bracketed author and availability fields before use. The separate `author-information-needed.md` records the required declarations and access checks. This letter has not been submitted.
-
----
-
-[SUBMISSION DATE]
+27 September 2026
 
 Dear Editors,
 
@@ -16,11 +12,13 @@ We evaluate this specification using synthetic structures, 538,804 observations 
 
 TxID is intended for researchers who maintain or integrate transcript catalogs across samples and independently processed datasets. The Python implementation uses the BSD 3-Clause license and includes a versioned specification, conformance examples, tests and reproducible evaluation materials. The manuscript distinguishes historical TxID 0.1.0 evaluations from the new 0.1.3 case and documents their methodological limits in the text and supplement.
 
-[INSERT VERIFIED PUBLIC SOFTWARE URL, SOFTWARE ARCHIVE IDENTIFIER AND MANUSCRIPT-DATA ARCHIVE IDENTIFIER. Synchronize these with the manuscript Availability and Data availability statements.]
+Source code, the versioned specification, tests and installation instructions are provided at [https://github.com/dawangran/TxID](https://github.com/dawangran/TxID). The Data availability statement links the experimental evidence at the fixed repository revision used for the final scientific text.
 
-OpenAI Codex assisted with manuscript drafting and revision, translation, code revision, figure-related programming and verification workflows; this assistance is disclosed in the Acknowledgements. [COMPLETE THE TOOL/VERSION/DATE RECORD AND CONFIRM THE NAMED AUTHORS' REVIEW AND RESPONSIBILITY FOR THE RETAINED MATERIAL.]
+OpenAI Codex assisted with drafting and revision, translation, code revision, figure-related programming and verification workflows, as disclosed in the Acknowledgements. The installed Codex CLI version recorded during final preparation was 0.142.2. [AUTHOR REVIEW STATEMENT]
 
-[CONFIRM ALL AUTHORS' APPROVAL, ORIGINALITY AND EXCLUSIVE SUBMISSION; DISCLOSE RELATED MANUSCRIPTS OR PREPRINTS, FUNDING AND COMPETING INTERESTS AS APPLICABLE.]
+[AUTHOR APPROVAL, ORIGINALITY AND EXCLUSIVE-SUBMISSION STATEMENT]
+
+[AUTHOR DISCLOSURE OF RELATED WORK, FUNDING AND COMPETING INTERESTS]
 
 Sincerely,
 

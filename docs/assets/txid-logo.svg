@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="112" viewBox="0 0 400 112" role="img" aria-labelledby="title desc">
+  <title id="title">TxID</title>
+  <desc id="desc">Two exon chains with shared splice boundaries and different ends, beside the TxID transcript identity wordmark.</desc>
+  <rect x="1" y="1" width="398" height="110" rx="18" fill="#f6faf9" stroke="#d3e5e0" stroke-width="2"/>
+  <rect x="17" y="17" width="98" height="78" rx="13" fill="#e0efea"/>
+  <g fill="none" stroke="#148779" stroke-width="3" stroke-linecap="round">
+    <path d="M41 42h16m14 0h15"/>
+    <path d="M41 70h16m14 0h15"/>
+  </g>
+  <g fill="#116d65">
+    <rect x="29" y="34" width="13" height="16" rx="2"/>
+    <rect x="57" y="34" width="14" height="16" rx="2"/>
+    <rect x="86" y="34" width="13" height="16" rx="2"/>
+    <rect x="25" y="62" width="17" height="16" rx="2"/>
+    <rect x="57" y="62" width="14" height="16" rx="2"/>
+    <rect x="86" y="62" width="17" height="16" rx="2"/>
+  </g>
+  <text x="136" y="72" fill="#173d4a" font-family="DejaVu Sans, Arial, sans-serif" font-size="57" font-weight="700" letter-spacing="-2">Tx<tspan fill="#116d65">ID</tspan></text>
+  <text x="140" y="92" fill="#42645f" font-family="DejaVu Sans, Arial, sans-serif" font-size="10" font-weight="600" letter-spacing="2.4">TRANSCRIPT IDENTITY</text>
+</svg>
