@@ -247,14 +247,8 @@ Evidence is reported at its evaluated scope:
   integration using actual caller and comparator executables.
 - The [ENCODE fixed-model report](docs/benchmark/encode-gtf-full-2026-07-31.md)
   evaluates 538,804 observations from six released WTC11 TALON annotations.
-- The [Application Note package](deliverables/TxID_Bioinformatics_Application_Note_2026-09-20/README.md)
-  includes the manuscript, supplement, figure sources and a bounded real-read
-  IsoQuant–StringTie interoperability case. Its 110 shared exact forms are all
-  reference-known; the case does not demonstrate shared novel forms or an advantage
-  over matching shared reference aliases.
 
-Historical evaluations labelled TxID 0.1.0 retain that version; the additional
-real-caller case used 0.1.3. Its selection script,
+Historical evaluations labelled TxID 0.1.0 retain that version. The real-read runner,
 `benchmarks/run_real_interop_callers.py`, requires **Python 3.11 or later** and
 separately installed alignment/caller tools. This requirement does not change the
 TxID package's Python 3.10 minimum.
@@ -271,12 +265,11 @@ release requirements.
 Start with the [tutorial](docs/tutorial.md) and [CLI reference](docs/cli.md).
 Implementation details are specified in the
 [versioned identity specification](docs/superpowers/specs/2026-07-19-novel-transcript-identity-registry-design.md)
-and [machine-readable schemas](schemas/). Scientific comparisons and references
-are included in the [manuscript package](deliverables/TxID_Bioinformatics_Application_Note_2026-09-20/README.md).
+and [machine-readable schemas](schemas/). Evaluation procedures and their scope
+are described in the [benchmark documentation](docs/benchmark.md).
 
 When reporting work that uses TxID, record the software version and source commit;
-[CITATION.cff](CITATION.cff) supplies repository citation metadata. The manuscript
-package records the software and data availability statements for its version.
+[CITATION.cff](CITATION.cff) supplies repository citation metadata.
 
 Report bugs or propose changes through
 [GitHub issues](https://github.com/dawangran/TxID/issues). Include the TxID version,

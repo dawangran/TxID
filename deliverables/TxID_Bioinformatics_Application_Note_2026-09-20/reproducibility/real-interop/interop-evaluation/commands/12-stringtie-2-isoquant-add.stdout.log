@@ -1,8 +1,0 @@
-{
-  "created": true,
-  "import_id": 2,
-  "input_checksum": "sha256:383d3faa91a212efaefe0ae4b687fc9943216522d0360430701a3a498c52baf7",
-  "mapping": "/mnt/zzbnew/rnamodel/wangxue/Cyclone/TxID/benchmark-work/submission-repair-2026-09-23/interop-evaluation/stringtie-first/02-isoquant.mapping.tsv",
-  "output_gtf": "/mnt/zzbnew/rnamodel/wangxue/Cyclone/TxID/benchmark-work/submission-repair-2026-09-23/interop-evaluation/stringtie-first/02-isoquant.txid.gtf",
-  "transcripts": 126
-}

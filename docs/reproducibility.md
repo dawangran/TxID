@@ -23,13 +23,13 @@
 The checked external comparison uses synthetic truth-labelled inputs. isoSeQL's
 SQANTI3-compatible fixtures were generated directly; SQANTI3 was not executed.
 Large transient comparator databases and SAM/BAM files are not committed and must
-be deposited with the manuscript data archive together with their recorded
+be deposited with the benchmark data archive together with their recorded
 checksums.
 
-Before a publication release, replace manuscript placeholders with author,
-repository, RRID/bio.tools, archive DOI, GigaDB/Zenodo DOI, funding, and external
-comparator version information. Record the immutable digest of the published
-final container for an archival run. The Dockerfile pins an existing TxID/JupyterLab
+Before a publication release, record the software and benchmark archive identifiers,
+source commit, input checksums, and external comparator versions. Record the
+immutable digest of the published final container for an archival run. The
+Dockerfile pins an existing TxID/JupyterLab
 base image by digest and installs the current TxID wheel on top; that base digest
 does not identify the final image. The WDL defaults to the current image tag and
 accepts an explicit `docker_image` value, which should use the final published

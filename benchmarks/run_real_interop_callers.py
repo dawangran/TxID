@@ -3,7 +3,7 @@
 
 This is an interoperability case, not a discovery-accuracy benchmark. All outputs
 must go to a new directory. The separately downloaded StringTie binary is supplied
-through PATH. See the manuscript experiment protocol dated 2026-09-23.
+through PATH.
 """
 from __future__ import annotations
 
